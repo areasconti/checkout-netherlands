@@ -20,26 +20,26 @@ page_type: product
 headline: "Say Goodbye to Sleepless Nights"
 body_text: "Doctor engineered formula designed for results."
 cta_text: "Order Now & Save 60%"
-cta_url: "/wintergloves/checkout/"
+cta_url: "checkout.html"
 
-hero_image: "images/hero-1/hero-photo.png"
+hero_image: "images/landing/hero-1/hero-photo.png"
 hero_image_alt: "Product photo"
 
 review_count: "27,517+ 5-Star Reviews"
 testimonials_heading: "What Our Customers Are Saying"
 ---
 
-{% campaign_include 'nav-1.html' %}
-{% campaign_include 'hero-1.html' %}
-{% campaign_include 'testimonials-1.html' %}
-{% campaign_include 'faq-1.html' %}
-{% campaign_include 'footer-1.html' %}
+{% campaign_include 'landing/nav-1.html' %}
+{% campaign_include 'landing/hero-1.html' %}
+{% campaign_include 'landing/testimonials-1.html' %}
+{% campaign_include 'landing/faq-1.html' %}
+{% campaign_include 'landing/footer-1.html' %}
 ```
 
 Sections read variables directly from the page context — no need to pass args to each `campaign_include`.
 
-- Set `cta_url` to the **root-relative** checkout URL (e.g. `/wintergloves/checkout/`)
-- Do **not** pipe `cta_url` through `campaign_link` — that filter is slug-scoped and will produce the wrong URL for cross-slug links
+- Set `cta_url` to the target page filename (e.g. `"checkout.html"`) — the `landing/` includes apply `{{ cta_url | campaign_link }}` internally, which resolves to the correct slug-prefixed URL
+- Image paths are namespaced under `images/landing/` to keep them separate from checkout assets
 - **Variable naming:** most variable names are unique per section type (`headline` is hero-specific, `benefit_1` is benefits-specific). If you use two sections of the same type on one page they share the same variable — use different section slugs (e.g. `hero-1` and `hero-3`) to get independent sets
 
 ---
@@ -108,7 +108,7 @@ See [Optional GTM and Meta Pixel](./campaign-page-kit-template-context.md#option
 
 ## Section catalog
 
-76 composable partials in `src/landing/_includes/`. Include in any order via `{% campaign_include 'hero-1.html' %}`.
+76 composable partials in `src/landing/_includes/`. When used inside the standalone `landing/` slug: `{% campaign_include 'hero-1.html' %}`. When copied into a campaign slug (like `olympus`), partials live in `_includes/landing/` and are included as `{% campaign_include 'landing/hero-1.html' %}`.
 
 | Category | Available sections |
 |----------|--------------------|
@@ -139,7 +139,7 @@ See [Optional GTM and Meta Pixel](./campaign-page-kit-template-context.md#option
 
 ## Authoring rules
 
-- **Image paths are namespaced by section** — use `images/hero-1/hero-photo.png`, not `images/hero-photo.png`
+- **Image paths are namespaced by section** — in the standalone `landing/` slug: `images/hero-1/hero-photo.png`. In a campaign slug with a landing silo (like `olympus`): `images/landing/hero-1/hero-photo.png`
 - **Variables are shared across sections on one page** — if you use two sections of the same type, they share the same frontmatter variable. Use different section slugs (e.g. `hero-1` and `hero-3`) to get independent variable sets
 - **`landing.js` covers all interactive JS** — no section-specific scripts needed; all behavior is driven by `data-*` attributes
 - **`presell` is standalone** — the presell page is not composable; it is a self-contained template
