@@ -9,8 +9,8 @@ Companion to **[Campaign Cart — AI Rules](./campaign-page-kit-template-context
 The `landing` slug is a **composable section library**, not a drop-in template.
 
 - Its `_includes/` folder contains reusable sections (heroes, benefits, reviews, UGC, etc.)
-- Browse the example pages (`supplement-sleep`, `skincare-serum`, `fitness-program`) to see sections rendered; `index.html` is the full smoke test with every section
-- Create a new `.html` file in `src/landing/` — frontmatter holds all content variables, the body lists sections in order:
+- `index.html` is the full smoke test showing every section; `src/olympus/landing.html` is a ready-to-customise starting point already wired into a real funnel slug
+- Create a new `.html` file in your funnel slug — frontmatter holds all content variables, the body lists sections in order:
 
 ```html
 ---
@@ -20,37 +20,35 @@ page_type: product
 headline: "Say Goodbye to Sleepless Nights"
 body_text: "Doctor engineered formula designed for results."
 cta_text: "Order Now & Save 60%"
-cta_url: "/wintergloves/checkout/"
+cta_url: "checkout.html"
 
-hero_image: "images/hero-1/hero-photo.png"
+hero_image: "images/landing/hero-1/hero-photo.png"
 hero_image_alt: "Product photo"
 
 review_count: "27,517+ 5-Star Reviews"
 testimonials_heading: "What Our Customers Are Saying"
 ---
 
-{% campaign_include 'nav-1.html' %}
-{% campaign_include 'hero-1.html' %}
-{% campaign_include 'testimonials-1.html' %}
-{% campaign_include 'faq-1.html' %}
-{% campaign_include 'footer-1.html' %}
+{% campaign_include 'landing/nav-1.html' %}
+{% campaign_include 'landing/hero-1.html' %}
+{% campaign_include 'landing/testimonials-1.html' %}
+{% campaign_include 'landing/faq-1.html' %}
+{% campaign_include 'landing/footer-1.html' %}
 ```
 
 Sections read variables directly from the page context — no need to pass args to each `campaign_include`.
 
-- Set `cta_url` to the **root-relative** checkout URL (e.g. `/wintergloves/checkout/`)
-- Do **not** pipe `cta_url` through `campaign_link` — that filter is slug-scoped and will produce the wrong URL for cross-slug links
+- Set `cta_url` to the target page filename (e.g. `"checkout.html"`) — the `landing/` includes apply `{{ cta_url | campaign_link }}` internally, which resolves to the correct slug-prefixed URL
 - **Variable naming:** most variable names are unique per section type (`headline` is hero-specific, `benefit_1` is benefits-specific). If you use two sections of the same type on one page they share the same variable — use different section slugs (e.g. `hero-1` and `hero-3`) to get independent sets
 
 ---
 
-## Presell pages (`presell/`)
+## Presell pages
 
-The `presell` slug is a **ready-to-use** advertorial-style article page.
+The presell is a **ready-to-use** advertorial-style article page, now included directly in the `olympus` template as `presell.html`.
 
-- Keep the presell inside the **same campaign slug** as `checkout.html` — copy `presell/index.html` into your slug as `presell.html`
-- It then shares the same `campaigns.json` entry, `assets/config.js`, and `assets/` tree as your checkout pages (no second copy of config)
-- Set `cta_url` in frontmatter to the checkout page filename (e.g. `checkout.html`)
+- `src/olympus/presell.html` is the reference implementation — it lives in the same slug as `checkout.html`, sharing `campaigns.json`, `assets/config.js`, and the `assets/` tree
+- To add a presell to a different slug, copy `src/olympus/presell.html` into that slug and adjust `cta_url` in frontmatter (e.g. `landing.html` or `checkout.html`)
 - The CTA uses `campaign_link`: `href="{{ cta_url | campaign_link }}"` — no manual URL needed
 - The footer reads `campaign.store_terms` and `campaign.store_privacy` from `campaigns.json` — update those fields in your campaign entry
 
@@ -88,13 +86,11 @@ Landing and presell layouts load Tailwind via **CDN** — fine for development a
 
 ## Production hardening
 
-The starter layouts (`base-landing.html`, `base-presell.html`) are intentionally minimal — Tailwind, design tokens, and page content only. For a live funnel, uncomment the SDK wiring block already in both layout files to align with the Campaign Cart stack.
+The `olympus` layouts (`base-landing.html`, `base-presell.html`) are fully wired for production out of the box — no extra steps needed when you copy the `olympus` slug.
 
-**Typical workflow:** Copy these layouts (and pages) into an **existing** funnel slug that already has **`assets/config.js`** from checkout setup. You reuse that file; uncommenting the block is enough. The standalone `landing` / `presell` reference slugs in this repo omit `config.js` on purpose — they are showcases until folded into a real campaign.
+Presell and landing pages **must** load the SDK wiring to participate in session tracking and analytics. All three are active in the `olympus` layouts by default:
 
-**What to uncomment and why:**
-
-- **`config.js`** — must load before the SDK. Contains `apiKey`, `storeName`, and `analytics` providers. Use the same file as your checkout campaign.
+- **`config.js`** — must load before the SDK. Contains `apiKey`, `storeName`, and `analytics` providers. Shared with checkout — no duplication needed.
 - **`next-funnel` / `next-page-type` meta tags** — required by the SDK loader for session and analytics context
 - **SDK loader script** — loads the Campaign Cart runtime at the same pinned version as your checkout pages (`campaign.sdk_version` from `campaigns.json`)
 
@@ -109,7 +105,7 @@ See [Optional GTM and Meta Pixel](./campaign-page-kit-template-context.md#option
 
 ## Section catalog
 
-76 composable partials in `src/landing/_includes/`. Include in any order via `{% campaign_include 'hero-1.html' %}`.
+76 composable partials in `src/landing/_includes/`. When used inside the standalone `landing/` slug: `{% campaign_include 'hero-1.html' %}`. When copied into a campaign slug (like `olympus`), partials live in `_includes/landing/` and are included as `{% campaign_include 'landing/hero-1.html' %}`.
 
 | Category | Available sections |
 |----------|--------------------|
@@ -134,13 +130,12 @@ See [Optional GTM and Meta Pixel](./campaign-page-kit-template-context.md#option
 | CTA | `cta-1`, `bottomcta-1`, `bottomcta-2` |
 | Footer | `footer-1` |
 
-Browse the example pages (`supplement-sleep`, `skincare-serum`, `fitness-program`) to see sections rendered. `index.html` is the full smoke test with every section.
+`index.html` is the full smoke test with every section. `src/olympus/landing.html` shows a real-funnel example (supplement sleep niche).
 
 ---
 
 ## Authoring rules
 
-- **Image paths are namespaced by section** — use `images/hero-1/hero-photo.png`, not `images/hero-photo.png`
 - **Variables are shared across sections on one page** — if you use two sections of the same type, they share the same frontmatter variable. Use different section slugs (e.g. `hero-1` and `hero-3`) to get independent variable sets
 - **`landing.js` covers all interactive JS** — no section-specific scripts needed; all behavior is driven by `data-*` attributes
 - **`presell` is standalone** — the presell page is not composable; it is a self-contained template
