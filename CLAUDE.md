@@ -45,13 +45,12 @@ Note: when copying a template, the developer renames the folder to their product
 |----------|-------|
 | demeter | /demeter/checkout/ · /demeter/upsell-bundle-stepper/ · /demeter/upsell-bundle-tier-pills/ · /demeter/upsell-bundle-tier-cards/ · /demeter/receipt/ |
 | limos | /limos/checkout/ · /limos/upsell-bundle-stepper/ · /limos/upsell-bundle-tier-pills/ · /limos/upsell-bundle-tier-cards/ · /limos/receipt/ |
-| olympus | /olympus/checkout/ · /olympus/upsell-bundle-stepper/ · /olympus/upsell-bundle-tier-pills/ · /olympus/upsell-bundle-tier-cards/ · /olympus/receipt/ |
+| olympus | /olympus/presell/ · /olympus/landing/ · /olympus/checkout/ · /olympus/upsell-bundle-stepper/ · /olympus/upsell-bundle-tier-pills/ · /olympus/upsell-bundle-tier-cards/ · /olympus/receipt/ |
 | olympus-mv-single-step | /olympus-mv-single-step/checkout/ · /olympus-mv-single-step/upsell-mv/ · /olympus-mv-single-step/receipt/ |
 | olympus-mv-two-step | /olympus-mv-two-step/select/ · /olympus-mv-two-step/checkout/ · /olympus-mv-two-step/upsell-mv/ · /olympus-mv-two-step/receipt/ |
 | shop-single-step | /shop-single-step/checkout/ · /shop-single-step/upsell-bundle-stepper/ · /shop-single-step/upsell-bundle-tier-pills/ · /shop-single-step/upsell-bundle-tier-cards/ · /shop-single-step/receipt/ |
 | shop-three-step | /shop-three-step/information/ · /shop-three-step/shipping/ · /shop-three-step/billing/ · /shop-three-step/upsell-bundle-stepper/ · /shop-three-step/upsell-bundle-tier-pills/ · /shop-three-step/upsell-bundle-tier-cards/ · /shop-three-step/receipt/ |
-| landing | /landing/index/ · /landing/supplement-sleep/ · /landing/skincare-serum/ · /landing/fitness-program/ |
-| presell | /presell/index/ |
+| landing | /landing/index/ |
 
 ### Live Netlify previews (0.4.x)
 
@@ -61,13 +60,12 @@ Base URL: `https://nextcommerce-campaign-templates.netlify.app` — append the l
 |----------|-------|
 | demeter | [checkout](https://nextcommerce-campaign-templates.netlify.app/demeter/checkout/) · [upsell-bundle-stepper](https://nextcommerce-campaign-templates.netlify.app/demeter/upsell-bundle-stepper/) · [upsell-bundle-tier-pills](https://nextcommerce-campaign-templates.netlify.app/demeter/upsell-bundle-tier-pills/) · [upsell-bundle-tier-cards](https://nextcommerce-campaign-templates.netlify.app/demeter/upsell-bundle-tier-cards/) · [receipt](https://nextcommerce-campaign-templates.netlify.app/demeter/receipt/) |
 | limos | [checkout](https://nextcommerce-campaign-templates.netlify.app/limos/checkout/) · [upsell-bundle-stepper](https://nextcommerce-campaign-templates.netlify.app/limos/upsell-bundle-stepper/) · [upsell-bundle-tier-pills](https://nextcommerce-campaign-templates.netlify.app/limos/upsell-bundle-tier-pills/) · [upsell-bundle-tier-cards](https://nextcommerce-campaign-templates.netlify.app/limos/upsell-bundle-tier-cards/) · [receipt](https://nextcommerce-campaign-templates.netlify.app/limos/receipt/) |
-| olympus | [checkout](https://nextcommerce-campaign-templates.netlify.app/olympus/checkout/) · [upsell-bundle-stepper](https://nextcommerce-campaign-templates.netlify.app/olympus/upsell-bundle-stepper/) · [upsell-bundle-tier-pills](https://nextcommerce-campaign-templates.netlify.app/olympus/upsell-bundle-tier-pills/) · [upsell-bundle-tier-cards](https://nextcommerce-campaign-templates.netlify.app/olympus/upsell-bundle-tier-cards/) · [receipt](https://nextcommerce-campaign-templates.netlify.app/olympus/receipt/) |
+| olympus | [presell](https://nextcommerce-campaign-templates.netlify.app/olympus/presell/) · [landing](https://nextcommerce-campaign-templates.netlify.app/olympus/landing/) · [checkout](https://nextcommerce-campaign-templates.netlify.app/olympus/checkout/) · [upsell-bundle-stepper](https://nextcommerce-campaign-templates.netlify.app/olympus/upsell-bundle-stepper/) · [upsell-bundle-tier-pills](https://nextcommerce-campaign-templates.netlify.app/olympus/upsell-bundle-tier-pills/) · [upsell-bundle-tier-cards](https://nextcommerce-campaign-templates.netlify.app/olympus/upsell-bundle-tier-cards/) · [receipt](https://nextcommerce-campaign-templates.netlify.app/olympus/receipt/) |
 | olympus-mv-single-step | [checkout](https://nextcommerce-campaign-templates.netlify.app/olympus-mv-single-step/checkout/) · [upsell-mv](https://nextcommerce-campaign-templates.netlify.app/olympus-mv-single-step/upsell-mv/) · [receipt](https://nextcommerce-campaign-templates.netlify.app/olympus-mv-single-step/receipt/) |
 | olympus-mv-two-step | [select](https://nextcommerce-campaign-templates.netlify.app/olympus-mv-two-step/select/) · [checkout](https://nextcommerce-campaign-templates.netlify.app/olympus-mv-two-step/checkout/) · [upsell-mv](https://nextcommerce-campaign-templates.netlify.app/olympus-mv-two-step/upsell-mv/) · [receipt](https://nextcommerce-campaign-templates.netlify.app/olympus-mv-two-step/receipt/) |
 | shop-single-step | [checkout](https://nextcommerce-campaign-templates.netlify.app/shop-single-step/checkout/?forcePackageId=1:1) · [upsell-bundle-stepper](https://nextcommerce-campaign-templates.netlify.app/shop-single-step/upsell-bundle-stepper/?forcePackageId=1:1) · [upsell-bundle-tier-pills](https://nextcommerce-campaign-templates.netlify.app/shop-single-step/upsell-bundle-tier-pills/?forcePackageId=1:1) · [upsell-bundle-tier-cards](https://nextcommerce-campaign-templates.netlify.app/shop-single-step/upsell-bundle-tier-cards/?forcePackageId=1:1) · [receipt](https://nextcommerce-campaign-templates.netlify.app/shop-single-step/receipt/?forcePackageId=1:1) |
 | shop-three-step | [information](https://nextcommerce-campaign-templates.netlify.app/shop-three-step/information/?forcePackageId=1:1) · [shipping](https://nextcommerce-campaign-templates.netlify.app/shop-three-step/shipping/?forcePackageId=1:1) · [billing](https://nextcommerce-campaign-templates.netlify.app/shop-three-step/billing/?forcePackageId=1:1) · [upsell-bundle-stepper](https://nextcommerce-campaign-templates.netlify.app/shop-three-step/upsell-bundle-stepper/?forcePackageId=1:1) · [upsell-bundle-tier-pills](https://nextcommerce-campaign-templates.netlify.app/shop-three-step/upsell-bundle-tier-pills/?forcePackageId=1:1) · [upsell-bundle-tier-cards](https://nextcommerce-campaign-templates.netlify.app/shop-three-step/upsell-bundle-tier-cards/?forcePackageId=1:1) · [receipt](https://nextcommerce-campaign-templates.netlify.app/shop-three-step/receipt/?forcePackageId=1:1) |
-| landing | [index](https://nextcommerce-campaign-templates.netlify.app/landing/index/) · [supplement-sleep](https://nextcommerce-campaign-templates.netlify.app/landing/supplement-sleep/) · [skincare-serum](https://nextcommerce-campaign-templates.netlify.app/landing/skincare-serum/) · [fitness-program](https://nextcommerce-campaign-templates.netlify.app/landing/fitness-program/) |
-| presell | [index](https://nextcommerce-campaign-templates.netlify.app/presell/index/) |
+| landing | [index](https://nextcommerce-campaign-templates.netlify.app/landing/index/) |
 
 ## File Structure
 ```
@@ -82,8 +80,7 @@ repo-root/
 │   ├── olympus-mv-two-step/
 │   ├── shop-single-step/
 │   ├── shop-three-step/
-│   ├── landing/               ← pre-checkout landing pages (no SDK)
-│   └── presell/             ← advertorial presell page (no SDK)
+│   └── landing/               ← composable section library (olympus/presell.html + olympus/landing.html are the full-funnel examples)
 └── package.json                ← kit scripts + next-campaign-page-kit dependency
 ```
 

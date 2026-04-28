@@ -153,23 +153,15 @@ Each checkout template includes all upsell variants and a receipt — copy the w
 |---------|-------------|---------|
 | `receipt` | Order confirmation page | [preview](https://nextcommerce-campaign-templates.netlify.app/olympus/receipt/) |
 
-**Landing pages**
+**Pre-checkout pages (landing + presell)**
 
-The `landing` slug is a component showcase — browse the examples to find sections you want, then copy those `_includes/` files into your own funnel slug. See [docs/pre-checkout-pages.md](docs/pre-checkout-pages.md) for usage details.
-
-| Template | Description | Preview |
-|----------|-------------|---------|
-| `landing` · supplement | Sleep supplement example | [preview](https://nextcommerce-campaign-templates.netlify.app/landing/supplement-sleep/) |
-| `landing` · skincare | Skincare serum example | [preview](https://nextcommerce-campaign-templates.netlify.app/landing/skincare-serum/) |
-| `landing` · fitness | Fitness program example | [preview](https://nextcommerce-campaign-templates.netlify.app/landing/fitness-program/) |
-
-**Presell pages**
-
-Copy the presell into **the same campaign slug** as `checkout.html` (shared `config.js` and `campaigns.json`). See [docs/pre-checkout-pages.md](docs/pre-checkout-pages.md).
+`olympus` includes a full presell → landing → checkout funnel. The `landing` slug is the composable section library — browse `landing/index` to see every section, then copy the `_includes/` files you want into your own slug. See [docs/pre-checkout-pages.md](docs/pre-checkout-pages.md) for usage details.
 
 | Template | Description | Preview |
 |----------|-------------|---------|
-| `presell` | Advertorial "10 reasons" article format | [preview](https://nextcommerce-campaign-templates.netlify.app/presell/index/) |
+| `olympus` · presell | Advertorial "10 reasons" article | [preview](https://nextcommerce-campaign-templates.netlify.app/olympus/presell/) |
+| `olympus` · landing | Supplement sleep landing page | [preview](https://nextcommerce-campaign-templates.netlify.app/olympus/landing/) |
+| `landing` | Full section showcase (every component) | [preview](https://nextcommerce-campaign-templates.netlify.app/landing/index/) |
 
 ## npm scripts
 
