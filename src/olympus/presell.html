@@ -40,42 +40,36 @@ reason_4_heading: "Backed by Over 1,200 Five-Star Reviews"
 reason_4_body: "Real customers. Real results. Our verified review platform doesn't allow purchased reviews — every rating comes from a confirmed buyer who tried the product."
 reason_4_image: "images/presell/placeholder.svg"
 reason_4_link_text: "Read the reviews →"
-reason_4_link_url: "#reviews"
 
 reason_5_tag: "⚡ All-Day Energy"
 reason_5_heading: "Made in an FDA-Registered Facility"
 reason_5_body: "Every batch is third-party lab tested for purity, potency, and safety. We publish our certificates of analysis publicly — because we have nothing to hide."
 reason_5_image: "images/presell/placeholder.svg"
 reason_5_link_text: "View lab results →"
-reason_5_link_url: "#lab-results"
 
 reason_6_tag: "⚡ All-Day Energy"
 reason_6_heading: "Ships Free, Arrives Fast"
 reason_6_body: "All US orders ship free, with most arriving in 2–4 business days. We partner with FedEx and USPS for the most reliable delivery experience."
 reason_6_image: "images/presell/placeholder.svg"
 reason_6_link_text: "See shipping info →"
-reason_6_link_url: "#shipping"
 
 reason_7_tag: "⚡ All-Day Energy"
 reason_7_heading: "Thousands Save With Subscribe & Save"
 reason_7_body: "Join our subscribe & save program and get 20% off every order, free priority shipping, and the flexibility to pause or cancel at any time — no questions asked."
 reason_7_image: "images/presell/placeholder.svg"
 reason_7_link_text: "Learn about subscriptions →"
-reason_7_link_url: "#subscribe"
 
 reason_8_tag: "⚡ All-Day Energy"
 reason_8_heading: "100% Money-Back Guarantee"
 reason_8_body: "We're so confident you'll love it, we offer a full 60-day money-back guarantee. If you're not completely satisfied for any reason, we'll refund every penny. No hoops, no hassle."
 reason_8_image: "images/presell/placeholder.svg"
 reason_8_link_text: "See guarantee details →"
-reason_8_link_url: "#guarantee"
 
 reason_9_tag: "⚡ All-Day Energy"
 reason_9_heading: "Trusted by 50,000+ Happy Customers"
 reason_9_body: "We've helped over 50,000 people reclaim their mornings. Join a growing community of people who've made this a non-negotiable part of their daily routine."
 reason_9_image: "images/presell/placeholder.svg"
 reason_9_link_text: "See customer stories →"
-reason_9_link_url: "#stories"
 
 # CTA section (Reason #10)
 cta_heading: "Reason #10 — Right Now, You Can Get It at the Lowest Price of the Year"
@@ -213,7 +207,7 @@ footer_copyright: "Copyright ©2026 Next Commerce"
         <h2 class="hidden md:block text-[28px] font-bold text-[var(--text-primary)] leading-[1.2] mb-5">{{ reason_4_heading }}</h2>
         <p class="text-[20px] font-medium text-[var(--text-primary)] opacity-80 leading-[1.5] mb-8">{{ reason_4_body }}</p>
         {% if reason_4_link_text != "" and reason_4_link_text %}
-        <a href="{{ reason_4_link_url }}" class="text-[var(--text-primary)] font-extrabold underline text-[20px]">{{ reason_4_link_text }}</a>
+        <a href="{{ cta_url | campaign_link }}" class="text-[var(--text-primary)] font-extrabold underline text-[20px]">{{ reason_4_link_text }}</a>
         {% endif %}
       </div>
     </div>
@@ -235,7 +229,7 @@ footer_copyright: "Copyright ©2026 Next Commerce"
         <h2 class="hidden md:block text-[28px] font-bold text-[var(--text-primary)] leading-[1.2] mb-5">{{ reason_5_heading }}</h2>
         <p class="text-[20px] font-medium text-[var(--text-primary)] opacity-80 leading-[1.5] mb-8">{{ reason_5_body }}</p>
         {% if reason_5_link_text != "" and reason_5_link_text %}
-        <a href="{{ reason_5_link_url }}" class="text-[var(--text-primary)] font-extrabold underline text-[20px]">{{ reason_5_link_text }}</a>
+        <a href="{{ cta_url | campaign_link }}" class="text-[var(--text-primary)] font-extrabold underline text-[20px]">{{ reason_5_link_text }}</a>
         {% endif %}
       </div>
     </div>
@@ -257,7 +251,7 @@ footer_copyright: "Copyright ©2026 Next Commerce"
         <h2 class="hidden md:block text-[28px] font-bold text-[var(--text-primary)] leading-[1.2] mb-5">{{ reason_6_heading }}</h2>
         <p class="text-[20px] font-medium text-[var(--text-primary)] opacity-80 leading-[1.5] mb-8">{{ reason_6_body }}</p>
         {% if reason_6_link_text != "" and reason_6_link_text %}
-        <a href="{{ reason_6_link_url }}" class="text-[var(--text-primary)] font-extrabold underline text-[20px]">{{ reason_6_link_text }}</a>
+        <a href="{{ cta_url | campaign_link }}" class="text-[var(--text-primary)] font-extrabold underline text-[20px]">{{ reason_6_link_text }}</a>
         {% endif %}
       </div>
     </div>
@@ -279,7 +273,7 @@ footer_copyright: "Copyright ©2026 Next Commerce"
         <h2 class="hidden md:block text-[28px] font-bold text-[var(--text-primary)] leading-[1.2] mb-5">{{ reason_7_heading }}</h2>
         <p class="text-[20px] font-medium text-[var(--text-primary)] opacity-80 leading-[1.5] mb-8">{{ reason_7_body }}</p>
         {% if reason_7_link_text != "" and reason_7_link_text %}
-        <a href="{{ reason_7_link_url }}" class="text-[var(--text-primary)] font-extrabold underline text-[20px]">{{ reason_7_link_text }}</a>
+        <a href="{{ cta_url | campaign_link }}" class="text-[var(--text-primary)] font-extrabold underline text-[20px]">{{ reason_7_link_text }}</a>
         {% endif %}
       </div>
     </div>
@@ -301,7 +295,7 @@ footer_copyright: "Copyright ©2026 Next Commerce"
         <h2 class="hidden md:block text-[28px] font-bold text-[var(--text-primary)] leading-[1.2] mb-5">{{ reason_8_heading }}</h2>
         <p class="text-[20px] font-medium text-[var(--text-primary)] opacity-80 leading-[1.5] mb-8">{{ reason_8_body }}</p>
         {% if reason_8_link_text != "" and reason_8_link_text %}
-        <a href="{{ reason_8_link_url }}" class="text-[var(--text-primary)] font-extrabold underline text-[20px]">{{ reason_8_link_text }}</a>
+        <a href="{{ cta_url | campaign_link }}" class="text-[var(--text-primary)] font-extrabold underline text-[20px]">{{ reason_8_link_text }}</a>
         {% endif %}
       </div>
     </div>
@@ -323,7 +317,7 @@ footer_copyright: "Copyright ©2026 Next Commerce"
         <h2 class="hidden md:block text-[28px] font-bold text-[var(--text-primary)] leading-[1.2] mb-5">{{ reason_9_heading }}</h2>
         <p class="text-[20px] font-medium text-[var(--text-primary)] opacity-80 leading-[1.5] mb-8">{{ reason_9_body }}</p>
         {% if reason_9_link_text != "" and reason_9_link_text %}
-        <a href="{{ reason_9_link_url }}" class="text-[var(--text-primary)] font-extrabold underline text-[20px]">{{ reason_9_link_text }}</a>
+        <a href="{{ cta_url | campaign_link }}" class="text-[var(--text-primary)] font-extrabold underline text-[20px]">{{ reason_9_link_text }}</a>
         {% endif %}
       </div>
     </div>
