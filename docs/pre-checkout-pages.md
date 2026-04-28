@@ -39,7 +39,6 @@ testimonials_heading: "What Our Customers Are Saying"
 Sections read variables directly from the page context — no need to pass args to each `campaign_include`.
 
 - Set `cta_url` to the target page filename (e.g. `"checkout.html"`) — the `landing/` includes apply `{{ cta_url | campaign_link }}` internally, which resolves to the correct slug-prefixed URL
-- Image paths are namespaced under `images/landing/` to keep them separate from checkout assets
 - **Variable naming:** most variable names are unique per section type (`headline` is hero-specific, `benefit_1` is benefits-specific). If you use two sections of the same type on one page they share the same variable — use different section slugs (e.g. `hero-1` and `hero-3`) to get independent sets
 
 ---
@@ -87,13 +86,11 @@ Landing and presell layouts load Tailwind via **CDN** — fine for development a
 
 ## Production hardening
 
-The starter layouts (`base-landing.html`, `base-presell.html`) are intentionally minimal — Tailwind, design tokens, and page content only. For a live funnel, uncomment the SDK wiring block already in both layout files to align with the Campaign Cart stack.
+The `olympus` layouts (`base-landing.html`, `base-presell.html`) are fully wired for production out of the box — no extra steps needed when you copy the `olympus` slug.
 
-**Typical workflow:** Copy these layouts (and pages) into an **existing** funnel slug that already has **`assets/config.js`** from checkout setup. You reuse that file; uncommenting the block is enough. The standalone `landing` / `presell` reference slugs in this repo omit `config.js` on purpose — they are showcases until folded into a real campaign.
+Presell and landing pages **must** load the SDK wiring to participate in session tracking and analytics. All three are active in the `olympus` layouts by default:
 
-**What to uncomment and why:**
-
-- **`config.js`** — must load before the SDK. Contains `apiKey`, `storeName`, and `analytics` providers. Use the same file as your checkout campaign.
+- **`config.js`** — must load before the SDK. Contains `apiKey`, `storeName`, and `analytics` providers. Shared with checkout — no duplication needed.
 - **`next-funnel` / `next-page-type` meta tags** — required by the SDK loader for session and analytics context
 - **SDK loader script** — loads the Campaign Cart runtime at the same pinned version as your checkout pages (`campaign.sdk_version` from `campaigns.json`)
 
@@ -139,7 +136,6 @@ See [Optional GTM and Meta Pixel](./campaign-page-kit-template-context.md#option
 
 ## Authoring rules
 
-- **Image paths are namespaced by section** — in the standalone `landing/` slug: `images/hero-1/hero-photo.png`. In a campaign slug with a landing silo (like `olympus`): `images/landing/hero-1/hero-photo.png`
 - **Variables are shared across sections on one page** — if you use two sections of the same type, they share the same frontmatter variable. Use different section slugs (e.g. `hero-1` and `hero-3`) to get independent variable sets
 - **`landing.js` covers all interactive JS** — no section-specific scripts needed; all behavior is driven by `data-*` attributes
 - **`presell` is standalone** — the presell page is not composable; it is a self-contained template
