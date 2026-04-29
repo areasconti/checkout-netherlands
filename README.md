@@ -124,7 +124,7 @@ npm run dev
 
 ### Current — SDK 0.4.x
 
-Each checkout template includes all upsell variants and a receipt — copy the whole folder to get the full flow.
+Each checkout template includes presell + landing pages, all upsell variants, and a receipt — copy the whole folder to get the full funnel.
 
 **Checkouts**
 
@@ -155,12 +155,12 @@ Each checkout template includes all upsell variants and a receipt — copy the w
 
 **Pre-checkout pages (landing + presell)**
 
-`olympus` includes a full presell → landing → checkout funnel. The `landing` slug is the composable section library — browse `landing/index` to see every section, then copy the `_includes/` files you want into your own slug. See [docs/pre-checkout-pages.md](docs/pre-checkout-pages.md) for usage details.
+Every checkout template includes `presell.html` and `landing.html` — a full presell → landing → checkout funnel. The `landing` slug is the composable section library — browse `landing/index` to see every section, then copy the `_includes/` files you want into your own slug. See [docs/pre-checkout-pages.md](docs/pre-checkout-pages.md) for usage details.
 
 | Template | Description | Preview |
 |----------|-------------|---------|
-| `olympus` · presell | Advertorial "10 reasons" article | [preview](https://nextcommerce-campaign-templates.netlify.app/olympus/presell/) |
-| `olympus` · landing | Supplement sleep landing page | [preview](https://nextcommerce-campaign-templates.netlify.app/olympus/landing/) |
+| `[any slug]` · presell | Advertorial "10 reasons" article | [olympus example](https://nextcommerce-campaign-templates.netlify.app/olympus/presell/) |
+| `[any slug]` · landing | Composable landing page | [olympus example](https://nextcommerce-campaign-templates.netlify.app/olympus/landing/) |
 | `landing` | Full section showcase (every component) | [preview](https://nextcommerce-campaign-templates.netlify.app/landing/index/) |
 
 ## npm scripts
