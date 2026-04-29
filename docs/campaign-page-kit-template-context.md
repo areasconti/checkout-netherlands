@@ -341,7 +341,6 @@ Run `npm run config` to set the API key interactively. The API key comes from th
 | `next-success-url` | `{{ next_success_url \| campaign_link }}` | base.html if frontmatter set |
 | `next-upsell-accept-url` | `{{ next_upsell_accept \| campaign_link }}` | base.html if frontmatter set |
 | `next-upsell-decline-url` | `{{ next_upsell_decline \| campaign_link }}` | base.html if frontmatter set |
-| `next-prevent-back-navigation` | `true` | add manually when needed |
 
 ---
 
