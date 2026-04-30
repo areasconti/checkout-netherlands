@@ -50,7 +50,7 @@
     },
     {
       "slug": "landing",
-      "name": "Landing",
+      "name": "Landing Page Examples",
       "description": "Landing page component library — niche example pages built from modular sections",
       "priority": 1,
       "deprecated": false,
