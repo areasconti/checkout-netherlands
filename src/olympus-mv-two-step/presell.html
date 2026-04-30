@@ -80,7 +80,7 @@ offer_headline: "UP TO 60% OFF FOR"
 offer_headline_red: "A LIMITED TIME ONLY"
 offer_subheadline: "This limited-time deal is in high demand and stock keeps selling out."
 cta_text: "GET 60% OFF"
-cta_url: "landing.html"
+next_url: "landing.html"
 product_image: "images/presell/placeholder.svg"
 countdown_label: "DEAL ENDING IN:"
 sell_out_text: "Sell-Out Risk:"
@@ -207,7 +207,7 @@ footer_copyright: "Copyright ©2026 Next Commerce"
         <h2 class="hidden md:block text-[28px] font-bold text-[var(--text-primary)] leading-[1.2] mb-5">{{ reason_4_heading }}</h2>
         <p class="text-[20px] font-medium text-[var(--text-primary)] opacity-80 leading-[1.5] mb-8">{{ reason_4_body }}</p>
         {% if reason_4_link_text != "" and reason_4_link_text %}
-        <a href="{{ cta_url | campaign_link }}" class="text-[var(--text-primary)] font-extrabold underline text-[20px]">{{ reason_4_link_text }}</a>
+        <a href="{{ next_url | campaign_link }}" class="text-[var(--text-primary)] font-extrabold underline text-[20px]">{{ reason_4_link_text }}</a>
         {% endif %}
       </div>
     </div>
@@ -229,7 +229,7 @@ footer_copyright: "Copyright ©2026 Next Commerce"
         <h2 class="hidden md:block text-[28px] font-bold text-[var(--text-primary)] leading-[1.2] mb-5">{{ reason_5_heading }}</h2>
         <p class="text-[20px] font-medium text-[var(--text-primary)] opacity-80 leading-[1.5] mb-8">{{ reason_5_body }}</p>
         {% if reason_5_link_text != "" and reason_5_link_text %}
-        <a href="{{ cta_url | campaign_link }}" class="text-[var(--text-primary)] font-extrabold underline text-[20px]">{{ reason_5_link_text }}</a>
+        <a href="{{ next_url | campaign_link }}" class="text-[var(--text-primary)] font-extrabold underline text-[20px]">{{ reason_5_link_text }}</a>
         {% endif %}
       </div>
     </div>
@@ -251,7 +251,7 @@ footer_copyright: "Copyright ©2026 Next Commerce"
         <h2 class="hidden md:block text-[28px] font-bold text-[var(--text-primary)] leading-[1.2] mb-5">{{ reason_6_heading }}</h2>
         <p class="text-[20px] font-medium text-[var(--text-primary)] opacity-80 leading-[1.5] mb-8">{{ reason_6_body }}</p>
         {% if reason_6_link_text != "" and reason_6_link_text %}
-        <a href="{{ cta_url | campaign_link }}" class="text-[var(--text-primary)] font-extrabold underline text-[20px]">{{ reason_6_link_text }}</a>
+        <a href="{{ next_url | campaign_link }}" class="text-[var(--text-primary)] font-extrabold underline text-[20px]">{{ reason_6_link_text }}</a>
         {% endif %}
       </div>
     </div>
@@ -273,7 +273,7 @@ footer_copyright: "Copyright ©2026 Next Commerce"
         <h2 class="hidden md:block text-[28px] font-bold text-[var(--text-primary)] leading-[1.2] mb-5">{{ reason_7_heading }}</h2>
         <p class="text-[20px] font-medium text-[var(--text-primary)] opacity-80 leading-[1.5] mb-8">{{ reason_7_body }}</p>
         {% if reason_7_link_text != "" and reason_7_link_text %}
-        <a href="{{ cta_url | campaign_link }}" class="text-[var(--text-primary)] font-extrabold underline text-[20px]">{{ reason_7_link_text }}</a>
+        <a href="{{ next_url | campaign_link }}" class="text-[var(--text-primary)] font-extrabold underline text-[20px]">{{ reason_7_link_text }}</a>
         {% endif %}
       </div>
     </div>
@@ -295,7 +295,7 @@ footer_copyright: "Copyright ©2026 Next Commerce"
         <h2 class="hidden md:block text-[28px] font-bold text-[var(--text-primary)] leading-[1.2] mb-5">{{ reason_8_heading }}</h2>
         <p class="text-[20px] font-medium text-[var(--text-primary)] opacity-80 leading-[1.5] mb-8">{{ reason_8_body }}</p>
         {% if reason_8_link_text != "" and reason_8_link_text %}
-        <a href="{{ cta_url | campaign_link }}" class="text-[var(--text-primary)] font-extrabold underline text-[20px]">{{ reason_8_link_text }}</a>
+        <a href="{{ next_url | campaign_link }}" class="text-[var(--text-primary)] font-extrabold underline text-[20px]">{{ reason_8_link_text }}</a>
         {% endif %}
       </div>
     </div>
@@ -317,7 +317,7 @@ footer_copyright: "Copyright ©2026 Next Commerce"
         <h2 class="hidden md:block text-[28px] font-bold text-[var(--text-primary)] leading-[1.2] mb-5">{{ reason_9_heading }}</h2>
         <p class="text-[20px] font-medium text-[var(--text-primary)] opacity-80 leading-[1.5] mb-8">{{ reason_9_body }}</p>
         {% if reason_9_link_text != "" and reason_9_link_text %}
-        <a href="{{ cta_url | campaign_link }}" class="text-[var(--text-primary)] font-extrabold underline text-[20px]">{{ reason_9_link_text }}</a>
+        <a href="{{ next_url | campaign_link }}" class="text-[var(--text-primary)] font-extrabold underline text-[20px]">{{ reason_9_link_text }}</a>
         {% endif %}
       </div>
     </div>
@@ -383,7 +383,7 @@ footer_copyright: "Copyright ©2026 Next Commerce"
           </p>
 
           <!-- CTA button -->
-          <a href="{{ cta_url | campaign_link }}"
+          <a href="{{ next_url | campaign_link }}"
              class="w-full bg-[var(--brand-primary)] text-white font-extrabold text-[20px] uppercase py-[20px] px-6 rounded-[6px] flex items-center justify-center gap-4 hover:opacity-90 transition-opacity">
             <span>{{ cta_text }}</span>
             <img src="{{ 'images/presell/_shared/arrow-right.svg' | campaign_asset }}" alt="" class="w-[18px] h-[14px] brightness-0 invert">

@@ -72,7 +72,7 @@
               </p>
               <div class="w-full md:w-[360px] md:max-w-[360px]">
                 <div class="w-full flex flex-col items-center gap-[16px]">
-                  <a href="{{ cta_url }}"
+                  <a href="{{ next_url }}"
                      class="w-full bg-[var(--brand-primary)] rounded-[6px] py-[20px] px-[24px] flex items-center justify-center gap-[16px] no-underline">
                     <span class="font-bold text-[20px] md:text-[22px] text-white text-center tracking-[-0.1px] md:tracking-[-0.11px] leading-[1.5] whitespace-nowrap">{{ cta_text | default: "Order Now" }}</span>
                     <img src="{{ cta_button_arrow | default: 'images/_shared/arrow-right.svg' | campaign_asset }}" alt="" class="w-[16px] md:w-[18px] h-[12px] md:h-[14px] shrink-0 brightness-0 invert" aria-hidden="true">

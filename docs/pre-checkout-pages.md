@@ -20,7 +20,7 @@ page_type: product
 headline: "Say Goodbye to Sleepless Nights"
 body_text: "Doctor engineered formula designed for results."
 cta_text: "Order Now & Save 60%"
-cta_url: "checkout.html"
+next_url: "checkout.html"
 
 hero_image: "images/landing/hero-1/hero-photo.png"
 hero_image_alt: "Product photo"
@@ -38,7 +38,7 @@ testimonials_heading: "What Our Customers Are Saying"
 
 Sections read variables directly from the page context — no need to pass args to each `campaign_include`.
 
-- Set `cta_url` to the target page filename (e.g. `"checkout.html"`) — the `landing/` includes apply `{{ cta_url | campaign_link }}` internally, which resolves to the correct slug-prefixed URL
+- Set `next_url` to the target page filename (e.g. `"checkout.html"`) — the `landing/` includes apply `{{ next_url | campaign_link }}` internally, which resolves to the correct slug-prefixed URL
 - **Variable naming:** most variable names are unique per section type (`headline` is hero-specific, `benefit_1` is benefits-specific). If you use two sections of the same type on one page they share the same variable — use different section slugs (e.g. `hero-1` and `hero-3`) to get independent sets
 
 ---
@@ -48,8 +48,8 @@ Sections read variables directly from the page context — no need to pass args 
 The presell is a **ready-to-use** advertorial-style article page, now included directly in the `olympus` template as `presell.html`.
 
 - `src/olympus/presell.html` is the reference implementation — it lives in the same slug as `checkout.html`, sharing `campaigns.json`, `assets/config.js`, and the `assets/` tree
-- To add a presell to a different slug, copy `src/olympus/presell.html` into that slug and adjust `cta_url` in frontmatter (e.g. `landing.html` or `checkout.html`)
-- The CTA uses `campaign_link`: `href="{{ cta_url | campaign_link }}"` — no manual URL needed
+- To add a presell to a different slug, copy `src/olympus/presell.html` into that slug and adjust `next_url` in frontmatter (e.g. `landing.html` or `checkout.html`)
+- The CTA uses `campaign_link`: `href="{{ next_url | campaign_link }}"` — no manual URL needed
 - The footer reads `campaign.store_terms` and `campaign.store_privacy` from `campaigns.json` — update those fields in your campaign entry
 
 ---

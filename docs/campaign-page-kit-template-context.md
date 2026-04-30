@@ -87,7 +87,7 @@ Each campaign is fully isolated. Assets, layouts, and pages from one campaign ne
 
 Pre-checkout pages have **no checkout form, cart, or upsell UI**, but a **live** lander or presell should still align with the Campaign Cart stack (`config.js`, SDK loader, `next-*` meta tags, optional layout GTM/Pixel from `campaigns.json`) the same way checkout does — see [SDK configuration (config.js)](#sdk-configuration-configjs), [SDK meta tags](#sdk-meta-tags-set-in-basehtml-via-frontmatter), and [Optional GTM and Meta Pixel](#optional-gtm-and-meta-pixel-gtm_id-fb_pixel_id) below.
 
-- **`landing/`** (starter) — **section showcase**: copy `_includes/` into your slug. **Cross-slug CTAs** use a root-relative checkout URL in `cta_url`, not `campaign_link`.
+- **`landing/`** (starter) — **section showcase**: copy `_includes/` into your slug. **Cross-slug CTAs** use a root-relative checkout URL in `next_url`, not `campaign_link`.
 - **`presell/`** — **ready-to-use article** in the **same campaign slug** as `checkout.html`; use **`campaign_link`** for the checkout CTA.
 - **Tailwind** — CDN in dev; compile `tailwind.css` for production.
 
@@ -157,9 +157,9 @@ Every `.html` page starts with YAML frontmatter:
 title: "Page Title"
 page_layout: base.html               # optional — defaults to base.html; set to use a named layout
 page_type: checkout          # checkout | upsell | receipt | product
-next_success_url: upsell.html        # checkout pages: where to go after order
-next_upsell_accept: up02.html        # upsell pages: accept destination
-next_upsell_decline: receipt.html    # upsell pages: decline destination
+next_url: upsell.html        # checkout pages: where to go after order
+next_url: up02.html        # upsell pages: accept destination
+decline_url: receipt.html    # upsell pages: decline destination
 styles:
   - css/checkout.css
   - https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css
@@ -171,8 +171,8 @@ scripts:
 
 - `page_layout` is optional — omit to use `base.html`. Set to a named layout file (e.g. `base-landing.html`) when a slug contains pages that need different layout stacks side by side, such as a landing page alongside checkout pages.
 - `page_type` is required — it tells the SDK how to behave on this page
-- `next_success_url` is required on checkout pages
-- `next_upsell_accept` / `next_upsell_decline` are required on upsell pages
+- `next_url` is required on checkout pages
+- `next_url` / `decline_url` are required on upsell pages
 - `styles` / `scripts` are page-specific; `next-core.css` and `config.js` are loaded by `base.html` for every page
 
 ---
@@ -195,7 +195,7 @@ Generates a clean URL for inter-page navigation. Strips `.html`, adds trailing s
 
 ```liquid
 <a href="{{ 'checkout.html' | campaign_link }}">Go to Checkout</a>
-<meta name="next-success-url" content="{{ next_success_url | campaign_link }}">
+<meta name="next-success-url" content="{{ next_url | campaign_link }}">
 ```
 
 ### `campaign_include`
@@ -230,9 +230,9 @@ Includes a file from the campaign's `_includes/` directory.
 | `{{ environment }}` | kit: `development` / `production` (override with `CPK_ENV`) |
 | `{{ title }}` | page frontmatter |
 | `{{ page_type }}` | page frontmatter |
-| `{{ next_success_url }}` | page frontmatter |
-| `{{ next_upsell_accept }}` | page frontmatter |
-| `{{ next_upsell_decline }}` | page frontmatter |
+| `{{ next_url }}` | page frontmatter |
+| `{{ next_url }}` | page frontmatter |
+| `{{ decline_url }}` | page frontmatter |
 | `{{ content }}` | injected by base.html only |
 
 ---
@@ -250,9 +250,9 @@ It always:
 - In these starter templates: may inject GTM / Meta Pixel from `campaign.gtm_id` / `campaign.fb_pixel_id` when not in `development` (see above)
 
 ```html
-{% if next_success_url %}<meta name="next-success-url" content="{{ next_success_url | campaign_link }}">{% endif %}
-{% if next_upsell_accept %}<meta name="next-upsell-accept-url" content="{{ next_upsell_accept | campaign_link }}">{% endif %}
-{% if next_upsell_decline %}<meta name="next-upsell-decline-url" content="{{ next_upsell_decline | campaign_link }}">{% endif %}
+{% if next_url %}<meta name="next-success-url" content="{{ next_url | campaign_link }}">{% endif %}
+{% if next_url %}<meta name="next-upsell-accept-url" content="{{ next_url | campaign_link }}">{% endif %}
+{% if decline_url %}<meta name="next-upsell-decline-url" content="{{ decline_url | campaign_link }}">{% endif %}
 ```
 
 Do not modify `base.html` to add page-specific logic. Put page-specific content in the page file or a `_includes/` component.
@@ -338,9 +338,9 @@ Run `npm run config` to set the API key interactively. The API key comes from th
 |----------|-------|--------|
 | `next-funnel` | `{{ campaign.name }}` | base.html always |
 | `next-page-type` | `{{ page_type }}` | base.html always |
-| `next-success-url` | `{{ next_success_url \| campaign_link }}` | base.html if frontmatter set |
-| `next-upsell-accept-url` | `{{ next_upsell_accept \| campaign_link }}` | base.html if frontmatter set |
-| `next-upsell-decline-url` | `{{ next_upsell_decline \| campaign_link }}` | base.html if frontmatter set |
+| `next-success-url` | `{{ next_url \| campaign_link }}` | base.html if frontmatter set |
+| `next-upsell-accept-url` | `{{ next_url \| campaign_link }}` | base.html if frontmatter set |
+| `next-upsell-decline-url` | `{{ decline_url \| campaign_link }}` | base.html if frontmatter set |
 
 ---
 
@@ -771,8 +771,8 @@ Use these when implementing or verifying a specific task. Work through each item
 - [ ] Exactly one selector card per selector group has `data-next-selected="true"`
 - [ ] All `data-next-package-sync` values updated to the new main package IDs
 - [ ] All pages have correct `page_type` in frontmatter
-- [ ] Checkout page has `next_success_url` pointing to the first upsell (or receipt)
-- [ ] Each upsell page has both `next_upsell_accept` and `next_upsell_decline` set
+- [ ] Checkout page has `next_url` pointing to the first upsell (or receipt)
+- [ ] Each upsell page has both `next_url` and `decline_url` set
 - [ ] The final upsell's accept and decline both point to `receipt.html`
 - [ ] All local asset paths use `campaign_asset`, not hardcoded relative paths
 - [ ] All inter-page links use `campaign_link`, not hardcoded paths
@@ -790,12 +790,12 @@ Use these when implementing or verifying a specific task. Work through each item
 ### Adding a new upsell step
 
 - [ ] New page file created with `page_type: upsell`
-- [ ] New page has `next_upsell_accept` pointing to the next destination
-- [ ] New page has `next_upsell_decline` — routing is intentional (skip to receipt, or show next upsell)
+- [ ] New page has `next_url` pointing to the next destination
+- [ ] New page has `decline_url` — routing is intentional (skip to receipt, or show next upsell)
 - [ ] `data-next-upsell="offer"` container has the correct `data-next-package-id`
 - [ ] Both `data-next-upsell-action="add"` and `data-next-upsell-action="skip"` buttons are present
-- [ ] Previous upsell page's `next_upsell_accept` updated to point to the new page
-- [ ] Previous upsell page's `next_upsell_decline` routing updated intentionally
+- [ ] Previous upsell page's `next_url` updated to point to the new page
+- [ ] Previous upsell page's `decline_url` routing updated intentionally
 - [ ] Progress bar / step indicator updated on affected pages (this is plain HTML, not SDK-driven)
 
 ### External bundle slots + variant dropdown (MV 0.4.x)
@@ -957,5 +957,5 @@ If `window.nextDebug` is undefined, debug mode is not enabled — add the meta t
 6. **Keep each campaign self-contained.** Do not reference assets from another campaign's directory.
 7. **`config.js` must load before the SDK.** This is already handled by `base.html` — do not reorder these script tags.
 8. **SDK version is set in campaigns.json**, not in `base.html` directly. To upgrade, update `sdk_version` in the campaign's entry.
-9. **`next_success_url`, `next_upsell_accept`, `next_upsell_decline` are filenames** (e.g. `upsell.html`) — `base.html` applies `campaign_link` to them. Do not pre-format these values in frontmatter.
+9. **`next_url`, `next_url`, `decline_url` are filenames** (e.g. `upsell.html`) — `base.html` applies `campaign_link` to them. Do not pre-format these values in frontmatter.
 10. **Inside `<template>` elements, use single-brace tokens** (`{item.name}`), not Liquid (`{{ item.name }}`).

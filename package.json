@@ -13,7 +13,7 @@
     "compress:preview": "npx campaign-compress --preview"
   },
   "dependencies": {
-    "next-campaign-page-kit": "^0.0.9"
+    "next-campaign-page-kit": "^0.1.0"
   },
   "devDependencies": {
     "@tailwindcss/cli": "^4.2.4",
