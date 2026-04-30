@@ -1,0 +1,30 @@
+{
+  "templates": [
+    {
+      "slug": "olympus",
+      "name": "Olympus",
+      "description": "One-page checkout funnel — recommended for most campaigns",
+      "featured": true,
+      "priority": 100
+    },
+    {
+      "slug": "olympus-mv-single-step",
+      "name": "Olympus MV — Single-step",
+      "description": "Multi-variant Bundles Olympus checkout - recommended variant product campaigns",
+      "priority": 90
+    },
+    {
+      "slug": "shop-single-step",
+      "name": "Shop — Single-step",
+      "description": "Shopify single-step checkout campaign",
+      "priority": 10,
+      "deprecated": true
+    },
+    {
+      "slug": "limos",
+      "name": "Limos",
+      "description": "Limos checkout funnel",
+      "hidden": true
+    }
+  ]
+}
