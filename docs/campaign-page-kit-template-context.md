@@ -144,7 +144,7 @@ These starter templates inject **Google Tag Manager** and **Meta Pixel** from ea
 - **`""` disables layout injection** for that tag. **`"GTM-XXXXXXX"`** (or any other non-empty placeholder) **still injects** on staging/production builds — do not assume placeholders mean “no script.”
 - **Liquid:** do not replace `!= ""` with a bare `{% if campaign.gtm_id %}` — in Liquid, an **empty string can be truthy**, so you could inject broken or unwanted snippets.
 
-This layout injection is **separate** from `analytics.providers.gtm` / `facebook` in `config.js` — the SDK can load GTM/Facebook too. Enabling **both** without a plan often duplicates events (e.g. double `PageView`).
+The layout snippet and SDK provider work together: layout injection initialises GTM/Pixel, the SDK provider forwards ecommerce events into it. Enable both — set `gtm_id` / `fb_pixel_id` in `campaigns.json` **and** enable the matching provider in `config.js`.
 
 ---
 
@@ -755,9 +755,8 @@ Use these when implementing or verifying a specific task. Work through each item
 - [ ] `storeName` set — required for Facebook purchase deduplication
 - [ ] `addressConfig.defaultCountry` set to the primary target market
 - [ ] `paymentConfig.expressCheckout.enabled` — set `true` to show PayPal/Apple Pay/Google Pay buttons, `false` to hide
-- [ ] `analytics.providers.gtm.enabled` — set `true` and add `containerId` if using **SDK-driven** Google Tag Manager (see layout injection note below)
-- [ ] `analytics.providers.facebook.enabled` — set `true` and add `pixelId` if using **SDK-driven** Facebook Pixel (see layout injection note below)
-- [ ] **Layout vs SDK:** If `base.html` already injects GTM/Meta from `campaigns.json` (`gtm_id` / `fb_pixel_id`), keep these SDK providers **disabled** unless you deliberately want both loaders (risk of duplicate events)
+- [ ] `analytics.providers.gtm.enabled` — set `true` and add `containerId` to match the `gtm_id` in `campaigns.json`; the layout snippet loads GTM, the SDK provider forwards ecommerce events into it
+- [ ] `analytics.providers.facebook.enabled` — set `true` and add `pixelId` to match the `fb_pixel_id` in `campaigns.json`; same two-part pattern as GTM
 - [ ] Address autocomplete — choose one option: (1) NextCommerce: `addressConfig.enableAutocomplete: true`, leave `googleMaps.apiKey` empty. (2) Google Maps: set `googleMaps.apiKey`; Google Maps takes priority when non-empty. (3) Disabled: remove `enableAutocomplete` from `addressConfig` and leave `googleMaps.apiKey` empty.
 - [ ] `discounts` block — uncomment and configure if the campaign uses promo codes, otherwise leave commented out
 - [ ] `profiles` block — uncomment and configure if the campaign uses dynamic pricing (e.g. exit intent), otherwise leave commented out
