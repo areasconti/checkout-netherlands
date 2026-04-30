@@ -108,8 +108,8 @@ repo-root/
 - Per-page CSS/JS injected via frontmatter `styles:` / `scripts:` loops using `campaign_asset`
 - Optional **GTM / Meta Pixel** in reference templates: injected from `campaign.gtm_id` / `campaign.fb_pixel_id` when Liquid `environment != "development"` **and** the value is **non-empty** (`{% if campaign.gtm_id != "" %}` / `{% if campaign.fb_pixel_id != "" %}`). Use **`""`** in `campaigns.json` to disable layout injection; **placeholders like `GTM-XXXXXXX` still load snippets** on non-dev builds (not “off”). Do **not** use bare `{% if campaign.gtm_id %}` — Liquid can treat `""` as truthy.
 - Liquid conditionals for optional metatags:
-  - `{% if next_success_url %}` → checkout pages only
-  - `{% if next_upsell_accept %}` / `{% if next_upsell_decline %}` → upsell pages only
+  - `{% if next_url %}` → checkout pages only
+  - `{% if next_url %}` / `{% if decline_url %}` → upsell pages only
 - **Shop checkout top bar (`checkout-header--lg`):** `{% campaign_include 'checkout-header.html' %}` (section **`checkout-header checkout-header--lg`**) inside **`main-wrapper`**. **`shop-single-step`:** enabled on **`checkout.html`** with **`checkout--shop`** on **`page-wrapper`** and **`hide`** on the duplicate **`.checkout-header__brand`** in the main column. **`shop-three-step`:** default **`page-wrapper`** is **`checkout--shop checkout--shop-column-logo`** (include **commented out**; **`checkout--shop-column-logo`** restores full main-column **`padding: 1.25rem`** where **`checkout--shop`** alone uses zero top padding for the top bar). For top bar like single-step: uncomment include, remove **`checkout--shop-column-logo`**, add **`hide`** on the column brand. **`next-core.css`** in each template defines **`.checkout--shop`** / **`.checkout--shop-column-logo`** and **`.checkout-header--lg`** border tweaks.
 
 ## Page Frontmatter Fields
@@ -118,9 +118,9 @@ repo-root/
 title: "Page Title"
 page_layout: base.html               # optional — defaults to base.html; use named layouts (e.g. base-landing.html) when multiple layout stacks coexist in one slug
 page_type: checkout | upsell | receipt
-next_success_url: up01.html          # checkout pages only
-next_upsell_accept: up02.html        # upsell pages only
-next_upsell_decline: receipt.html    # upsell pages only
+next_url: up01.html          # checkout pages only
+next_url: up02.html        # upsell pages only
+decline_url: receipt.html    # upsell pages only
 styles:
   - css/checkout.css
   - https://cdn.jsdelivr.net/...     # CDN links OK in styles/scripts lists
@@ -133,7 +133,7 @@ scripts:
 - `{{ 'images/logo.png' | campaign_asset }}` — resolves to campaign-relative asset path
 - `{{ 'css/checkout.css' | campaign_asset }}` — same for CSS
 - `{{ 'js/checkout.js' | campaign_asset }}` — same for JS
-- `{{ next_success_url | campaign_link }}` — clean URL (removes .html, adds trailing slash, prepends slug)
+- `{{ next_url | campaign_link }}` — clean URL (removes .html, adds trailing slash, prepends slug)
 - `{{ campaign.name }}` — from campaigns.json
 - `{{ campaign.sdk_version }}` — from campaigns.json
 - `{{ campaign.store_phone }}` / `{{ campaign.store_phone_tel }}`

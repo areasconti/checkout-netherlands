@@ -11,7 +11,7 @@
     subheadline       — body paragraph below headline
     benefit_1–4       — bullet point copy
     cta_text          — CTA button label
-    cta_url           — CTA destination (absolute or root-relative URL to checkout)
+    next_url           — CTA destination (absolute or root-relative URL to checkout)
     guarantee_text    — money-back line
     video_thumbnail   — asset path for video thumbnail image (images/video-thumbnail.gif)
     video_thumbnail_alt
@@ -72,7 +72,7 @@
         <!-- CTA button + guarantee -->
         <div class="w-full lg:w-[440px]">
           <div class="w-full flex flex-col items-center gap-[12px]">
-            <a href="{{ cta_url }}"
+            <a href="{{ next_url }}"
                class="w-full bg-[var(--brand-primary)] rounded-[6px] py-[20px] px-[24px] flex items-center justify-center gap-[20px] no-underline">
               <span class="font-bold text-[20px] text-white text-center tracking-[-0.1px] leading-[1.5] whitespace-nowrap">{{ cta_text | default: "Order Now" }}</span>
               <img src="{{ cta_button_arrow | default: 'images/_shared/arrow-right.svg' | campaign_asset }}" alt="" class="w-[16px] h-[12px] shrink-0" aria-hidden="true">
