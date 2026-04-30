@@ -4,27 +4,65 @@
       "slug": "olympus",
       "name": "Olympus",
       "description": "One-page checkout funnel — recommended for most campaigns",
-      "featured": true,
-      "priority": 100
+      "priority": 100,
+      "deprecated": false,
+      "hidden": false
     },
     {
       "slug": "olympus-mv-single-step",
-      "name": "Olympus MV — Single-step",
+      "name": "Olympus Multi-variant",
       "description": "Multi-variant Bundles Olympus checkout - recommended variant product campaigns",
-      "priority": 90
+      "priority": 90,
+      "deprecated": false,
+      "hidden": false
+    },
+    {
+      "slug": "olympus-mv-two-step",
+      "name": "Olympus Multi-variant — Two-step",
+      "description": "Two-step multi-variant Olympus checkout (select → checkout)",
+      "priority": 85,
+      "deprecated": false,
+      "hidden": false
+    },
+    {
+      "slug": "demeter",
+      "name": "Demeter",
+      "description": "Demeter checkout funnel",
+      "priority": 70,
+      "deprecated": false,
+      "hidden": false
     },
     {
       "slug": "shop-single-step",
       "name": "Shop — Single-step",
       "description": "Shopify single-step checkout campaign",
       "priority": 10,
-      "deprecated": true
+      "deprecated": false,
+      "hidden": false
+    },
+    {
+      "slug": "shop-three-step",
+      "name": "Shop — Three-step",
+      "description": "Shopify three-step checkout campaign (information → shipping → billing)",
+      "priority": 5,
+      "deprecated": false,
+      "hidden": false
+    },
+    {
+      "slug": "landing",
+      "name": "Landing",
+      "description": "Landing page component library — niche example pages built from modular sections",
+      "priority": 1,
+      "deprecated": false,
+      "hidden": false
     },
     {
       "slug": "limos",
       "name": "Limos",
       "description": "Limos checkout funnel",
-      "hidden": true
+      "priority": 60,
+      "deprecated": false,
+      "hidden": false
     }
   ]
 }
