@@ -1,8 +1,40 @@
+{% comment %}
+  next_component: order-bump-card
+  next_version: 1.0.0
+  next_sdk_min: 0.4.18
+  next_purpose: Pre-purchase add-on offer rendered as a checkbox-style card. Customer opts in with one click; SDK adds the package to cart at checkout.
+  next_params: (configured via data-next-* attrs in the markup; full Liquid params deferred to v1)
+  next_sdk_owns:
+    - data-next-package-toggle
+    - data-next-toggle-card
+    - data-next-toggle-display
+    - data-next-package-sync (mirrors main bundle quantity)
+    - data-next-await
+    - data-next-bundle-display (originalUnitPrice, unitPrice, originalPrice, price, hasDiscount)
+  next_theming:
+    classes_designer_owns: [.toggle-card, .toggle-card__*, .checkbox-style-1, .pb--bestseller]
+    css_vars_designer_owns: []
+  next_dont_touch:
+    - data-next-package-sync mirrors main-bundle quantity; this is a PRODUCT decision, not just mechanical wiring (Meridian field notes 2026-05-01)
+    - Default to data-next-package-sync OFF unless the campaign explicitly wants quantity-synced bumps
+    - originalUnitPrice/ea is per-unit (stable); originalPrice is line total (scales with synced qty)
+  next_gotchas:
+    - Receipt must render bumps as separate line items
+    - Ethically, syncing bump qty with main bundle when the bump reads as "one-time add-on" is misleading; prefer fixed qty
+  next_variants:
+    - check01 (this; checkbox card)
+    - check02 (alternate checkbox layout)
+    - switch01 (toggle-switch UI; same SDK contract)
+    - plan-card (warranty/protection plan; v0.5 if over-fit guard fails)
+  next_related:
+    - bundle-selector (the "main" cart that this bump augments)
+    - cart-summary (will list the bump as an additional line)
+{% endcomment %}
 <!-- Prepurchase upsell: checkbox bump (check01) — SDK 0.4.x
      Uses data-next-package-toggle / data-next-toggle-card / data-next-toggle-display
      Option A (per-unit, stable): originalUnitPrice/ea + unitPrice/ea — does not scale with synced qty
      Option B (line total, scales): originalPrice + price — multiplies with data-next-package-sync qty -->
-<div data-component="prepurchase-upsell" data-variant="check01" data-next-await="">
+<div data-next-catalog-component="order-bump-card" data-component="prepurchase-upsell" data-variant="check01" data-next-await="">
   <div data-next-package-toggle>
     <div class="bump-card" data-next-toggle-card data-next-is-upsell="true" data-next-package-sync="1" data-next-package-id="7">
       <!-- Bump header — visual only, whole card is the toggle target -->

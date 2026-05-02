@@ -1,4 +1,45 @@
-<div class="payment-methods">
+{% comment %}
+  next_component: payment-method-presentation
+  next_version: 1.0.0
+  next_sdk_min: 0.4.18
+  next_purpose: Customer-facing payment method picker (credit card + optional PayPal/Klarna/Apple Pay/Google Pay) with Spreedly iframe-mounted credit card form. Includes billing-address-form via campaign_include.
+  next_params:
+    show_paypal:        bool, default false. Renders PayPal radio + form.
+    show_klarna:        bool, default false. Renders Klarna radio + form.
+    show_apple_pay:     bool, default false. Renders Apple Pay radio + form.
+    show_google_pay:    bool, default false. Renders Google Pay radio + form.
+  next_sdk_owns:
+    - data-next-payment-method (values: credit, paypal, klarna, apple-pay, google-pay)
+    - data-next-payment-form
+    - data-next-component (values: credit-error, credit-error-text, paypal-error, etc.)
+    - data-next-checkout-field (values: cc-number, exp-month, exp-year, cvv)
+    - os-checkout-element="credit-form"
+    - os-checkout-element="different-billing-address" (inside billing-address-form partial)
+    - os-shipping-method-same
+    - data-next-tooltip
+  next_theming:
+    classes_designer_owns: [.payment-methods, .payment-method, .payment-method__header, .payment-method__label, .payment-method__title, .payment-method__icons, .payment-method__icon--*, .payment-method__form, .payment-method__content, .payment-method__info, .form-grid, .form-grid__row, .form-input, .input-flds, .spreedly-field, .select-form-wrapper]
+    css_vars_designer_owns: []
+  next_dont_touch:
+    - Spreedly iframe sizing/styling is handled INSIDE the iframe via Spreedly's own API; only the outer mount is in our control surface
+    - Method-specific error containers (data-next-component="<method>-error") MUST exist before SDK init or errors silently no-op
+    - Each enabled method must be backed by Campaigns API support; enabling here without API match causes silent checkout failure
+    - The radio input name="payment_method" MUST be consistent across all enabled methods so they form one mutually-exclusive group
+  next_gotchas:
+    - Method visibility gated by paymentConfig.expressCheckout in nextConfig — flag mismatches between this partial and config.js
+    - data-next-payment-form="credit" wrapper carries os-shipping-method-same="true" for billing-address default; do not remove
+    - Card brand <img> tags use campaign_asset for path resolution; replace with brand SVGs by overriding the image, not the data-next-* attrs
+    - Klarna / Apple Pay / Google Pay info-text iframes ship a generic SVG placeholder; designer can swap to a brand-aligned graphic
+  next_variants:
+    - card-only (default; show_* flags all false)
+    - card + 1 express (typically PayPal)
+    - card + multiple express (full bar)
+  next_related:
+    - billing-address-form (included inside the credit form section here)
+    - express-checkout / express-checkout-inline (parallel express button bar surfaces)
+    - submit-block (the actual submit button; lives outside this partial)
+{% endcomment %}
+<div data-next-catalog-component="payment-method-presentation" class="payment-methods">
   <div data-next-payment-method="credit" class="payment-method next-selected">
     <div class="payment-method__header"><label for="combo_mode_credit" combo_mode="credit" class="payment-method__label"><input type="radio" name="payment_method" id="combo_mode_credit" data-name="Combo Mode" class="payment-method__input" checked="" value="credit">
         <div class="payment-method__title">Credit Card</div>
@@ -68,15 +109,7 @@
             </div>
           </div>
         </div>
-        <div class="billing-address">
-          <div os-input-field="use-shipping-address" class="checkbox-wrapper"><label class="checkout__checkbox"><input type="checkbox" name="use_shipping_address" id="use_shipping_address" data-name="Use Shipping Address" class="checkbox__input" checked="">
-              <div class="checkbox__label">Use shiping address as billing address</div>
-            </label></div>
-          <div os-checkout-element="different-billing-address" class="billing-address__form">
-            <h1 class="form-section__title cc-billing">Billing Address</h1>
-            <div os-checkout-component="billing-form" class="form-grid"></div>
-          </div>
-        </div>
+        {% campaign_include 'billing-address-form.html' %}
       </div>
     </div>
   </div>

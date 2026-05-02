@@ -10,7 +10,11 @@
     "clone": "npx campaign-clone",
     "config": "npx campaign-config",
     "compress": "npx campaign-compress",
-    "compress:preview": "npx campaign-compress --preview"
+    "compress:preview": "npx campaign-compress --preview",
+    "lint:sdk": "node scripts/lint-sdk.mjs",
+    "lint:sdk:source": "node scripts/lint-sdk.mjs --source",
+    "lint:sdk:rendered": "node scripts/lint-sdk.mjs --rendered",
+    "lint:sdk:ci": "CI=1 node scripts/lint-sdk.mjs"
   },
   "dependencies": {
     "next-campaign-page-kit": "^0.1.0"
