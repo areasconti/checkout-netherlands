@@ -11,3 +11,4 @@ _site/
 
 # Claude Code — ignore all .claude directories (settings, worktrees, etc.)
 **/.claude/
+.gstack/
