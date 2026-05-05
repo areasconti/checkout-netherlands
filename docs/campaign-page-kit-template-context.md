@@ -46,6 +46,29 @@ This replaces the 0.3.x pattern of separate packages per tier + `data-next-cart-
 
 ---
 
+## Template family and commerce surface routing
+
+When adapting designed HTML into a Campaign Cart funnel, choose the template family from cheap, durable signals:
+
+1. Explicit user instruction.
+2. CampaignSpec template fields, when present.
+3. Export folder/file names.
+4. Unique commerce structure.
+5. Distinct checkout layout structure.
+6. Class-name fingerprints.
+
+Do **not** infer the whole template family from brand colors, product category, copy tone, or a shared primitive like `payment-methods.html`.
+
+If the family is ambiguous, ask the user before wiring SDK components. This is faster and safer than burning tokens on uncertain inference. Example:
+
+> I can map this checkout to `olympus` or `olympus-mv-two-step`. The ambiguity is tier cards plus MV variant slot behavior. Which family should I use before wiring SDK components?
+
+Reference catalog: [docs/commerce-surface-catalog.md](./commerce-surface-catalog.md) and [docs/commerce-surface-catalog.json](./commerce-surface-catalog.json) in the starter template repo.
+
+Current first-class families include `olympus`, `limos`, `demeter`, `olympus-mv-single-step`, `olympus-mv-two-step`, `shop-single-step`, and `shop-three-step`. This list should grow as the commerce surface library grows.
+
+---
+
 ## Read the SDK docs first
 
 Before making any changes that touch cart, checkout, upsells, or SDK wiring, read:

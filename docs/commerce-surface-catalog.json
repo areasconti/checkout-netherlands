@@ -1,0 +1,165 @@
+{
+  "version": 1,
+  "purpose": "Routing catalog for matching designed HTML to Campaign Cart starter template families and commerce-ready surfaces. Keep matching cheap and deterministic; ask the user when confidence is not high.",
+  "confidencePolicy": {
+    "highThreshold": 0.85,
+    "askUserBelow": 0.85,
+    "maxFamilyCandidatesBeforeAsk": 2,
+    "doNotInferFrom": [
+      "brand colors alone",
+      "product category alone",
+      "copy tone alone",
+      "one shared include such as payment-methods.html"
+    ],
+    "preferSignalsInOrder": [
+      "explicit user instruction",
+      "CampaignSpec template_family or template fields",
+      "export folder or file names",
+      "unique commerce structure",
+      "distinctive checkout layout structure",
+      "class-name fingerprints"
+    ]
+  },
+  "families": {
+    "olympus": {
+      "description": "Single-step checkout with tiered bundle cards and strong direct-response checkout framing.",
+      "frontmatterStatus": "partial",
+      "strongSignals": [
+        "olympus in spec, path, or export metadata",
+        "os-card tier bundle selector",
+        "bundle selector include receives bundles frontmatter",
+        "side cart summary with Olympus card pricing rows"
+      ],
+      "canonicalSurfaces": {
+        "mainSelector": "tiered-bundle-selector",
+        "orderSummary": "cart-summary01|cart-summary02|cart-summary03|cart-summary04",
+        "payment": "payment-methods",
+        "expressCheckout": "express-checkout|express-checkout-inline",
+        "orderBump": "bump-check01|bump-check02|bump-switch01",
+        "upsell": "bundle-stepper|bundle-tier-pills|bundle-tier-cards",
+        "receipt": "receipt-skeleton"
+      },
+      "frontmatterInputsObserved": [
+        "bundles",
+        "bump_features",
+        "swiper_slides",
+        "swiper_thumbs"
+      ]
+    },
+    "limos": {
+      "description": "Single-step checkout with dense offer framing and native bundle quantity controls.",
+      "frontmatterStatus": "needs-promotion",
+      "strongSignals": [
+        "limos in spec, path, or export metadata",
+        "single offer card with native quantity stepper",
+        "checkout-bundle-offer",
+        "next-bundle-qty--anchor-br",
+        "cart-summary02 accordion shape"
+      ],
+      "canonicalSurfaces": {
+        "mainSelector": "single-offer-quantity-selector",
+        "orderSummary": "cart-summary02 accordion",
+        "payment": "payment-methods",
+        "expressCheckout": "express-checkout|express-checkout-inline",
+        "orderBump": "bump-check01|bump-check02|bump-switch01",
+        "upsell": "bundle-stepper|bundle-tier-pills|bundle-tier-cards",
+        "receipt": "receipt-skeleton"
+      },
+      "frontmatterInputsNeeded": [
+        "single_offer",
+        "selector_id",
+        "package_id",
+        "shipping_id",
+        "quantity_min",
+        "quantity_max",
+        "price_display_variant",
+        "timer"
+      ]
+    },
+    "demeter": {
+      "description": "Single-step editorial/luxury checkout with spacious tier cards and open cart summary.",
+      "frontmatterStatus": "needs-promotion",
+      "strongSignals": [
+        "demeter in spec, path, or export metadata",
+        "editorial 1/2/3 tier selector",
+        "checkout-progress bar above bundle selection",
+        "open side cart using cart-summary03",
+        "luxury/editorial spacing with serif display type"
+      ],
+      "canonicalSurfaces": {
+        "mainSelector": "editorial-tier-selector",
+        "orderSummary": "cart-summary03 side cart",
+        "payment": "payment-methods",
+        "expressCheckout": "express-checkout|express-checkout-inline",
+        "orderBump": "bump-check01|bump-check02|bump-switch01",
+        "upsell": "bundle-stepper|bundle-tier-pills|bundle-tier-cards",
+        "receipt": "receipt-skeleton"
+      },
+      "frontmatterInputsNeeded": [
+        "bundles",
+        "selector_id",
+        "cart_summary_variant",
+        "price_display_variant",
+        "progress_steps"
+      ]
+    },
+    "olympus-mv-single-step": {
+      "description": "Olympus-style single-step checkout with configurable multi-variant bundle slots in the checkout page.",
+      "frontmatterStatus": "needs-promotion",
+      "strongSignals": [
+        "olympus-mv-single-step in spec, path, or export metadata",
+        "data-next-bundle-slots-for in checkout",
+        "checkout-olympus-mv-full.js",
+        "variant slot controls inside checkout",
+        "MV product gallery plus bundle slots on one page"
+      ],
+      "canonicalSurfaces": {
+        "mainSelector": "mv-configurable-selector",
+        "variantSlots": "bundle-slot-selector",
+        "orderSummary": "cart-summary03|cart-summary04",
+        "payment": "payment-methods",
+        "expressCheckout": "express-checkout|express-checkout-inline",
+        "orderBump": "bump-check01|bump-check02|bump-switch01",
+        "upsell": "upsell-mv",
+        "receipt": "receipt-skeleton"
+      },
+      "frontmatterInputsNeeded": [
+        "bundles",
+        "variant_slots",
+        "swiper_slides",
+        "swiper_thumbs",
+        "cart_summary_variant"
+      ]
+    },
+    "olympus-mv-two-step": {
+      "description": "Olympus-style multi-variant flow with a separate variant select step before checkout.",
+      "frontmatterStatus": "needs-promotion",
+      "strongSignals": [
+        "olympus-mv-two-step in spec, path, or export metadata",
+        "select.html before checkout.html",
+        "checkout-olympus-mv-selection.js",
+        "checkout-olympus-mv-full.js",
+        "variant selection step followed by payment step"
+      ],
+      "canonicalSurfaces": {
+        "selectStep": "mv-selection-step",
+        "checkoutSelector": "mv-selected-bundle-review",
+        "variantSlots": "bundle-slot-selector",
+        "orderSummary": "cart-summary03|cart-summary04",
+        "payment": "payment-methods",
+        "expressCheckout": "express-checkout|express-checkout-inline",
+        "upsell": "upsell-mv",
+        "receipt": "receipt-skeleton"
+      },
+      "frontmatterInputsNeeded": [
+        "bundles",
+        "variant_slots",
+        "select_step",
+        "checkout_step",
+        "swiper_slides",
+        "swiper_thumbs"
+      ]
+    }
+  },
+  "askUserPromptTemplate": "I can map this design to more than one commerce template family: {candidates}. The ambiguous surfaces are {surfaces}. Which family should I use before wiring SDK components?"
+}

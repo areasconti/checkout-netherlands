@@ -115,6 +115,8 @@ This gives your AI assistant the context it needs to work correctly with Campaig
 
 Pre-checkout **landing** and **presell** deep dive (Tailwind production build, same-slug presell, CTAs): [docs/pre-checkout-pages.md](docs/pre-checkout-pages.md).
 
+Commerce surface routing for agents and contributors: [docs/commerce-surface-catalog.md](docs/commerce-surface-catalog.md). Use this catalog to map designed HTML to template-family commerce surfaces, and ask for a human checkpoint when family confidence is ambiguous.
+
 For other AI tools: Cursor loads rules from `.cursor/rules/`, Windsurf from `.windsurfrules`. The file content works for all of them — only the filename/location differs.
 
 ---
