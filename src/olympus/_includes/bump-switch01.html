@@ -1,7 +1,34 @@
+{% comment %}
+  next_component: order-bump-card
+  next_version: 1.1.0
+  next_sdk_min: 0.4.18
+  next_purpose: Pre-purchase add-on offer rendered as a toggle-switch bump (Olympus switch01 variant).
+  next_params: (none today; parameterization deferred to v1)
+  next_sdk_owns:
+    - data-next-package-toggle
+    - data-next-toggle-card
+    - data-next-toggle-display
+    - data-next-await
+  next_theming:
+    classes_designer_owns: [.bump-card, .bump-card--switch, .bump__head--switch, .bump__switch, .bump__description, .bump__price-total]
+    css_vars_designer_owns: []
+  next_dont_touch:
+    - No data-next-package-sync here: this bump is intentionally one line item, not one add-on per main-unit
+    - data-next-toggle-display="price" is line total; data-next-toggle-display="unitPrice" is the per-unit price
+  next_gotchas:
+    - Switch UI has the same SDK contract as checkbox bumps; only the visual affordance changes
+  next_variants:
+    - check01 (checkbox card)
+    - check02 (expanded checkbox layout)
+    - switch01 (this; toggle-switch UI)
+  next_related:
+    - bundle-selector (the main cart this bump augments)
+    - cart-summary (will list the bump as an additional line)
+{% endcomment %}
 <!-- Prepurchase upsell: toggle-switch bump (switch01) — SDK 0.4.x
      Uses data-next-package-toggle / data-next-toggle-card / data-next-toggle-display
      No data-next-package-sync: one line item, not per main-unit (contrast bump-check01). -->
-<div data-component="prepurchase-upsell" data-variant="switch" data-next-await="">
+<div data-next-catalog-component="order-bump-card" data-component="prepurchase-upsell" data-variant="switch" data-next-await="">
   <div data-next-package-toggle>
     <div class="bump-card bump-card--switch" data-next-toggle-card data-next-is-upsell="true" data-next-package-id="9">
       <div class="bump__header-left bump__head--switch">

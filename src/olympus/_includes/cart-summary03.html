@@ -1,3 +1,34 @@
+{% comment %}
+  next_component: order-summary
+  next_version: 1.0.0
+  next_sdk_min: 0.4.18
+  next_purpose: Featured-product order summary panel with lead cart card plus stacked totals (Olympus variant 03).
+  next_params: (none today; parameterization deferred to v1)
+  next_sdk_owns:
+    - data-next-cart-summary
+    - data-summary-lines (single-brace tokens: {item.*}, {subtotal}, {shipping}, {discounts}, {currency}, {total})
+    - data-next-discounts (offer / voucher)
+    - data-next-display (package.image, package.name, cart.totalDiscountPercentage)
+    - data-next-package-id (feature package preview)
+  next_theming:
+    classes_designer_owns: [.cart-heading, .cart-line-display, .summary-wrapper, .order-summary, .cart-items, .order-totals]
+    css_vars_designer_owns: []
+  next_dont_touch:
+    - Single-brace tokens inside <template> are SDK syntax, not Liquid; do not change to {{ }}
+    - data-next-package-id="1" is the featured preview package, not the cart summary line item id
+    - {item.hasDiscount} resolves to CSS class string ("hide" or empty), not boolean
+  next_gotchas:
+    - Tax token {tax} is intentionally not rendered — not wired in CartSummaryEnhancer (BS-017)
+  next_variants:
+    - 01 (stacked default)
+    - 02 (accordion variant)
+    - 03 (this; featured product lead-in)
+    - 04 (large/image-line variant)
+  next_related:
+    - bundle-selector (drives cart contents)
+    - submit-block (acts on the totals)
+{% endcomment %}
+<div data-next-catalog-component="order-summary">
 <div class="cart-heading">
   <div class="cart-box__title">Your&nbsp;Cart</div>
   <div class="cart-box__subtitle">Free shipping on all orders.</div>
@@ -160,4 +191,5 @@
       </div>
     </div>
   </template>
+</div>
 </div>

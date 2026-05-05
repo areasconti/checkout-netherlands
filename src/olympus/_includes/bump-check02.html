@@ -1,7 +1,38 @@
+{% comment %}
+  next_component: order-bump-card
+  next_version: 1.1.0
+  next_sdk_min: 0.4.18
+  next_purpose: Pre-purchase add-on offer rendered as an expanded checkbox-style card (Olympus check02 variant).
+  next_params: (none today; parameterization deferred to v1)
+  next_sdk_owns:
+    - data-next-package-toggle
+    - data-next-toggle-card
+    - data-next-toggle-display
+    - data-next-toggle-image
+    - data-next-package-sync (mirrors main bundle quantity)
+    - data-next-await
+    - data-next-display (package name)
+  next_theming:
+    classes_designer_owns: [.bump__header, .bump__header-content, .bump__checkbox, .bump__title, .bump__arrow, .bump__body, .bump__description, .bump__image]
+    css_vars_designer_owns: []
+  next_dont_touch:
+    - data-next-package-id="9" and data-next-package-sync="1" define the add-on package and synced quantity behavior
+    - data-next-toggle-display="price" is the selected bump line total
+    - data-next-display="package.9.name" is package-scoped display syntax, not Liquid
+  next_gotchas:
+    - Liquid still executes inside HTML comments; keep SDK notes in this Liquid comment block when possible
+  next_variants:
+    - check01 (checkbox card)
+    - check02 (this; expanded checkbox layout)
+    - switch01 (toggle-switch UI; same SDK contract)
+  next_related:
+    - bundle-selector (the main cart this bump augments)
+    - cart-summary (will list the bump as an additional line)
+{% endcomment %}
 <!-- Prepurchase upsell: checkbox bump (check02) — SDK 0.4.x flat layout
      Uses data-next-package-toggle / data-next-toggle-card / data-next-toggle-display + data-next-toggle-image
      Do not put Liquid tags inside HTML comments — Liquid still executes them. -->
-<div data-component="prepurchase-upsell" data-variant="check02" data-next-await="">
+<div data-next-catalog-component="order-bump-card" data-component="prepurchase-upsell" data-variant="check02" data-next-await="">
   <div data-next-package-toggle>
     <div data-next-toggle-card data-next-is-upsell="true" data-next-package-sync="1" data-next-package-id="9" class="next-active">
       <div data-next-toggle="toggle" class="bump__header next-active">

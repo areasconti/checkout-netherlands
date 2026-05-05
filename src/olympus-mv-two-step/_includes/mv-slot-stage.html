@@ -1,0 +1,45 @@
+{% comment %}
+  next_component: mv-slot-stage
+  next_version: 1.0.0
+  next_sdk_min: 0.4.18
+  next_purpose: Olympus MV slot rendering target and slot template for the two-step select page.
+  next_params:
+    selector_id:       string, default "main". data-next-bundle-slots-for target.
+    slot_template_id:  string, default "mv-slot-template". Template id referenced by mv-selection-step.
+  next_sdk_owns:
+    - data-next-bundle-slots-for
+    - data-next-variant-selectors
+    - data-next-display (bundle.<selector_id>.*)
+  next_dont_touch:
+    - selector_id must match the data-next-selector-id in mv-selection-step.html.
+    - Slot rows are outside data-next-bundle-card, so use remote bundle display tokens for discount copy.
+{% endcomment %}
+{% assign sel_id = selector_id | default: 'main' -%}
+{% assign tpl_id = slot_template_id | default: 'mv-slot-template' -%}
+<div data-next-catalog-component="mv-slot-stage">
+  <div data-next-bundle-slots-for="{{ sel_id }}" class="os-slots" id="bundle-slots-stage"></div>
+  <template id="{{ tpl_id }}">
+    <div class="next-slot">
+      <div class="next-slot__step"><div># {slot.unitNumber}</div></div>
+      <div class="slot__right">
+        <div class="step__wrap">
+          <div class="next-slot__image"><img loading="lazy" alt="" src="{item.image}"></div>
+          <div class="os-card__pricing">
+            <div class="os-card__price-container os--stacked">
+              <div class="os-card__price diagonal-strike">{item.originalUnitPrice}</div>
+              <div class="os-card__price os--current">{item.unitPrice}/ea</div>
+              <div class="os-card__subtitle-text-2">Save <span data-next-display="bundle.{{ sel_id }}.discountPercentage">-</span> OFF</div>
+            </div>
+          </div>
+        </div>
+        <div class="os-slot__selection cc-big">
+          <div class="os-card__variant-options">
+            <div class="os-card__variant-grid cc-horiz">
+              <div data-next-variant-selectors></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </template>
+</div>
