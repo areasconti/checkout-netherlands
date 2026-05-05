@@ -1,0 +1,82 @@
+{% comment %}
+  next_component: mv-selection-step
+  next_version: 1.0.0
+  next_sdk_min: 0.4.18
+  next_purpose: Olympus MV two-step quantity selector used on select.html before the variant slot step.
+  next_params:
+    selector_id:       string, default "main". data-next-selector-id and later data-next-bundle-slots-for target.
+    slot_template_id:  string, default "mv-slot-template". data-next-bundle-slot-template-id.
+  next_sdk_owns:
+    - data-next-bundle-selector
+    - data-next-selector-id
+    - data-next-bundle-slot-template-id
+    - data-next-bundle-card
+    - data-next-bundle-id
+    - data-next-bundle-items
+    - data-next-shipping-id
+    - data-next-selected
+    - data-next-bundle-display
+  next_dont_touch:
+    - selector_id must match the step-two data-next-bundle-slots-for target.
+    - slot_template_id must match the slot template rendered by mv-slot-stage.html.
+  next_variants:
+    - two-step-quantity-selector (this)
+{% endcomment %}
+{% assign sel_id = selector_id | default: 'main' -%}
+{% assign tpl_id = slot_template_id | default: 'mv-slot-template' -%}
+<div data-next-catalog-component="mv-selection-step" data-next-bundle-selector data-next-selector-id="{{ sel_id }}" data-next-selection-mode="swap" data-next-bundle-slot-template-id="{{ tpl_id }}" class="os-option">
+  <div class="os-cards__grid os--three">
+    <div data-next-bundle-card data-next-bundle-id="buy1" data-next-bundle-items='[{"packageId":1,"quantity":1,"configurable":true}]' data-next-selected="true" role="button" class="os-card" data-next-shipping-id="2">
+      <div class="os-card__header-slot"></div>
+      <div class="os-card__wrapper cc-sm">
+        <div class="os-card__content os-wrap">
+          <div class="os-card__radio"><div data-selected="true" class="radio-style-1"><div class="radio-inner"></div></div></div>
+          <div class="os-card__main-slot"><div class="os-card__title-section"><div class="os-card__title-wrapper"><div class="os-card__title-2 os-bold">1x Unit</div></div></div></div>
+        </div>
+        <div os-slot="bottom" class="os-card__bottom-slot cc-gap">
+          <div class="card-sup">Next Commerce Shirts</div>
+          <div class="os-card__subtitle-text-2">Save <span data-next-bundle-display="discountPercentage">XX%</span> OFF</div>
+        </div>
+      </div>
+      <div os-slot="footer" class="os-card__footer-slot"></div>
+    </div>
+    <div data-next-bundle-card data-next-bundle-id="buy2" data-next-bundle-items='[{"packageId":1,"quantity":2,"configurable":true}]' role="button" class="os-card" data-next-shipping-id="2">
+      <div os-slot="header" class="os-card__header-slot"></div>
+      <div class="os-card__wrapper cc-sm">
+        <div class="os-card__content os-wrap">
+          <div class="os-card__radio"><div class="radio-style-1"><div class="radio-inner"></div></div></div>
+          <div class="os-card__main-slot"><div class="os-card__title-section"><div class="os-card__title-wrapper"><div class="os-card__title-2 os-bold">2x Units</div></div></div></div>
+        </div>
+        <div os-slot="bottom" class="os-card__bottom-slot cc-gap">
+          <div class="card-sup">Next Commerce Shirts</div>
+          <div class="os-card__subtitle-text-2">Save <span data-next-bundle-display="discountPercentage">XX%</span> OFF</div>
+        </div>
+      </div>
+      <div os-slot="footer" class="os-card__footer-slot"></div>
+      <div os-slot="label" class="os-card__label-slot">
+        <div os-label-position="top-right" class="os-card__label-2 os-card__label--middle-center os-card__label--pill-primary">
+          <div class="os-card__label-text-2">Most Popular</div>
+        </div>
+      </div>
+    </div>
+    <div data-next-bundle-card data-next-bundle-id="buy3" data-next-bundle-items='[{"packageId":1,"quantity":3,"configurable":true}]' role="button" class="os-card" data-next-shipping-id="1">
+      <div os-slot="header" class="os-card__header-slot"></div>
+      <div class="os-card__wrapper cc-sm">
+        <div class="os-card__content os-wrap">
+          <div class="os-card__radio"><div class="radio-style-1"><div class="radio-inner"></div></div></div>
+          <div class="os-card__main-slot"><div class="os-card__title-section"><div class="os-card__title-wrapper"><div class="os-card__title-2 os-bold">3x Units</div></div></div></div>
+        </div>
+        <div os-slot="bottom" class="os-card__bottom-slot cc-gap">
+          <div class="card-sup">Next Commerce Shirts</div>
+          <div class="os-card__subtitle-text-2">Save <span data-next-bundle-display="discountPercentage">XX%</span> OFF</div>
+        </div>
+      </div>
+      <div os-slot="footer" class="os-card__footer-slot"></div>
+      <div os-slot="label" class="os-card__label-slot">
+        <div os-label-position="top-right" class="os-card__label-2 os-card__label--middle-center os-card__label--pill-secondary">
+          <div class="os-card__label-text-2">Best Deal</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

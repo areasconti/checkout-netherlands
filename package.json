@@ -14,7 +14,10 @@
     "lint:sdk": "node scripts/lint-sdk.mjs",
     "lint:sdk:source": "node scripts/lint-sdk.mjs --source",
     "lint:sdk:rendered": "node scripts/lint-sdk.mjs --rendered",
-    "lint:sdk:ci": "CI=1 node scripts/lint-sdk.mjs"
+    "lint:sdk:promoted": "node scripts/lint-sdk.mjs --scope=promoted --pages=checkout,select",
+    "lint:sdk:promoted:source": "node scripts/lint-sdk.mjs --source --scope=promoted --pages=checkout,select",
+    "lint:sdk:promoted:rendered": "node scripts/lint-sdk.mjs --rendered --scope=promoted --pages=checkout,select",
+    "lint:sdk:ci": "CI=1 node scripts/lint-sdk.mjs --scope=all --pages=checkout,select"
   },
   "dependencies": {
     "next-campaign-page-kit": "^0.1.0"

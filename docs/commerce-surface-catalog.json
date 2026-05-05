@@ -48,7 +48,7 @@
     },
     "limos": {
       "description": "Single-step checkout with dense offer framing and native bundle quantity controls.",
-      "frontmatterStatus": "needs-promotion",
+      "frontmatterStatus": "partial",
       "strongSignals": [
         "limos in spec, path, or export metadata",
         "single offer card with native quantity stepper",
@@ -67,18 +67,21 @@
       },
       "frontmatterInputsNeeded": [
         "single_offer",
+        "price_display_variant",
+        "timer"
+      ],
+      "frontmatterInputsObserved": [
         "selector_id",
         "package_id",
         "shipping_id",
         "quantity_min",
         "quantity_max",
-        "price_display_variant",
-        "timer"
+        "items_json"
       ]
     },
     "demeter": {
       "description": "Single-step editorial/luxury checkout with spacious tier cards and open cart summary.",
-      "frontmatterStatus": "needs-promotion",
+      "frontmatterStatus": "partial",
       "strongSignals": [
         "demeter in spec, path, or export metadata",
         "editorial 1/2/3 tier selector",
@@ -96,16 +99,23 @@
         "receipt": "receipt-skeleton"
       },
       "frontmatterInputsNeeded": [
-        "bundles",
-        "selector_id",
         "cart_summary_variant",
         "price_display_variant",
         "progress_steps"
+      ],
+      "frontmatterInputsObserved": [
+        "bundles",
+        "selector_id",
+        "selection_mode",
+        "cart_summary_variant",
+        "cart_summary_heading",
+        "cart_summary_subtitle",
+        "cart_summary_feature_package"
       ]
     },
     "olympus-mv-single-step": {
       "description": "Olympus-style single-step checkout with configurable multi-variant bundle slots in the checkout page.",
-      "frontmatterStatus": "needs-promotion",
+      "frontmatterStatus": "partial",
       "strongSignals": [
         "olympus-mv-single-step in spec, path, or export metadata",
         "data-next-bundle-slots-for in checkout",
@@ -124,16 +134,19 @@
         "receipt": "receipt-skeleton"
       },
       "frontmatterInputsNeeded": [
-        "bundles",
         "variant_slots",
         "swiper_slides",
         "swiper_thumbs",
         "cart_summary_variant"
+      ],
+      "frontmatterInputsObserved": [
+        "selector_id",
+        "slot_template_id"
       ]
     },
     "olympus-mv-two-step": {
       "description": "Olympus-style multi-variant flow with a separate variant select step before checkout.",
-      "frontmatterStatus": "needs-promotion",
+      "frontmatterStatus": "partial",
       "strongSignals": [
         "olympus-mv-two-step in spec, path, or export metadata",
         "select.html before checkout.html",
@@ -152,12 +165,15 @@
         "receipt": "receipt-skeleton"
       },
       "frontmatterInputsNeeded": [
-        "bundles",
         "variant_slots",
         "select_step",
         "checkout_step",
         "swiper_slides",
         "swiper_thumbs"
+      ],
+      "frontmatterInputsObserved": [
+        "selector_id",
+        "slot_template_id"
       ]
     }
   },

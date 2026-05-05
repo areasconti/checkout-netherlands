@@ -1,10 +1,39 @@
+{% comment %}
+  next_component: order-summary
+  next_version: 1.0.0
+  next_sdk_min: 0.4.18
+  next_purpose: Demeter side-cart order summary with editorial product feature line, line items, discounts, shipping, taxes, and grand total.
+  next_params:
+    heading:          string, default "Your Cart". Visual heading above the SDK summary.
+    subtitle:         string, default "Free shipping on all orders.". Visual subheading above the SDK summary.
+    feature_package:  number, default 1. Package used for image/name feature line.
+  next_sdk_owns:
+    - data-next-cart-summary
+    - data-summary-lines
+    - data-next-discounts (offer / voucher)
+    - data-next-display (package.image, package.name, cart.totalDiscountPercentage)
+    - data-next-show / data-next-hide
+  next_theming:
+    classes_designer_owns: [.cart-heading, .cart-line-display, .summary-wrapper, .order-summary, .cart-items, .cart-item, .order-totals]
+    css_vars_designer_owns: []
+  next_dont_touch:
+    - Single-brace tokens inside <template> are SDK syntax, not Liquid; do not change to {{ }}.
+    - data-next-package-id controls the feature line image/name binding.
+    - Keep data-next-cart-summary inside the data-next-catalog-component wrapper for rendered lint coverage.
+  next_variants:
+    - demeter-side-cart (this)
+{% endcomment %}
+{% assign cart_heading = heading | default: 'Your&nbsp;Cart' -%}
+{% assign cart_subtitle = subtitle | default: 'Free shipping on all orders.' -%}
+{% assign feature_pkg = feature_package | default: 1 -%}
+<div data-next-catalog-component="order-summary">
 <div class="cart-heading">
-  <div class="cart-box__title">Your&nbsp;Cart</div>
-  <div class="cart-box__subtitle">Free shipping on all orders.</div>
+  <div class="cart-box__title">{{ cart_heading }}</div>
+  <div class="cart-box__subtitle">{{ cart_subtitle }}</div>
 </div>
 <div class="cart-line-display">
   <div class="cart-line">
-    <div class="os-card__content" data-next-package-id="1">
+    <div class="os-card__content" data-next-package-id="{{ feature_pkg }}">
       <div class="cart-feature-line__media cart-feature-line__media--cart">
         <img width="280" data-next-display="package.image" alt="" class="cart-feature-line__image">
       </div>
@@ -160,4 +189,5 @@
       </div>
     </div>
   </template>
+</div>
 </div>

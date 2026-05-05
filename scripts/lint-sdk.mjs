@@ -20,6 +20,7 @@
 //   node scripts/lint-sdk.mjs --rendered            # rendered-only
 //   node scripts/lint-sdk.mjs --pages=all           # all pages in scope (graduates to v1+)
 //   node scripts/lint-sdk.mjs --pages=checkout,upsell  # explicit page set
+//   node scripts/lint-sdk.mjs --scope=promoted --pages=checkout,select # promoted catalog families
 //   node scripts/lint-sdk.mjs --scope=all           # all template families (graduates to v1)
 //   CI=1 node scripts/lint-sdk.mjs                  # exit non-zero on violations
 
@@ -36,6 +37,7 @@ const pagesArg = [...args].find((a) => a.startsWith('--pages='));
 const pages = pagesArg ? pagesArg.split('=')[1].split(',') : ['checkout']; // v0 default: checkout only
 const allPages = pages.includes('all');
 const isCI = process.env.CI === '1' || process.env.CI === 'true';
+const PROMOTED_FAMILIES = ['olympus', 'limos', 'demeter', 'olympus-mv-single-step', 'olympus-mv-two-step'];
 
 // SDK attribute roots — anything containing these inside a non-partial source file is
 // an inlined SDK surface that should be replaced by a {% campaign_include %} call.
@@ -56,6 +58,11 @@ const SDK_ATTR_ROOTS = [
   'data-next-order-items',
   'data-next-upsell',
   'data-next-bundle-slot-template-id',
+  'data-next-bundle-slots-for',
+  'data-next-bundle-qty-for',
+  'data-next-quantity-decrease',
+  'data-next-quantity-increase',
+  'data-next-quantity-display',
 ];
 
 // Required-for-checkout attribute fields. Their absence (or wrong location) is a
@@ -80,17 +87,26 @@ function walk(dir, out = []) {
 }
 
 function scopedFamilies() {
-  return scope === 'all'
-    ? readdirSync(join(repoRoot, 'src')).filter((d) =>
-        statSync(join(repoRoot, 'src', d)).isDirectory()
-      )
-    : [scope];
+  if (scope === 'promoted') return PROMOTED_FAMILIES;
+  if (scope === 'all') {
+    return readdirSync(join(repoRoot, 'src')).filter((d) =>
+      statSync(join(repoRoot, 'src', d)).isDirectory()
+    );
+  }
+  return [scope];
 }
 
 function pageMatches(filePath) {
   if (allPages) return true;
   const base = filePath.split('/').pop().replace(/\.html$/, '');
   return pages.includes(base);
+}
+
+function blankIgnoredMarkup(content) {
+  const preserveLines = (match) => '\n'.repeat(match.split('\n').length - 1);
+  return content
+    .replace(/\{%\s*comment\s*%\}[\s\S]*?\{%\s*endcomment\s*%\}/g, preserveLines)
+    .replace(/<!--[\s\S]*?-->/g, preserveLines);
 }
 
 function lintSource() {
@@ -101,8 +117,8 @@ function lintSource() {
     const files = walk(dir).filter((f) => !f.includes('/_includes/') && pageMatches(f));
     for (const file of files) {
       const content = readFileSync(file, 'utf8');
-      // Strip Liquid comments so reference-block markup doesn't trip the linter.
-      const stripped = content.replace(/\{%\s*comment\s*%\}[\s\S]*?\{%\s*endcomment\s*%\}/g, '');
+      // Strip Liquid/HTML comments so reference-block notes don't trip the linter.
+      const stripped = blankIgnoredMarkup(content);
       const lines = stripped.split('\n');
       for (let i = 0; i < lines.length; i++) {
         for (const attr of SDK_ATTR_ROOTS) {
@@ -141,7 +157,7 @@ function lintRendered() {
       continue;
     }
     for (const file of files) {
-      const content = readFileSync(file, 'utf8');
+      const content = blankIgnoredMarkup(readFileSync(file, 'utf8'));
       // For each SDK attr occurrence, walk back through the rendered HTML to verify
       // the nearest ancestor with data-next-catalog-component="<name>" exists.
       // Cheap heuristic without a full parser: find each attr index, then search
@@ -152,30 +168,48 @@ function lintRendered() {
           const idx = content.indexOf(attr, from);
           if (idx === -1) break;
           from = idx + attr.length;
-          // Find ancestor: search backward for nearest data-next-catalog-component
-          // OR previous closing tag of one (which would mean we're outside it).
-          const before = content.slice(0, idx);
-          const lastOpen = before.lastIndexOf('data-next-catalog-component=');
-          if (lastOpen === -1) {
+          if (!hasOpenCatalogWrapper(content, idx)) {
             violations.push({
               kind: 'rendered-sdk-outside-wrapper',
               file: relative(repoRoot, file),
               line: lineOf(content, idx),
               attr,
               suggestion: includeSuggestion(attr),
-              note: 'No data-next-catalog-component ancestor found.',
+              note: 'No open data-next-catalog-component wrapper found.',
             });
-            continue;
           }
-          // Sanity: confirm we haven't crossed a sibling wrapper close.
-          // Keep this simple — if there's a closing </div> chain between lastOpen and
-          // idx that pushes us outside, the agent likely structured something wrong.
-          // For v0 we accept that the lastOpen heuristic is sufficient signal.
         }
       }
     }
   }
   return violations;
+}
+
+function hasOpenCatalogWrapper(content, idx) {
+  let searchFrom = idx;
+  while (searchFrom > 0) {
+    const attrIdx = content.lastIndexOf('data-next-catalog-component=', searchFrom);
+    if (attrIdx === -1) return false;
+
+    const tagStart = content.lastIndexOf('<div', attrIdx);
+    const tagEnd = content.indexOf('>', attrIdx);
+    if (tagStart === -1 || tagEnd === -1) return false;
+    if (tagStart <= idx && idx <= tagEnd) return true;
+
+    let depth = 1;
+    const tagRe = /<\/?div\b/gi;
+    tagRe.lastIndex = tagEnd + 1;
+    let match;
+    while ((match = tagRe.exec(content)) && match.index < idx) {
+      if (match[0].startsWith('</')) depth--;
+      else depth++;
+      if (depth <= 0) break;
+    }
+
+    if (depth > 0) return true;
+    searchFrom = tagStart - 1;
+  }
+  return false;
 }
 
 function includeSuggestion(attr) {
@@ -192,6 +226,14 @@ function includeSuggestion(attr) {
     'data-next-package-toggle': "{% campaign_include 'bump-check01.html' %}",
     'data-next-toggle-card': "{% campaign_include 'bump-check01.html' %}",
     'data-next-skeleton': "{% campaign_include 'receipt-skeleton.html' %}",
+    'data-next-order-items': "{% campaign_include 'receipt-orders.html' %}",
+    'data-next-upsell': "{% campaign_include 'upsell-offer.html' %}",
+    'data-next-bundle-slot-template-id': "{% campaign_include 'mv-configurable-selector.html' %}",
+    'data-next-bundle-slots-for': "{% campaign_include 'mv-slot-stage.html' %}",
+    'data-next-bundle-qty-for': "{% campaign_include 'single-offer-quantity-selector.html' %}",
+    'data-next-quantity-decrease': "{% campaign_include 'single-offer-quantity-selector.html' %}",
+    'data-next-quantity-increase': "{% campaign_include 'single-offer-quantity-selector.html' %}",
+    'data-next-quantity-display': "{% campaign_include 'single-offer-quantity-selector.html' %}",
   };
   return map[attr] ?? '(see catalog: olympus/_includes/)';
 }

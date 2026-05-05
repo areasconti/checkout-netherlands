@@ -28,10 +28,27 @@ If the top family match is below high confidence, or if two families look plausi
 | Family | Status | Primary Checkout Surface | Summary | Notes |
 | --- | --- | --- | --- | --- |
 | `olympus` | Partial frontmatter API exists | Tiered bundle selector | `cart-summary01-04` | Reference model from Meridian `theduo-v2`; `bundles:` frontmatter feeds `bundle-selector.html`. |
-| `limos` | Needs promotion | Single offer card with native quantity stepper | `cart-summary02` accordion | Roadflare proved the desired surface; promote from inline template/campaign-local markup into a reusable include. |
-| `demeter` | Needs promotion | Editorial tier cards | `cart-summary03` side cart | Veyra proved the desired surface; promote tier card pricing and summary choice into frontmatter. |
-| `olympus-mv-single-step` | Needs promotion | MV configurable selector in checkout | `cart-summary03/04` | Treat as first-class, not standard Olympus. Variant slots and media behavior need their own API. |
-| `olympus-mv-two-step` | Needs promotion | Select step + checkout review/payment | `cart-summary03/04` | Treat as first-class. The select page is a distinct commerce surface. |
+| `limos` | Partial frontmatter API exists | Single offer card with native quantity stepper | `cart-summary02` accordion | Roadflare surface promoted to `single-offer-quantity-selector.html`; checkout wrappers are covered by promoted lint scope. |
+| `demeter` | Partial frontmatter API exists | Editorial tier cards | `cart-summary03` side cart | Veyra surface promoted to `editorial-tier-selector.html`; summary and checkout wrappers are covered by promoted lint scope. |
+| `olympus-mv-single-step` | Partial frontmatter API exists | MV configurable selector in checkout | `cart-summary01/03/04` | First-class MV checkout selector promoted to `mv-configurable-selector.html`; slots remain an MV-specific API. |
+| `olympus-mv-two-step` | Partial frontmatter API exists | Select step + checkout review/payment | `cart-summary03/04` | First-class select surface promoted to `mv-selection-step.html` + `mv-slot-stage.html`; checkout wrappers covered by promoted lint scope. |
+
+## Gap Matrix
+
+| Family | Surface | Current Implementation | Frontmatter Contract | Lint Coverage | Promotion Needed | Priority |
+| --- | --- | --- | --- | --- | --- | --- |
+| `olympus` | Tiered bundle selector | Include: `src/olympus/_includes/bundle-selector.html`; used from `src/olympus/checkout.html`. | Yes: `selector_id`, `await`, `include_shipping`, `selection_mode`, `bundles`. Meridian `theduo-v2` passes `bundles:` frontmatter. | Yes for default checkout source/rendered scope. | Finish parity for related variants and wrappers. | P1 |
+| `olympus` | Order summary | Includes: `cart-summary01.html` through `cart-summary04.html` have component headers/wrappers. | Partial: no summary frontmatter API yet. | Yes for default checkout source/rendered scope. | Expose `cart_summary_variant`. | P2 |
+| `olympus` | Payment shell | Include: `payment-methods.html`; express checkout has a matching component header. | Yes: `show_paypal`, `show_klarna`, `show_apple_pay`, `show_google_pay`. | Yes for default Olympus checkout/rendered wrapper path. | Keep as shared model for other families. | P2 |
+| `olympus` | Order bump | `bump-check01.html`, `bump-check02.html`, and `bump-switch01.html` have component headers/wrappers. | Partial: `package_id`, text/image/features, sync flags only on check01. | Yes for rendered wrapper scope when variants are used. | Add parameter parity across bump variants. | P1 |
+| `limos` | Main selector and quantity stepper | Include: `src/limos/_includes/single-offer-quantity-selector.html`; used from `src/limos/checkout.html`. | Yes: selector/package/shipping ids, items JSON, quantity min/max, image/label text. | Yes under `npm run lint:sdk:promoted`. | Add richer frontmatter object shape for multi-copy campaigns. | P1 |
+| `limos` | Summary, payment, bump, receipt | Includes are present for `cart-summary02.html`, `payment-methods.html`, bumps, and `receipt-skeleton.html`; checkout summary/payment/bump wrappers are now catalog-marked. | Partial: payment flags still work; family-local headers are shallow except the selector. | Yes under promoted checkout rendered scope; receipt is outside checkout/select scope. | Add durable headers to remaining receipt/upsell surfaces. | P2 |
+| `demeter` | Editorial tier selector | Include: `src/demeter/_includes/editorial-tier-selector.html`; used from `src/demeter/checkout.html`. | Yes: selector mode, include shipping, and `bundles` array. | Yes under `npm run lint:sdk:promoted`. | Add richer merchant-facing frontmatter defaults. | P1 |
+| `demeter` | Side summary | Include: `src/demeter/_includes/cart-summary03.html`, selected by `cart_summary_variant` from checkout side cart. | Yes: `cart_summary_variant`, `cart_summary_heading`, `cart_summary_subtitle`, `cart_summary_feature_package`. | Yes under promoted checkout rendered scope. | Add more summary variants if/when Demeter gains them. | P1 |
+| `olympus-mv-single-step` | MV selector and variant slots | Include: `src/olympus-mv-single-step/_includes/mv-configurable-selector.html`; used from checkout. | Partial: selector/template ids; bundle definitions still local to the include. | Yes under `npm run lint:sdk:promoted`. | Move MV bundle/slot definitions into frontmatter. | P1 |
+| `olympus-mv-two-step` | Select step and variant slots | Includes: `mv-selection-step.html` and `mv-slot-stage.html`; used from `src/olympus-mv-two-step/select.html`. | Partial: selector/template ids; bundle definitions still local to the include. | Yes under `npm run lint:sdk:promoted`. | Move MV bundle/slot definitions into frontmatter. | P1 |
+| `olympus-mv-*` | Checkout payment and summary | Payment, express checkout, and summary includes have catalog wrappers in both MV families. | Partial/no MV-specific summary contract. | Yes under promoted checkout/select rendered scope. | Add summary variant contract and receipt/upsell scope. | P2 |
+| all non-Olympus | Upsell selectors | Upsell pages inline bundle selectors/actions; comments preserve SDK assumptions around `data-next-upsell="offer"` and first in-offer selector. | No reusable frontmatter contract. | Outside default checkout scope and usually outside `pages=checkout`. | Later promotion after checkout selectors. | P2 |
 
 ## Surface Types
 
@@ -70,10 +87,9 @@ Each reusable surface should document:
 
 Promote proven campaign-local work into template-family includes:
 
-1. `limos/_includes/single-offer-quantity-selector.html`
-2. `demeter/_includes/editorial-tier-selector.html`
-3. `olympus-mv-single-step/_includes/mv-configurable-selector.html`
-4. `olympus-mv-two-step/_includes/mv-selection-step.html`
-5. Shared frontmatter contracts for `cart_summary_variant`, `price_display_variant`, `promo_timer`, and `order_bump_variant`.
+1. Shared frontmatter contracts for `price_display_variant`, `promo_timer`, and `order_bump_variant`.
+2. Move MV bundle/slot definitions from include defaults into page frontmatter.
+3. Promote upsell selector/action surfaces after checkout/select coverage.
+4. Add durable headers to remaining receipt surfaces.
 
 The goal is not a small fixed set of templates. The goal is a growing library of commerce-ready surfaces that can be assembled into highly custom funnels while preserving SDK behavior.
