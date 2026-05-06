@@ -40,11 +40,11 @@
     - bundle-selector (the "main" cart that this bump augments)
     - cart-summary (will list the bump as an additional line)
 {% endcomment %}
-{% assign pkg_id = package_id | default: 7 -%}
+{% assign pkg_id = package_id | default: packages.prepurchase_1 | default: 7 -%}
 {% assign t = title | default: 'Get Extended Warranty' -%}
 {% assign img_src = bump_image | default: 'images/1x1_1.svg' -%}
 {% assign img_alt = bump_image_alt | default: t -%}
-{% if package_sync == nil %}{% assign package_sync = 1 %}{% endif -%}
+{% if package_sync == nil %}{% assign package_sync = packages.main_package | default: 1 %}{% endif -%}
 {% if is_upsell == nil %}{% assign is_upsell = true %}{% endif -%}
 {% if show_per_unit_price == nil %}{% assign show_per_unit_price = true %}{% endif -%}
 {% if show_line_total_price == nil %}{% assign show_line_total_price = true %}{% endif -%}

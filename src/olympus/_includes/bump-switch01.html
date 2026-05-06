@@ -25,12 +25,13 @@
     - bundle-selector (the main cart this bump augments)
     - cart-summary (will list the bump as an additional line)
 {% endcomment %}
+{% assign _switch_pkg = packages.prepurchase_2 | default: 9 -%}
 <!-- Prepurchase upsell: toggle-switch bump (switch01) — SDK 0.4.x
      Uses data-next-package-toggle / data-next-toggle-card / data-next-toggle-display
      No data-next-package-sync: one line item, not per main-unit (contrast bump-check01). -->
 <div data-next-catalog-component="order-bump-card" data-component="prepurchase-upsell" data-variant="switch" data-next-await="">
   <div data-next-package-toggle>
-    <div class="bump-card bump-card--switch" data-next-toggle-card data-next-is-upsell="true" data-next-package-id="9">
+    <div class="bump-card bump-card--switch" data-next-toggle-card data-next-is-upsell="true" data-next-package-id="{{ _switch_pkg }}">
       <div class="bump__header-left bump__head--switch">
         <div class="bump__header-content bump__head-inner">
           <span class="bump__title">Shipping Insurance &amp; Loss Prevention</span>
