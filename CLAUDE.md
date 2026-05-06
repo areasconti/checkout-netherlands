@@ -81,6 +81,7 @@ repo-root/
 │   ├── shop-single-step/
 │   ├── shop-three-step/
 │   └── landing/               ← composable section library (olympus/presell.html + olympus/landing.html are the full-funnel examples)
+├── templates.json              ← CPK template picker registry. Fetched remotely by next-campaign-page-kit to populate the template picker UI. Must stay in sync with src/ — add/remove/deprecate entries here whenever a template family is added, removed, or retired.
 └── package.json                ← kit scripts + next-campaign-page-kit dependency
 ```
 
