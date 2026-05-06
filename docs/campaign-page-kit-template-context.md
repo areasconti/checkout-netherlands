@@ -16,12 +16,16 @@
 
 2. **Look up the current `sdk_version`** — do not guess or use a version from your training data. Read `_data/campaigns.json` from the [campaign-cart-starter-templates repo](https://github.com/NextCommerceCo/campaign-cart-starter-templates) and copy the exact `sdk_version` string from there. It changes with every SDK release.
 
-3. **Include `gtm_id` and `fb_pixel_id` keys on every `campaigns.json` entry** — set them intentionally:
+3. **Fetch the commerce surface catalog** before touching any template-family commerce components. It documents the Liquid params for each family's partials (bundle selector, payment methods, bumps, upsells, receipt, etc.):
+   - Human-readable: https://raw.githubusercontent.com/NextCommerceCo/campaign-cart-starter-templates/main/docs/commerce-surface-catalog.md
+   - Machine-readable: https://raw.githubusercontent.com/NextCommerceCo/campaign-cart-starter-templates/main/docs/commerce-surface-catalog.json
+
+4. **Include `gtm_id` and `fb_pixel_id` keys on every `campaigns.json` entry** — set them intentionally:
    - **`""` (empty string)** — layout **does not** inject GTM / Meta snippets in these starter templates (`base.html` uses `{% if campaign.gtm_id != "" %}` / `{% if campaign.fb_pixel_id != "" %}`).
    - **Any non-empty value** (including placeholders like `"GTM-XXXXXXX"` or `"123456789012345"`) — in **non-`development`** builds, the **snippets still load** and hit GTM / Facebook with that ID. Placeholders are **not** the same as “off”; they are “on with dummy IDs.” Use real production IDs when you want tracking; use `""` when you want layout-driven tags disabled.
    - **Omitting the keys** — may behave like missing data depending on your CPK/Liquid defaults; **prefer explicit `""`** when disabling so behavior matches these templates.
 
-Do not proceed with code generation until you have completed all three steps above.
+Do not proceed with code generation until you have completed all four steps above.
 
 ---
 
@@ -63,7 +67,7 @@ High confidence means `>= 0.85` in the commerce surface JSON catalog. If the fam
 
 > I can map this checkout to `olympus` or `olympus-mv-two-step`. The ambiguity is tier cards plus MV variant slot behavior. Which family should I use before wiring SDK components?
 
-Reference catalog: [docs/commerce-surface-catalog.md](./commerce-surface-catalog.md) and [docs/commerce-surface-catalog.json](./commerce-surface-catalog.json) in the starter template repo.
+Reference catalog: [commerce-surface-catalog.md](https://raw.githubusercontent.com/NextCommerceCo/campaign-cart-starter-templates/main/docs/commerce-surface-catalog.md) and [commerce-surface-catalog.json](https://raw.githubusercontent.com/NextCommerceCo/campaign-cart-starter-templates/main/docs/commerce-surface-catalog.json).
 
 Current first-class families include `olympus`, `limos`, `demeter`, `olympus-mv-single-step`, `olympus-mv-two-step`, `shop-single-step`, and `shop-three-step`. This list should grow as the commerce surface library grows.
 
