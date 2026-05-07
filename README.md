@@ -88,11 +88,14 @@ Every checkout template includes `presell.html` and `landing.html` — a full pr
 Run these inside the repository root:
 
 ```bash
-npm run dev        # interactive campaign picker + dev server
-npm run build      # build all campaigns to _site/
-npm run clone      # duplicate an existing local campaign to a new slug
-npm run compress   # optimise images
-npm run config     # set Campaigns App API keys
+npm run dev              # interactive campaign picker + dev server
+npm run build            # build all campaigns to _site/
+npm run clone            # duplicate an existing local campaign to a new slug
+npm run compress         # optimise images
+npm run compress:preview # preview compression savings without writing files
+npm run config           # set Campaigns App API keys
+npm run start            # interactive launcher (dev / compress / clone / config menu)
+npm run migrate          # migrate campaigns.json from old array format to current key-based format
 ```
 
 ---
@@ -110,6 +113,8 @@ Copy [docs/campaign-page-kit-template-context.md](docs/campaign-page-kit-templat
 ```bash
 curl -o CLAUDE.md https://raw.githubusercontent.com/NextCommerceCo/campaign-cart-starter-templates/main/docs/campaign-page-kit-template-context.md
 ```
+
+Or pass `--ai-context claude` to `campaign-init` and it will write `CLAUDE.md` automatically during setup. Re-running `campaign-init --ai-context claude` refreshes it from the latest upstream; add `--keep-ai-context` to preserve any hand edits. Other supported targets: `--ai-context cursor` (`.cursor/rules/`), `--ai-context copilot` (`.github/copilot-instructions.md`), `--ai-context codex` (`AGENTS.md`).
 
 This gives your AI assistant the context it needs to work correctly with Campaign Cart templates — project structure, Liquid filters, SDK attributes, config, and task checklists. Without it, the assistant will not know the correct SDK version, required `campaigns.json` fields, or how to use `campaign_asset` / `campaign_link` / `campaign_include`.
 
