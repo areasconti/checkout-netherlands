@@ -4,6 +4,7 @@
   next_sdk_min: 0.4.18
   next_purpose: Pre-purchase add-on offer rendered as a checkbox-style card. Customer opts in with one click; SDK adds the package to cart at checkout.
   next_params:
+    packages:             object, optional. Dict with main_package, prepurchase_1, prepurchase_2 keys. Defaults for package_id and package_sync when not passed explicitly.
     package_id:           number, required. data-next-package-id (the bump's package).
     title:                string, default "Get Extended Warranty". Bump headline.
     bump_image:           string asset path, default "images/1x1_1.svg". Product imagery.
