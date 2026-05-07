@@ -4,6 +4,7 @@
   next_sdk_min: 0.4.18
   next_purpose: Pre-purchase add-on offer rendered as a checkbox-style card. Customer opts in with one click; SDK adds the package to cart at checkout.
   next_params:
+    packages:             object, optional. Dict with main_package, prepurchase_1, prepurchase_2 keys. Defaults for package_id and package_sync when not passed explicitly.
     package_id:           number, required. data-next-package-id (the bump's package).
     title:                string, default "Get Extended Warranty". Bump headline.
     bump_image:           string asset path, default "images/1x1_1.svg". Product imagery.
@@ -40,11 +41,11 @@
     - bundle-selector (the "main" cart that this bump augments)
     - cart-summary (will list the bump as an additional line)
 {% endcomment %}
-{% assign pkg_id = package_id | default: 7 -%}
+{% assign pkg_id = package_id | default: packages.prepurchase_1 | default: 7 -%}
 {% assign t = title | default: 'Get Extended Warranty' -%}
 {% assign img_src = bump_image | default: 'images/1x1_1.svg' -%}
 {% assign img_alt = bump_image_alt | default: t -%}
-{% if package_sync == nil %}{% assign package_sync = 1 %}{% endif -%}
+{% if package_sync == nil %}{% assign package_sync = packages.main_package | default: 1 %}{% endif -%}
 {% if is_upsell == nil %}{% assign is_upsell = true %}{% endif -%}
 {% if show_per_unit_price == nil %}{% assign show_per_unit_price = true %}{% endif -%}
 {% if show_line_total_price == nil %}{% assign show_line_total_price = true %}{% endif -%}

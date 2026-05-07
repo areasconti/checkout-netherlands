@@ -37,6 +37,10 @@ swiper_thumbs:
     alt: ""
   - src: "images/1x1_2.svg"
     alt: ""
+packages:
+  main_package: 1
+  prepurchase_1: 7
+  prepurchase_2: 9
 ---
 <div class="page-wrapper">
       <div class="main-wrapper">
@@ -209,7 +213,7 @@ swiper_thumbs:
                               <h2 class="form-section__title">Step 1: Pick Your Bundle Deal</h2>
                               <!-- v0 catalog: bundle-selector partial. Canonical 3-tier defaults (1x/2x/3x package_id 1) embedded in partial; pass `bundles=[...]` to override.
                                    Reference variant (data-next-bundles= JSON config-driven) preserved below as commented reference. -->
-                              {% campaign_include 'bundle-selector.html' selector_id='drone-packages' %}
+                              {% campaign_include 'bundle-selector.html' selector_id='drone-packages' packages=packages %}
                               {% comment %}
                               Reference only — optional config-driven variant.
                               Kept for experimentation; do not treat as the default for Olympus checkout.
@@ -279,8 +283,8 @@ swiper_thumbs:
                               {% campaign_include 'customer-info-form.html' %}
                               {% campaign_include 'shipping-address-form.html' %}
                             </div>
-                        {% campaign_include 'bump-check01.html' %}
-                        {% campaign_include 'bump-switch01.html' %}
+                        {% campaign_include 'bump-check01.html' packages=packages %}
+                        {% campaign_include 'bump-switch01.html' packages=packages %}
                             <div class="form-section form-section--last">
                               <div class="form-section__header">
                                 <h1 class="form-section__title">4. Payment Method</h1>
