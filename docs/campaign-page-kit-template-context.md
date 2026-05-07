@@ -12,7 +12,7 @@
    ```bash
    cp docs/campaign-page-kit-template-context.md CLAUDE.md
    ```
-   If this file came from a GitHub URL, write it to `CLAUDE.md` in the working directory directly. For **landing / presell** work, also open [pre-checkout-pages.md](https://github.com/NextCommerceCo/campaign-cart-starter-templates/blob/main/docs/pre-checkout-pages.md) (that guide does not ship inside this single file).
+   If this file came from a GitHub URL, write it to `CLAUDE.md` in the working directory directly. Alternatively, re-running `campaign-init` with `--ai-context claude` writes this file automatically (pass `--keep-ai-context` to preserve hand edits). For **landing / presell** work, also open [pre-checkout-pages.md](https://github.com/NextCommerceCo/campaign-cart-starter-templates/blob/main/docs/pre-checkout-pages.md) (that guide does not ship inside this single file).
 
 2. **Look up the current `sdk_version`** — do not guess or use a version from your training data. Read `_data/campaigns.json` from the [campaign-cart-starter-templates repo](https://github.com/NextCommerceCo/campaign-cart-starter-templates) and copy the exact `sdk_version` string from there. It changes with every SDK release.
 
@@ -130,28 +130,28 @@ Registers every campaign. The `campaign` object in Liquid templates comes from h
 
 ```json
 {
-  "campaigns": [
-    {
-      "name": "My Campaign",
-      "slug": "my-campaign",
-      "sdk_version": "0.4.18",
-      "store_name": "Acme Store",
-      "store_url": "https://acme.com",
-      "store_phone": "1-800-555-0100",
-      "store_phone_tel": "tel:+18005550100",
-      "store_terms": "https://acme.com/terms",
-      "store_privacy": "https://acme.com/privacy",
-      "store_contact": "https://acme.com/contact",
-      "store_returns": "https://acme.com/returns",
-      "store_shipping": "https://acme.com/shipping",
-      "gtm_id": "GTM-XXXXXXX",
-      "fb_pixel_id": "123456789012345"
-    }
-  ]
+  "my-campaign": {
+    "name": "My Campaign",
+    "entry_url": "presell",
+    "sdk_version": "0.4.18",
+    "store_name": "Acme Store",
+    "store_url": "https://acme.com",
+    "store_phone": "1-800-555-0100",
+    "store_phone_tel": "tel:+18005550100",
+    "store_terms": "https://acme.com/terms",
+    "store_privacy": "https://acme.com/privacy",
+    "store_contact": "https://acme.com/contact",
+    "store_returns": "https://acme.com/returns",
+    "store_shipping": "https://acme.com/shipping",
+    "gtm_id": "GTM-XXXXXXX",
+    "fb_pixel_id": "123456789012345"
+  }
 }
 ```
 
-Add any additional key to a campaign entry and it becomes available as `{{ campaign.key }}` on every page in that campaign.
+The top-level key is the campaign slug. Add any additional key to a campaign entry and it becomes available as `{{ campaign.key }}` on every page in that campaign.
+
+**`entry_url`** — optional. The page slug `npm run dev` opens in the browser (e.g. `"presell"`). Omit to use the kit default.
 
 **`sdk_version`** — must be a **pinned semver string** from the starter reference (e.g. `"0.4.18"`), never `"latest"`. A wrong or stale version causes subtle Campaign Cart runtime behaviour with no obvious build error.
 
@@ -243,6 +243,7 @@ Includes a file from the campaign's `_includes/` directory.
 | Variable | Source |
 |----------|--------|
 | `{{ campaign.name }}` | campaigns.json |
+| `{{ campaign.entry_url }}` | campaigns.json (optional) |
 | `{{ campaign.sdk_version }}` | campaigns.json |
 | `{{ campaign.store_name }}` | campaigns.json |
 | `{{ campaign.store_phone }}` | campaigns.json |
@@ -733,11 +734,14 @@ For single-package upsells without voucher-driven pricing. If the upsell uses Ca
 Run from inside your project directory (where `package.json` is):
 
 ```bash
-npm run dev          # interactive campaign picker + dev server
-npm run build        # build all campaigns to _site/
-npm run clone        # duplicate a campaign to a new slug
-npm run config       # set API key for a campaign
-npm run compress     # compress images in a campaign
+npm run dev              # interactive campaign picker + dev server
+npm run build            # build all campaigns to _site/
+npm run clone            # duplicate a campaign to a new slug
+npm run config           # set API key for a campaign
+npm run compress         # compress images in a campaign
+npm run compress:preview # preview compression savings without writing files
+npm run start            # interactive launcher (dev / compress / clone / config menu)
+npm run migrate          # migrate campaigns.json from old array format to current key-based format
 ```
 
 ---

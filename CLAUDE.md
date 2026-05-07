@@ -29,12 +29,19 @@ Note: when copying a template, the developer renames the folder to their product
 ## campaigns.json
 - **Project-level, not template-specific** — accumulates all campaigns a developer adds
 - `_data/campaigns.json` is a reference file showing full field structure for all current templates
-- Fields: `name`, `slug`, `description`, `sdk_version`, `store_name`, `store_url`, `store_terms`, `store_privacy`, `store_contact`, `store_returns`, `store_shipping`, `store_phone`, `store_phone_tel`; optional layout analytics: `gtm_id`, `fb_pixel_id` (see `docs/campaign-page-kit-template-context.md`)
+- **Format:** keyed by slug — `{ "my-campaign": { "name": "...", ... } }` (not the old array format `{ "campaigns": [...] }`)
+- Fields: `name`, `description`, `entry_url`, `sdk_version`, `store_name`, `store_url`, `store_terms`, `store_privacy`, `store_contact`, `store_returns`, `store_shipping`, `store_phone`, `store_phone_tel`; optional layout analytics: `gtm_id`, `fb_pixel_id` (see `docs/campaign-page-kit-template-context.md`)
+- `entry_url` — optional; the page slug `npm run dev` opens (e.g. `"presell"`)
 - slug drives URL: `campaign-domain.com/[slug]/page`
 
-## npm run build behaviour
-- Builds ALL campaigns in `src/` to `_site/`
-- `npm run dev` is interactive — lets you pick ONE campaign to preview
+## npm scripts
+- `npm run dev` — interactive campaign picker + dev server (picks ONE campaign to preview)
+- `npm run build` — builds ALL campaigns in `src/` to `_site/`
+- `npm run start` — interactive launcher menu (dev / compress / clone / config)
+- `npm run clone` — duplicate a campaign to a new slug
+- `npm run config` — set API key for a campaign
+- `npm run compress` — compress images; `npm run compress:preview` shows savings without writing
+- `npm run migrate` — migrate `campaigns.json` from old array format to current key-based format
 - `_site/` is gitignored
 
 ## Dev server preview URLs (localhost:3000)
