@@ -1,5 +1,5 @@
 /**
- * upsells-up01-mv.js — MV upsell: bundle slot variant dropdowns + qty toggle.
+ * upsells-mv.js — MV upsell: bundle slot variant dropdowns + qty toggle.
  *
  * Replaces the legacy UpsellController / per-package-id mapping approach (SDK 0.3.x)
  * with data-next-bundle-selector + data-next-bundle-slots-for (SDK 0.4.10).

@@ -738,7 +738,7 @@ For single-package upsells without voucher-driven pricing. If the upsell uses Ca
 
 - **Coupon/voucher-driven** upsell pricing uses **Approach B**: `data-next-bundle-selector` + `data-next-upsell-context`, `data-next-bundle-vouchers`, `data-next-upsell-action-for`. Contrast with simple single-package upsells in the [Upsells](https://developers.nextcommerce.com/docs/campaigns/upsells) documentation (bundle vs selection patterns).
 - **References:** `limos/checkout.html` (checkout + native **bundleQuantity**, **`.checkout-bundle-offer`** + **`.next-bundle-qty--anchor-br`**, stepper **not** inside **`[data-next-bundle-card]`**); `olympus/upsell-bundle-stepper.html` (same **`.next-bundle-qty*`** stepper on upsell); `upsell-bundle-tier-pills.html` / `upsell-bundle-tier-cards.html` (tiered bundle tiers, same generic qty classes); **`olympus-mv-single-step/upsell-mv.html`** (tier pills + **`data-next-bundle-slots-for`** slot layout; checkout omits native checkout bundle qty — see **limos**). Styles: **`next-core.css`** (not upsell-only).
-- **Variant UI in staged bundle slots:** SDK-injected **native `<select>`** works **without** extra JS. **`setupBundleSlotVariantDropdowns()`** (custom **`os-dropdown`** UI) is **opt-in** — see file-header comments in **`checkout-olympus-mv-full.js`** and **`upsells-up01-mv.js`** on the **`olympus-mv-single-step`** template.
+- **Variant UI in staged bundle slots:** SDK-injected **native `<select>`** works **without** extra JS. **`setupBundleSlotVariantDropdowns()`** (custom **`os-dropdown`** UI) is **opt-in** — see file-header comments in **`checkout-olympus-mv-full.js`** and **`upsells-mv.js`** on the **`olympus-mv-single-step`** template.
 
 ---
 
@@ -845,7 +845,7 @@ Use these when implementing or verifying a specific task. Work through each item
 
 - [ ] **`data-next-bundle-slots-for`** and slot markup match the campaign’s bundle structure — see [Upsells](https://developers.nextcommerce.com/docs/campaigns/upsells) and the reference implementation **`olympus-mv-single-step/checkout.html`** in [campaign-cart-starter-templates](https://github.com/NextCommerceCo/campaign-cart-starter-templates)
 - [ ] **Barebones path:** if native **`<select>`** styling is enough, do **not** call **`setupBundleSlotVariantDropdowns()`** (no custom dropdown JS required)
-- [ ] **Custom dropdown path:** if you call **`setupBundleSlotVariantDropdowns()`** from **`checkout-olympus-mv-full.js`** / **`upsells-up01-mv.js`**, keep **`initBundleQtyToggle()`** (or equivalent) in sync on upsell when using quantity toggles + Approach B
+- [ ] **Custom dropdown path:** if you call **`setupBundleSlotVariantDropdowns()`** from **`checkout-olympus-mv-full.js`** / **`upsells-mv.js`**, keep **`initBundleQtyToggle()`** (or equivalent) in sync on upsell when using quantity toggles + Approach B
 - [ ] **Per-tier vouchers** on bundle upsell cards exist in Campaigns and match **`data-next-bundle-vouchers`** on each **`data-next-bundle-card`**
 
 ### Configuring FOMO popups
