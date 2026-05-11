@@ -8,6 +8,31 @@ styles:
 scripts:
   - https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js
   - js/upsells.js
+upsell_offer:
+  package_id: 3
+  selector_id: "upsell-bundle"
+  display_selector_id: "upsell-bundle-1x"
+  display_bundle_id: "upsell-bundle-1x-card"
+  header_discount_selector_id: "upsell-bundle-3x"
+  accept_text: "Yes, Add to My Order"
+  decline_text: "No thank you, I don't want this one-time offer"
+upsell_bundle_tiers:
+  - id: "upsell-bundle-1x"
+    items_json: '[{"packageId":3,"quantity":1}]'
+    vouchers_json: '["UP50"]'
+    selected: true
+    label: "Buy 1"
+    hint: "1 unit"
+  - id: "upsell-bundle-2x"
+    items_json: '[{"packageId":3,"quantity":2}]'
+    vouchers_json: '["UP60"]'
+    label: "Buy 2"
+    hint: "2 units"
+  - id: "upsell-bundle-3x"
+    items_json: '[{"packageId":3,"quantity":3}]'
+    vouchers_json: '["UP70"]'
+    label: "Buy 3"
+    hint: "3 units"
 swiper_slides:
   - src: "images/1x1_1.svg"
     alt: ""
