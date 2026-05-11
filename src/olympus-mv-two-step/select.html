@@ -13,28 +13,32 @@ scripts:
   - js/checkout-olympus-mv-selection.js
 select_step:
   selector_id: "main"
-  slot_template_id: "mv-slot-template"
 checkout_step:
   selector_id: "main"
-  slot_template_id: "mv-slot-template"
-  slot_stage_id: "bundle-slots-stage"
+packages:
+  main_package: 1
+shipping_methods:
+  # Starter/demo Campaigns App shipping method ref_ids.
+  # Replace these from the target CampaignSpec/Campaigns App when cloning the Olympus MV shape.
+  standard: 2
+  free: 1
 variant_slots:
   - id: "buy1"
-    items_json: '[{"packageId":1,"quantity":1,"configurable":true}]'
-    shipping_id: 2
+    quantity: 1
+    shipping_method: "standard"
     selected: true
     title: "1x Unit"
     card_sup: "Next Commerce Shirts"
   - id: "buy2"
-    items_json: '[{"packageId":1,"quantity":2,"configurable":true}]'
-    shipping_id: 2
+    quantity: 2
+    shipping_method: "standard"
     title: "2x Units"
     card_sup: "Next Commerce Shirts"
     label_text: "Most Popular"
     label_class: "os-card__label-2 os-card__label--middle-center os-card__label--pill-primary"
   - id: "buy3"
-    items_json: '[{"packageId":1,"quantity":3,"configurable":true}]'
-    shipping_id: 1
+    quantity: 3
+    shipping_method: "free"
     title: "3x Units"
     card_sup: "Next Commerce Shirts"
     label_text: "Best Deal"
@@ -86,7 +90,7 @@ variant_slots:
                       <h1 class="display-lg">Product Name</h1>
                     </div>
                   </div>
-                  <div class="checkout__image-container"><img src="{{ 'images/4x3.svg' | campaign_asset }}" loading="lazy" alt=""></div>
+                  <div class="checkout__image-container"><img src="{{ 'images/1x1_1.svg' | campaign_asset }}" loading="lazy" alt=""></div>
                 </div>
               </div>
               <div class="checkout-wrapper">
@@ -105,7 +109,7 @@ variant_slots:
                         </div>
                         <div class="_2step_form-selector-2 cc-qty">
                           <div class="selector__wrapper">
-                            {% campaign_include 'mv-selection-step.html' %}
+                            {% campaign_include 'mv-selection-step.html' packages=packages shipping_methods=shipping_methods variant_slots=variant_slots %}
                           <div data-next-component="quantity-cta" class="checkout_cta-sec">
                             <button data-next-action="select-variants" class="button cc-gold">
                               <div data-next-component="loader" class="submit-button__loader">
@@ -269,7 +273,7 @@ variant_slots:
                     </div>
                     <div class="checkout-media__wrapper">
                       <div class="hide-tablet">
-                        <div class="checkout__image-container"><img src="{{ 'images/4x3.svg' | campaign_asset }}" loading="lazy" alt=""></div>
+                        <div class="checkout__image-container"><img src="{{ 'images/1x1_1.svg' | campaign_asset }}" loading="lazy" alt=""></div>
                       </div>
                     </div>
                     <div class="guarantee-section-wrapper">
@@ -384,7 +388,7 @@ variant_slots:
                 </tbody>
               </table>
               <div class="next-page-modal__visual" aria-label="Sizing guidance image">
-                <img src="{{ 'images/4x3.svg' | campaign_asset }}" alt="Visual sizing guidance" loading="lazy">
+                <img src="{{ 'images/1x1_1.svg' | campaign_asset }}" alt="Visual sizing guidance" loading="lazy">
               </div>
             </div>
           </div>
