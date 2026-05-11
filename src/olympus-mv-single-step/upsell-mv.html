@@ -1,19 +1,19 @@
 ---
 title: "Olympus MV Single — Upsell MV"
 page_type: upsell
-next_url: receipt.html
-decline_url: receipt.html
+next_url: upsell-bundle-stepper.html
+decline_url: upsell-bundle-stepper.html
 styles:
   - https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css
 scripts:
   - https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js
-  - js/upsells-up01-mv.js
+  - js/upsells-mv.js
 ---
 <!--
   APPROACH B — Bundle upsell (data-next-bundle-selector + data-next-upsell-context + configurable:true)
   packageId 1 matches the checkout bundle. Per-tier vouchers (UP50/UP60/UP70) control offer pricing.
   Variant selection per slot via data-next-bundle-slots-for + upsell-slot-template.
-  upsells-up01-mv.js: setupBundleSlotVariantDropdowns() + initBundleQtyToggle() (no UpsellController).
+  upsells-mv.js: setupBundleSlotVariantDropdowns() + initBundleQtyToggle() (no UpsellController).
   Reference campaigns.json pins sdk_version 0.4.18 (see https://developers.nextcommerce.com/docs/campaigns/upsells). Native bundleQuantity on a single visible card is demo'd on limos checkout and olympus upsell-bundle-stepper, not this tier + hidden-card upsell.
 
   ARCHITECTURE (Option 3 — per-qty hidden cards):
@@ -123,7 +123,7 @@ scripts:
               <!--
                 Slot template — one slot rendered per configurable item in the selected tier card.
                 SDK injects .next-slot-variant-field elements (label + select) into [data-next-variant-selectors].
-                setupBundleSlotVariantDropdowns() (upsells-up01-mv.js) swaps native selects with os-dropdown UI.
+                setupBundleSlotVariantDropdowns() (upsells-mv.js) swaps native selects with os-dropdown UI.
                 Rendered into #bundle-slots-stage; next-core.css #bundle-slots-stage rules apply automatically.
               -->
               <template id="upsell-slot-template">
@@ -250,7 +250,7 @@ scripts:
                           <!--
                             data-bundle-qty-for must match data-next-selector-id on the hidden bundle selector.
                             data-bundle-qty-btn value matches suffix in data-next-bundle-id (e.g. "2" → "upsell-bundle-2x").
-                            initBundleQtyToggle() (upsells-up01-mv.js) clicks the matching hidden card on each button press.
+                            initBundleQtyToggle() (upsells-mv.js) clicks the matching hidden card on each button press.
                           -->
                           <div class="next-bundle-qty__row" data-bundle-qty-for="upsell-bundle">
                             <div data-bundle-qty-btn="1" class="next-bundle-qty__btn next-selected">
