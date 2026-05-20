@@ -14,8 +14,8 @@ upsell_offer:
   display_selector_id: "upsell-bundle-1x"
   display_bundle_id: "upsell-bundle-1x-card"
   header_discount_selector_id: "upsell-bundle-3x"
-  accept_text: "Yes, Add to My Order"
-  decline_text: "No thank you, I don't want this one-time offer"
+  accept_text: "Ja, Toevoegen aan Mijn Bestelling"
+  decline_text: "Nee bedankt, ik wil dit eenmalige aanbod niet"
 upsell_bundle_tiers:
   - id: "upsell-bundle-1x"
     items_json: '[{"packageId":3,"quantity":1}]'
@@ -180,16 +180,16 @@ swiper_thumbs:
   <div class="main-wrapper">
     <div class="announcement">
       <div class="announcement__block">
-        <div class="announcement__text"><strong>Special Offer Unlocked - Do Not Close This Page</strong></div>
+        <div class="announcement__text"><strong>Speciaal Aanbod Ontgrendeld - Sluit Deze Pagina Niet</strong></div>
       </div>
     </div>
     {% campaign_include 'upsell-header-bar.html' %}
     <section class="section upsell-header">
       <div class="container">
         <div class="upsell-header__inner">
-          <div class="upsell-header__title">Wait! Your Order Isn't Complete</div>
-          <div class="upsell-header__offer">Special Discount: Add the <span data-next-display="{{ upsell_package_name_path }}">Product Title</span> to your order</div>
-          <div class="upsell-header__suboffer">Save up to <span data-next-display="{{ upsell_display_discount_path }}" data-next-format="percentage"></span> on the <span data-next-display="{{ upsell_package_name_path }}">Product Title</span> Today!<br></div>
+          <div class="upsell-header__title">Wacht! Uw Bestelling Is Nog Niet Voltooid</div>
+          <div class="upsell-header__offer">Speciale Korting: Voeg de <span data-next-display="{{ upsell_package_name_path }}">Product Title</span> toe aan uw bestelling</div>
+          <div class="upsell-header__suboffer">Bespaar tot <span data-next-display="{{ upsell_display_discount_path }}" data-next-format="percentage"></span> op de <span data-next-display="{{ upsell_package_name_path }}">Product Title</span> Vandaag!<br></div>
         </div>
       </div>
     </section>

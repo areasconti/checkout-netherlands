@@ -10,17 +10,17 @@ order_bump:
   check01:
     package_id: 7
     sync_quantity: 1
-    title: "Get Extended Warranty"
+    title: "Verlengde Garantie"
     image_src: "images/1x1_1.svg"
     features:
-      - "1 year with our replacement and protection"
-      - "Accidental Damage Protection"
-      - "Express Replacement Service"
-      - "24/7 Priority Customer Support"
+      - "1 jaar vervanging en bescherming"
+      - "Bescherming bij accidentele schade"
+      - "Snelle Vervangingsservice"
+      - "24/7 Prioriteit Klantenservice"
   switch01:
     package_id: 9
-    title: "Shipping Insurance & Loss Prevention"
-    description_prefix: "Total shipping coverage and extended warranty. Breakage, loss, delays, porch pirates - even defects. 100% protected for just"
+    title: "Verzendverzekering & Verliespreventie"
+    description_prefix: "Volledige verzendverzekering en verlengde garantie. Breuk, verlies, vertragingen, pakketdieven - zelfs defecten. 100% beschermd voor slechts"
     show_unit_price: true
 packages:
   main_package: 1
@@ -37,7 +37,7 @@ bundles:
     shipping_method: "standard"
     selected: true
     title_prefix: "1x "
-    badge_text: "BEST DEAL"
+    badge_text: "BESTE DEAL"
   - id: "bundle-2x"
     quantity: 2
     shipping_method: "standard"
@@ -66,7 +66,7 @@ scripts:
               <div class="security-banner__icon"><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" aria-hidden="true" role="img" class="iconify iconify--ic" width="100%" height="100%" preserveAspectRatio="xMidYMid meet" viewBox="0 0 24 24">
                   <path fill="currentColor" d="M18 8h-1V6c0-2.76-2.24-5-5-5S7 3.24 7 6v2H6c-1.1 0-2 .9-2 2v10c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V10c0-1.1-.9-2-2-2m-6 9c-1.1 0-2-.9-2-2s.9-2 2-2s2 .9 2 2s-.9 2-2 2m3.1-9H8.9V6c0-1.71 1.39-3.1 3.1-3.1s3.1 1.39 3.1 3.1z"></path>
                 </svg></div>
-              <div class="security-banner__text">100% Encrypted &amp; Secure Checkout</div>
+              <div class="security-banner__text">100% Versleutelde en Veilige Afrekening</div>
             </div>
           </div>
         </div>
@@ -84,7 +84,7 @@ scripts:
                             <div class="form-content">
                               <div class="form-sections">
                                 <div class="form-section form-section--first">
-                                  <h2 class="form-section__title">Select Your Bundle</h2>
+                                  <h2 class="form-section__title">Kies Uw Pakket</h2>
                                   {% campaign_include 'editorial-tier-selector.html' packages=packages shipping_methods=shipping_methods bundles=bundles %}
                                   <!-- Canonical Demeter checkout pattern: manual inline bundle cards.
                                    This keeps data-next-display="package.*" bindings reliable for image/name in initial DOM. -->
@@ -153,23 +153,23 @@ scripts:
                                 </div>
                                 {% campaign_include 'express-checkout.html' %}
                                 <div class="form-section form-section--first">
-                                  <h2 class="form-section__title">Contact</h2>
+                                  <h2 class="form-section__title">Contactgegevens</h2>
                                   <div class="form-group">
-                                    <div class="form-input"><label for="email" class="label-checkout">Email</label><input autocomplete="email" os-checkout-validate="required" name="email" data-name="Email" type="email" id="email" placeholder="Email*" data-next-checkout-field="email" class="input-flds"></div>
+                                    <div class="form-input"><label for="email" class="label-checkout">E-mail</label><input autocomplete="email" os-checkout-validate="required" name="email" data-name="Email" type="email" id="email" placeholder="E-mail*" data-next-checkout-field="email" class="input-flds"></div>
                                   </div>
                                   <div class="checkbox-wrapper"><label for="accepts_marketing" class="checkout__checkbox"><input type="checkbox" data-next-checkout-field="accepts_marketing" name="accepts_marketing" id="accepts_marketing" class="checkbox__input" checked="">
-                                      <div class="checkbox__label">Email me with news and offers</div>
+                                      <div class="checkbox__label">E-mail mij met nieuws en aanbiedingen</div>
                                     </label></div>
                                 </div>
                                 <div class="form-section">
-                                  <h1 class="form-section__title">Shipping</h1>
+                                  <h1 class="form-section__title">Verzending</h1>
                                   <div data-next-component="shipping-form">
                                     <div class="form-grid">
                                       <div data-next-component="shipping-field-row" class="form-grid__row">
                                         <div class="form-group">
-                                          <div class="form-input"><label for="shipping_country" class="label-checkout">Country</label>
+                                          <div class="form-input"><label for="shipping_country" class="label-checkout">Land</label>
                                             <div class="select-form-wrapper"><select autocomplete="country-name" os-checkout-validate="required" data-next-checkout-field="country" class="input-flds select-field">
-                                                <option value="">Select Country</option>
+                                                <option value="">Selecteer land</option>
                                               </select>
                                               <div class="caret-down">
                                                 <div class="select-arrow"><svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
@@ -182,10 +182,10 @@ scripts:
                                       </div>
                                       <div data-next-component="shipping-field-row" class="form-grid__row">
                                         <div class="form-group">
-                                          <div class="form-input"><label for="shipping_fname" class="label-checkout">First Name</label><input autocomplete="given-name" os-checkout-validate="required" placeholder="First Name*" maxlength="256" name="shipping_fname" data-name="Shipping First Name" type="text" id="shipping_fname" data-next-checkout-field="fname" class="input-flds"></div>
+                                          <div class="form-input"><label for="shipping_fname" class="label-checkout">Voornaam</label><input autocomplete="given-name" os-checkout-validate="required" placeholder="Voornaam*" maxlength="256" name="shipping_fname" data-name="Shipping First Name" type="text" id="shipping_fname" data-next-checkout-field="fname" class="input-flds"></div>
                                         </div>
                                         <div class="form-group">
-                                          <div class="form-input"><label for="shipping_lname" class="label-checkout">Last Name</label><input autocomplete="family-name" os-checkout-validate="required" placeholder="Last Name*" maxlength="256" name="shipping_lname" data-name="Shipping Lirst Name" type="text" id="shipping_lname" data-next-checkout-field="lname" class="input-flds"></div>
+                                          <div class="form-input"><label for="shipping_lname" class="label-checkout">Achternaam</label><input autocomplete="family-name" os-checkout-validate="required" placeholder="Achternaam*" maxlength="256" name="shipping_lname" data-name="Shipping Lirst Name" type="text" id="shipping_lname" data-next-checkout-field="lname" class="input-flds"></div>
                                         </div>
                                       </div>
                                       <div data-next-component="shipping-field-row" class="form-grid__row">
@@ -194,23 +194,23 @@ scripts:
                                             <div class="form-input-icon"><svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" viewBox="0 0 14 14" focusable="false" aria-hidden="true" class="a8x1wuy a8x1wux *1fragem32 *1fragempz *1fragemly *1fragemlo _1fragemp6">
                                                 <circle cx="6" cy="6" r="4" fill="none" stroke="currentColor" stroke-width="1"></circle>
                                                 <path fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="round" stroke-linejoin="round" d="m9.25 9.25 2.5 2.5"></path>
-                                              </svg></div><label for="shipping_address1" class="label-checkout">Address</label><input autocomplete="address-line1" os-checkout-validate="required" placeholder="Address*" data-next-checkout-field="address1" class="input-flds">
+                                              </svg></div><label for="shipping_address1" class="label-checkout">Adres</label><input autocomplete="address-line1" os-checkout-validate="required" placeholder="Adres*" data-next-checkout-field="address1" class="input-flds">
                                           </div>
                                         </div>
                                       </div>
                                       <div data-next-component="shipping-field-row" class="form-grid__row">
                                         <div class="form-group">
-                                          <div class="form-input"><label for="shipping_address2" class="label-checkout">Apartment, suite, etc. (optional)</label><input autocomplete="address-line2" name="shipping_address2" data-name="Shipping Address 2" type="text" id="shipping_addres2" placeholder="Apartment, suite, etc. (optional)" maxlength="256" data-next-checkout-field="address2" class="input-flds"></div>
+                                          <div class="form-input"><label for="shipping_address2" class="label-checkout">Appartement, suite, etc. (optioneel)</label><input autocomplete="address-line2" name="shipping_address2" data-name="Shipping Address 2" type="text" id="shipping_addres2" placeholder="Appartement, suite, etc. (optioneel)" maxlength="256" data-next-checkout-field="address2" class="input-flds"></div>
                                         </div>
                                       </div>
                                       <div data-next-component="shipping-field-row" data-os-component="location" class="form-grid__row">
                                         <div class="form-group">
-                                          <div class="form-input"><label for="shipping_city" class="label-checkout">City</label><input autocomplete="address-level2" os-checkout-validate="required" placeholder="City*" maxlength="256" name="shipping_city" data-name="Shipping City" type="text" id="shipping_city" pattern="^[A-Za-z\s]+$" data-next-checkout-field="city" class="input-flds"></div>
+                                          <div class="form-input"><label for="shipping_city" class="label-checkout">Stad</label><input autocomplete="address-level2" os-checkout-validate="required" placeholder="Stad*" maxlength="256" name="shipping_city" data-name="Shipping City" type="text" id="shipping_city" pattern="^[A-Za-z\s]+$" data-next-checkout-field="city" class="input-flds"></div>
                                         </div>
                                         <div class="form-group">
-                                          <div class="form-input"><label for="shipping_province" class="label-checkout">State</label>
+                                          <div class="form-input"><label for="shipping_province" class="label-checkout">Provincie</label>
                                             <div class="select-form-wrapper"><select autocomplete="address-level1" os-checkout-validate="required" name="shipping_province" data-name="Shipping Province" type="select" id="shipping_province" data-next-checkout-field="province" class="input-flds select-field">
-                                                <option value="">Select State</option>
+                                                <option value="">Selecteer provincie</option>
                                               </select>
                                               <div class="caret-down">
                                                 <div class="select-arrow"><svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
@@ -221,12 +221,12 @@ scripts:
                                           </div>
                                         </div>
                                         <div class="form-group">
-                                          <div class="form-input"><label for="shipping_postal_code" class="label-checkout">ZIP Code</label><input autocomplete="postal-code" os-checkout-validate="required" placeholder="ZIP Code*" maxlength="10" name="shipping_postal_code" data-name="Shipping Postal Code" type="text" id="shipping_postal_code" inputmode="numeric" pattern="(^\d{5}$)|(^\d{5}-\d{4}$)" data-next-checkout-field="postal" class="input-flds"></div>
+                                          <div class="form-input"><label for="shipping_postal_code" class="label-checkout">Postcode</label><input autocomplete="postal-code" os-checkout-validate="required" placeholder="Postcode*" maxlength="10" name="shipping_postal_code" data-name="Shipping Postal Code" type="text" id="shipping_postal_code" inputmode="numeric" pattern="(^\d{5}$)|(^\d{5}-\d{4}$)" data-next-checkout-field="postal" class="input-flds"></div>
                                         </div>
                                       </div>
                                       <div data-next-component="shipping-field-row" class="form-grid__row">
                                         <div class="form-group">
-                                          <div class="form-input"><label for="phone" class="label-checkout">Phone</label><input autocomplete="tel-full" name="phone" data-name="Phone" type="tel" id="phone" placeholder="201-555-0123" data-next-checkout-field="phone" class="input-flds"></div>
+                                          <div class="form-input"><label for="phone" class="label-checkout">Telefoonnummer</label><input autocomplete="tel-full" name="phone" data-name="Phone" type="tel" id="phone" placeholder="06-12345678" data-next-checkout-field="phone" class="input-flds"></div>
                                         </div>
                                       </div>
                                     </div>
@@ -246,23 +246,23 @@ scripts:
                                 {% endcase %}
                                 <div class="form-section form-section--last">
                                   <div class="form-section__header">
-                                    <h1 class="form-section__title">Payment</h1>
-                                    <div class="form-section__subtitle">All transactions are secure and encrypted.<br></div>
+                                    <h1 class="form-section__title">Betaling</h1>
+                                    <div class="form-section__subtitle">Alle transacties zijn veilig en versleuteld.<br></div>
 
                                   </div>
                                   {% campaign_include 'payment-methods.html' show_paypal=true show_klarna=true show_apple_pay=true show_google_pay=true %}
                                 </div>
                                 <div class="submit-section">
-                                  <div class="submit-section__disclaimer">By clicking the button below, you agree with our Terms of Use and Privacy Policy.</div>
+                                  <div class="submit-section__disclaimer">Door op de knop hieronder te klikken, gaat u akkoord met onze Gebruiksvoorwaarden en het Privacybeleid.</div>
                                   <div class="submit-section__button"><button os-checkout-payment="combo" data-action="submit" type="submit" class="submit-button">
                                       <div data-pb-element="checkout-button-spinner" class="submit-button__loader">
                                         <div class="three-quarter-spinner black"></div>
                                       </div>
                                       <div data-pb-element="checkout-button-info" class="submit-button__content">
                                         <div class="submit-button__text">
-                                          <div data-i18n="complete_purchase" class="submit-button__main-text">COMPLETE PURCHASE →</div>
+                                          <div data-i18n="complete_purchase" class="submit-button__main-text">BESTELLING VOLTOOIEN →</div>
                                         </div>
-                                        <div data-i18n="try_risk_free" class="submit-button__subtext">TRY IT RISK FREE! - 30 DAY MONEY BACK GUARANTEE!</div>
+                                        <div data-i18n="try_risk_free" class="submit-button__subtext">PROBEER RISICOVRIJ! - 30 DAGEN GELD-TERUG-GARANTIE!</div>
                                       </div>
                                     </button></div>
                                 </div>
@@ -277,7 +277,7 @@ scripts:
                                   <path d="M10.2857 0.5C6.97714 0.5 4.28571 3.23949 4.28571 6.60714V10.0969H2.57143C1.14857 10.0969 0 11.266 0 12.7143V22.3112C0 23.7595 1.14857 24.9286 2.57143 24.9286H18C19.4229 24.9286 20.5714 23.7595 20.5714 22.3112V12.7143C20.5714 11.266 19.4229 10.0969 18 10.0969H16.2857V6.60714C16.2857 3.23949 13.5943 0.5 10.2857 0.5ZM6 6.60714C6 4.19918 7.92 2.2449 10.2857 2.2449C12.6514 2.2449 14.5714 4.19918 14.5714 6.60714V10.0969H6V6.60714ZM18.8571 12.7143V22.3112C18.8571 22.7911 18.4714 23.1837 18 23.1837H2.57143C2.1 23.1837 1.71429 22.7911 1.71429 22.3112V12.7143C1.71429 12.2344 2.1 11.8418 2.57143 11.8418H18C18.4714 11.8418 18.8571 12.2344 18.8571 12.7143Z" fill="#5C5C5E"></path>
                                   <path d="M10.2857 13.587C8.87138 13.587 7.71423 14.7473 7.71423 16.1869C7.71423 17.3123 8.41709 18.3069 9.45423 18.6646C9.43709 18.717 9.42852 18.7606 9.42852 18.813V20.5579C9.42852 21.0377 9.81423 21.4303 10.2857 21.4303C10.7571 21.4303 11.1428 21.0377 11.1428 20.5579V18.813C11.1428 18.7606 11.1257 18.7083 11.1171 18.6646C12.4628 18.2022 13.1828 16.7191 12.7285 15.3581C12.3771 14.2937 11.3914 13.5783 10.2942 13.587H10.2857ZM10.2857 17.0768C9.81423 17.0768 9.42852 16.6842 9.42852 16.2043C9.42852 15.7245 9.81423 15.3319 10.2857 15.3319C10.7571 15.3319 11.1428 15.7245 11.1428 16.2043C11.1428 16.6842 10.7571 17.0768 10.2857 17.0768Z" fill="#5C5C5E"></path>
                                 </svg></div>
-                              <div class="trust-badge--text">SECURE<br>SSL ENCRYPTION</div>
+                              <div class="trust-badge--text">VEILIGE<br>SSL-VERSLEUTELING</div>
                             </div>
                             <div class="trust-badge__item">
                               <div class="trust-badge--icon"><svg width="100%" height="100%" viewBox="0 0 24 27" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -290,14 +290,14 @@ scripts:
                                     </clipPath>
                                   </defs>
                                 </svg></div>
-                              <div class="trust-badge--text">GUARANTEED<br>SAFE CHECKOUT</div>
+                              <div class="trust-badge--text">GEGARANDEERD<br>VEILIGE AFREKENING</div>
                             </div>
                           </div>
                           <img loading="lazy" src="{{ 'images/credit-card-flags.svg' | campaign_asset }}" alt="" class="credit-card__flags">
                         </div>
                         <div class="guarantee-section">
                           <img loading="lazy" src="{{ 'images/90d.webp' | campaign_asset }}" alt="" class="guarantee-badge">
-                          <div class="text-xs"><strong>90 Day Money-Back Guarantee:</strong> Feel safe knowing you're protected. Try it risk-free and return it within 90 days for a full refund or replacement—no questions asked.</div>
+                          <div class="text-xs"><strong>90 Dagen Geld-Terug-Garantie:</strong> Voel u beschermd. Probeer het risicovrij en retourneer het binnen 90 dagen voor een volledige terugbetaling of vervanging—geen vragen gesteld.</div>
                         </div>
                     </div>
                   </div>
@@ -316,8 +316,8 @@ scripts:
                     <div class="hide-tablet-down">
                       <div>
                         <div class="guarantee-checkout__v2"><img loading="lazy" src="{{ 'images/90d.webp' | campaign_asset }}" alt="" class="checkout_mbg cc-lg">
-                          <div class="cart-guarantee_headline">90 Day <span class="text-break">Money Back Guarantee</span></div>
-                          <div>Love it or get your money back with our 90-day money-back guarantee. If you're not WOW'ed by the results you can get a full refund—no questions asked.</div>
+                          <div class="cart-guarantee_headline">90 Dagen <span class="text-break">Geld-Terug-Garantie</span></div>
+                          <div>Houd er van of krijg uw geld terug met onze 90-dagen geld-terug-garantie. Als u niet WOW bent van de resultaten kunt u een volledige terugbetaling krijgen—geen vragen gesteld.</div>
                         </div>
                       </div>
                     </div>

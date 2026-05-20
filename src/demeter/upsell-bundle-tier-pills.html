@@ -13,8 +13,8 @@ upsell_offer:
   selector_id: "upsell-bundle"
   display_selector_id: "upsell-bundle-1x"
   display_bundle_id: "upsell-bundle-1x-card"
-  accept_text: "Yes, Add to My Order"
-  decline_text: "No thank you, I don't want this one-time offer"
+  accept_text: "Ja, Toevoegen aan Mijn Bestelling"
+  decline_text: "Nee bedankt, ik wil dit eenmalige aanbod niet"
 upsell_bundle_tiers:
   - id: "upsell-bundle-1x"
     button_value: "1"
@@ -104,19 +104,19 @@ swiper_thumbs:
   <div class="main-wrapper">
     <div class="announcement">
       <div class="announcement__block">
-        <div class="announcement__text"><strong>Special Offer Unlocked - Do Not Close This Page</strong></div>
+        <div class="announcement__text"><strong>Speciaal Aanbod Ontgrendeld - Sluit Deze Pagina Niet</strong></div>
       </div>
     </div>
     {% campaign_include 'upsell-header-bar.html' %}
     <section class="section upsell-header">
       <div class="container">
         <div class="upsell-header__inner">
-          <div class="upsell-header__title">Wait! Your Order Isn't Complete</div>
+          <div class="upsell-header__title">Wacht! Uw Bestelling Is Nog Niet Voltooid</div>
           <!-- bundle.upsell-bundle.price updates with qty selection — use bundle.upsell-bundle-1x.price
                (from the display-only selector below) for the header so it always shows the 1x price.
                package path reads the product name from campaign package data (packageId comes from upsell_offer). -->
-          <div class="upsell-header__offer">Special Discount: Get 1 More <span data-next-display="{{ upsell_package_name_path }}">Product Title</span> For Only <span data-next-display="{{ upsell_display_price_path }}" data-next-format="currency">$14.95</span></div>
-          <div class="upsell-header__suboffer">Add this to your order and get a <span data-next-display="{{ upsell_display_discount_path }}" data-next-format="percentage">50%</span> discount<br></div>
+          <div class="upsell-header__offer">Speciale Korting: Ontvang Nog 1 <span data-next-display="{{ upsell_package_name_path }}">Product Title</span> Voor Slechts <span data-next-display="{{ upsell_display_price_path }}" data-next-format="currency">$14.95</span></div>
+          <div class="upsell-header__suboffer">Voeg dit toe aan uw bestelling en ontvang <span data-next-display="{{ upsell_display_discount_path }}" data-next-format="percentage">50%</span> korting<br></div>
         </div>
       </div>
     </section>

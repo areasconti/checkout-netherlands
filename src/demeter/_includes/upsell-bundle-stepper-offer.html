@@ -95,7 +95,7 @@
                       -->
                       <div class="next-bundle-qty">
                         <div class="next-bundle-qty__label">
-                          <div>Select Quantity</div>
+                          <div>Selecteer Aantal</div>
                           <div class="right-bullet-icon"><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" aria-hidden="true" role="img" class="iconify iconify--ic" width="100%" height="100%" preserveAspectRatio="xMidYMid meet" viewBox="0 0 24 24"><path fill="currentColor" d="M16.01 11H4v2h12.01v3L20 12l-3.99-4z"></path></svg></div>
                         </div>
                         <div class="next-bundle-qty__row" data-next-bundle-qty-for="{{ selector_id }}">
@@ -107,18 +107,18 @@
 
                       <div class="prices-text-wrapper">
                         <div class="price-wrapper">
-                          <div class="text-sm tw-600">Retail Price</div>
+                          <div class="text-sm tw-600">Verkoopprijs</div>
                           <div
                             class="upsell-offer__price diagonal-strike color-muted"
                             data-next-display="{{ bundle_original_price_path }}"
                             data-next-format="currency"
                           >$49.99</div>
-                          <div class="text-xs font-bold"><strike>+$4.95 SHIPPING</strike></div>
+                          <div class="text-xs font-bold"><strike>+€4,95 VERZENDING</strike></div>
                         </div>
                         <div class="upsell-offer__divider"></div>
                         <div class="price-wrapper">
                           <div class="upsell-offer__price-heading">
-                            <div class="text-sm tw-600">Offer Price</div>
+                            <div class="text-sm tw-600">Aanbiedingsprijs</div>
                             <div class="text-sm font-bold color-primary">
                               (<span data-next-display="{{ bundle_discount_path }}" data-next-format="percentage"></span> OFF)
                             </div>
@@ -128,7 +128,7 @@
                             data-next-display="{{ bundle_price_path }}"
                             data-next-format="currency"
                           >$24.95</div>
-                          <div class="text-xs font-bold color-primary">+ FREE SHIPPING</div>
+                          <div class="text-xs font-bold color-primary">+ GRATIS VERZENDING</div>
                         </div>
                       </div>
 
@@ -144,9 +144,9 @@
                       <div class="upsell-ships-info">
                         <img class="upsell-ships-info__icon" src="{{ 'images/usps.png' | campaign_asset }}" alt="USPS">
                         <p class="upsell-ships-info__text">
-                          All orders ship from the USA
+                          Alle bestellingen worden verstuurd vanuit de VS
                           <img class="upsell-ships-info__flag" src="{{ 'images/united-states-flag-icon.webp' | campaign_asset }}" alt="">
-                          via USPS within 1 business day. A tracking number will be issued to your email.
+                          via USPS binnen 1 werkdag. Een trackingnummer wordt naar uw e-mail gestuurd.
                         </p>
                       </div>
                       {% campaign_include 'upsell-payment-logos.html' wrapper_class="hide-tablet-up" %}

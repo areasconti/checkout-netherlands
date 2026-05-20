@@ -1,14 +1,14 @@
 <div data-next-catalog-component="payment-method-presentation" class="payment-methods">
   <div data-next-payment-method="credit" class="payment-method next-selected">
     <div class="payment-method__header"><label for="combo_mode_credit" combo_mode="credit" class="payment-method__label"><input type="radio" name="payment_method" id="combo_mode_credit" data-name="Combo Mode" class="payment-method__input" checked="" value="credit">
-        <div class="payment-method__title">Credit Card</div>
+        <div class="payment-method__title">Creditcard</div>
         <div class="payment-method__icons"><img loading="lazy" src="{{ 'images/cc-visa.svg' | campaign_asset }}" alt="" class="payment-method__icon payment-method__icon--visa"><img loading="lazy" src="{{ 'images/cc_master.svg' | campaign_asset }}" alt="" class="payment-method__icon payment-method__icon--mastercard"><img loading="lazy" src="{{ 'images/cc_amex.svg' | campaign_asset }}" alt="" class="payment-method__icon payment-method__icon--amex"><img loading="lazy" src="{{ 'images/cc_discover.svg' | campaign_asset }}" alt="" class="payment-method__icon payment-method__icon--discover"></div>
       </label></div>
     <div data-next-payment-form="credit" os-checkout-element="credit-form" os-shipping-method-same="true" class="payment-method__form payment-method__form--expanded">
       <div class="payment-method__content">
         <div data-next-component="credit-error" class="next-toast-handler">
           <div class="tip1_bar is-warning">
-            <div data-next-component="credit-error-text" class="text-sm">Error message</div>
+            <div data-next-component="credit-error-text" class="text-sm">Foutmelding</div>
           </div>
         </div>
         <div class="form-grid">
@@ -26,7 +26,7 @@
             <div class="form-group">
               <div class="form-input">
                 <div class="select-form-wrapper"><select autocomplete="cc-exp-month" data-placeholder="Exp. Month" placeholder="Exp. Month" name="credit_card_exp_month" id="credit_card_exp_month" data-name="Credit Card Exp. Month" data-next-checkout-field="exp-month" class="input-flds select-field">
-                    <option value="">Exp. Month</option>
+                    <option value="">Vervaldatum maand</option>
                   </select>
                   <div class="caret-down">
                     <div class="select-arrow"><svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
@@ -39,7 +39,7 @@
             <div class="form-group">
               <div class="form-input">
                 <div class="select-form-wrapper"><select autocomplete="cc-exp-year" data-placeholder="Exp. Year" placeholder="Exp. Year" name="credit_card_exp_year" id="credit_card_exp_year" data-name="Credit Card Exp. Year" data-next-checkout-field="exp-year" class="input-flds select-field">
-                    <option value="">Exp. Year</option>
+                    <option value="">Vervaldatum jaar</option>
                   </select>
                   <div class="caret-down">
                     <div class="select-arrow"><svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
@@ -70,10 +70,10 @@
         </div>
         <div class="billing-address">
           <div os-input-field="use-shipping-address" class="checkbox-wrapper"><label class="checkout__checkbox"><input type="checkbox" name="use_shipping_address" id="use_shipping_address" data-name="Use Shipping Address" class="checkbox__input" checked="">
-              <div class="checkbox__label">Use shiping address as billing address</div>
+              <div class="checkbox__label">Verzendadres gebruiken als factuuradres</div>
             </label></div>
           <div os-checkout-element="different-billing-address" class="billing-address__form">
-            <h1 class="form-section__title cc-billing">Billing Address</h1>
+            <h1 class="form-section__title cc-billing">Factuuradres</h1>
             <div os-checkout-component="billing-form" class="form-grid"></div>
           </div>
         </div>
@@ -94,9 +94,9 @@
           </div>
         </div>
         <div class="payment-method__info"><img loading="lazy" src="{{ 'images/paypal.svg' | campaign_asset }}" alt="" class="payment-method__info-image">
-          <h4 class="payment-method__info-title">Complete your transaction via Paypal</h4>
+          <h4 class="payment-method__info-title">Voltooi uw transactie via PayPal</h4>
           <div class="payment-method__info-text">
-            <p class="checkout-form-secure">PayPal will open in a new tab.<br></p>
+            <p class="checkout-form-secure">PayPal wordt geopend in een nieuw tabblad.<br></p>
           </div>
         </div>
       </div>
@@ -108,7 +108,7 @@
     <div class="payment-method__header">
       <label for="combo_mode_klarna" combo_mode="klarna" class="payment-method__label">
         <input type="radio" name="payment_method" id="combo_mode_klarna" data-name="Combo Mode" class="payment-method__input" value="klarna">
-        <div class="payment-method__title">Klarna - Flexible Payments</div>
+        <div class="payment-method__title">Klarna - Flexibele Betalingen</div>
         <div class="payment-method__icons">
           <img loading="lazy" src="{{ 'images/klarna-logo.svg' | campaign_asset }}" alt="" class="payment-method__icon--klarna-logo">
         </div>
@@ -132,7 +132,7 @@
             </svg>
           </div>
           <h4 class="payment-method__info-title">
-            After clicking "Complete Purchase", you will be redirected to Klarna to complete your purchase securely.
+            Na het klikken op "Bestelling voltooien" wordt u doorgestuurd naar Klarna om uw bestelling veilig te voltooien.
           </h4>
         </div>
       </div>
@@ -168,7 +168,7 @@
             </svg>
           </div>
           <h4 class="payment-method__info-title">
-            After clicking "Complete Purchase", you will be redirected to complete your purchase securely.
+            Na het klikken op "Bestelling voltooien" wordt u doorgestuurd om uw bestelling veilig te voltooien.
           </h4>
         </div>
       </div>
@@ -204,7 +204,7 @@
             </svg>
           </div>
           <h4 class="payment-method__info-title">
-            After clicking "Complete Purchase", you will be redirected to complete your purchase securely.
+            Na het klikken op "Bestelling voltooien" wordt u doorgestuurd om uw bestelling veilig te voltooien.
           </h4>
         </div>
       </div>

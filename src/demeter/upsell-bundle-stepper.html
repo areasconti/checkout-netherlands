@@ -17,8 +17,8 @@ upsell_offer:
   default_quantity: 1
   min_quantity: 1
   max_quantity: 5
-  accept_text: "Yes, Add to My Order"
-  decline_text: "No thank you, I don't want this one-time offer"
+  accept_text: "Ja, Toevoegen aan Mijn Bestelling"
+  decline_text: "Nee bedankt, ik wil dit eenmalige aanbod niet"
 swiper_slides:
   - src: "images/1x1_1.svg"
     alt: ""
@@ -72,7 +72,7 @@ swiper_thumbs:
   <div class="main-wrapper">
     <div class="announcement">
       <div class="announcement__block">
-        <div class="announcement__text"><strong>Special Offer Unlocked - Do Not Close This Page</strong></div>
+        <div class="announcement__text"><strong>Speciaal Aanbod Ontgrendeld - Sluit Deze Pagina Niet</strong></div>
       </div>
     </div>
     {% campaign_include 'upsell-header-bar.html' %}
@@ -80,17 +80,17 @@ swiper_thumbs:
     <section class="section upsell-header">
       <div class="container">
         <div class="upsell-header__inner">
-          <div class="upsell-header__title">Wait! Your Order Isn't Complete</div>
+          <div class="upsell-header__title">Wacht! Uw Bestelling Is Nog Niet Voltooid</div>
           <div class="upsell-header__offer">
-            Special Discount: Get 1 More
+            Speciale Korting: Ontvang Nog 1
             <span data-next-display="{{ upsell_package_name_path }}">Product Title</span>
-            For Only
+            Voor Slechts
             <span data-next-display="{{ upsell_price_path }}" data-next-format="currency">$14.95</span>
           </div>
           <div class="upsell-header__suboffer">
-            Add this to your order and get a
+            Voeg dit toe aan uw bestelling en ontvang
             <span data-next-display="{{ upsell_discount_path }}" data-next-format="percentage">50%</span>
-            discount
+            korting
           </div>
         </div>
       </div>
