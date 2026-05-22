@@ -57,6 +57,16 @@ scripts:
   .checkout-header { padding-top: 0.5rem; padding-bottom: 0.5rem; }
   .encrypted-banner { padding-top: 0.35rem; padding-bottom: 0.35rem; }
   .section-checkout { padding-top: 0.75rem; }
+
+  /* Bestelknop — zelfde blauw als de header */
+  .submit-button {
+    background-color: var(--brand--color--primary) !important;
+    border-color: var(--brand--color--primary) !important;
+  }
+  .submit-button:hover {
+    background-color: var(--brand--color--primary-dark) !important;
+    border-color: var(--brand--color--primary-dark) !important;
+  }
 </style>
 <div class="page-wrapper">
 
@@ -265,7 +275,7 @@ scripts:
                                         <div class="submit-button__text">
                                           <div data-i18n="complete_purchase" class="submit-button__main-text">BESTELLING VOLTOOIEN →</div>
                                         </div>
-                                        <div data-i18n="try_risk_free" class="submit-button__subtext">PROBEER RISICOVRIJ! - 30 DAGEN GELD-TERUG-GARANTIE!</div>
+                                        <div data-i18n="try_risk_free" class="submit-button__subtext">✓ 30 dagen geld-terug-garantie</div>
                                       </div>
                                     </button></div>
                                 </div>
