@@ -38,7 +38,7 @@
     "description": "Demeter checkout funnel",
     "entry_url": "presell",
     "sdk_version": "0.4.19",
-    "store_name": "Next Commerce",
+    "store_name": "GoedeKeuze",
     "store_url": "https://demo.29next.com/",
     "store_terms": "https://demo.29next.com/terms-conditions/",
     "store_privacy": "https://demo.29next.com/privacy-policy/",
