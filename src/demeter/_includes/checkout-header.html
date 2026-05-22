@@ -1,34 +1,55 @@
 <style>
-  /* ── Partner logos in header ─────────────────────────────────────────────
-     Desktop : logo sinistra | partner logos destra, allineati verticalmente
-     Mobile  : logo centrato sopra + partner logos sotto centrati
-  ──────────────────────────────────────────────────────────────────────── */
+  /*
+   * Checkout header layout
+   * ─────────────────────────────────────────────────────────────────────────
+   * Desktop  : [partner-logos (sx)]              [90-dag garantie (dx)]
+   * Mobile   : [partner-logos (gecentreerd)] — garantie verborgen
+   * ─────────────────────────────────────────────────────────────────────────
+   */
+
   .cc-header-partner-logos {
     display: block;
-    height: 32px;
+    height: 34px;
     width: auto;
-    max-width: 210px;
+    max-width: 230px;
     object-fit: contain;
   }
 
+  .cc-header-guarantee {
+    display: flex;
+    align-items: center;
+    gap: 0.65rem;
+    flex-shrink: 0;
+  }
+
+  .cc-header-guarantee__badge {
+    width: 50px;
+    height: 50px;
+    flex-shrink: 0;
+    display: block;
+  }
+
+  .cc-header-guarantee__text {
+    font-size: 0.78rem;
+    font-weight: 700;
+    line-height: 1.4;
+    color: var(--brand--color--foreground, #1a1a1a);
+    white-space: nowrap;
+  }
+
+  /* ── Mobile: centreer alleen de betaallogos, verberg garantie ──────────── */
   @media (max-width: 600px) {
     .checkout-header__inner {
-      flex-direction: column !important;
-      align-items: center !important;
-      gap: 0.6rem !important;
+      justify-content: center !important;
     }
 
-    .checkout-header__brand {
-      justify-content: center;
-    }
-
-    .checkout-header__extras {
-      justify-content: center;
+    .cc-header-guarantee {
+      display: none;
     }
 
     .cc-header-partner-logos {
-      height: 22px;
-      max-width: 160px;
+      height: 26px;
+      max-width: 180px;
     }
   }
 </style>
@@ -36,15 +57,26 @@
 <section class="checkout-header">
   <div class="container cc-medium">
     <div class="checkout-header__inner">
+
+      <!-- LINKS / MOBILE CENTER: betaalmethoden -->
       <div class="checkout-header__brand">
-        <img src="{{ 'images/next-logo.png' | campaign_asset }}" loading="eager" alt="{{ campaign.store_name }}" class="brand-logo">
-      </div>
-      <div class="checkout-header__extras">
-        <img loading="lazy"
+        <img loading="eager"
              src="{{ 'images/partner-logos.avif' | campaign_asset }}"
              alt="iDEAL · Bancontact"
              class="cc-header-partner-logos">
       </div>
+
+      <!-- RECHTS: 90-dagen geld-terug-garantie (alleen desktop) -->
+      <div class="checkout-header__extras cc-header-guarantee">
+        <img loading="lazy"
+             src="{{ 'images/90d.webp' | campaign_asset }}"
+             alt="90 Dagen Geld-Terug-Garantie"
+             class="cc-header-guarantee__badge">
+        <div class="cc-header-guarantee__text">
+          90 Dagen 100%<br>Geld-Terug-Garantie
+        </div>
+      </div>
+
     </div>
   </div>
 </section>
