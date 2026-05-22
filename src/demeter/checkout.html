@@ -53,6 +53,12 @@ scripts:
   - js/checkout.js
   - js/checkout-demeter.js
 ---
+<style>
+  /* Spacing compatto — rimozione spazio verticale eccessivo */
+  .checkout-header { padding-top: 0.5rem; padding-bottom: 0.5rem; }
+  .encrypted-banner { padding-top: 0.35rem; padding-bottom: 0.35rem; }
+  .section-checkout { padding-top: 0.75rem; }
+</style>
 <div class="page-wrapper">
 
       <div class="main-wrapper">
@@ -70,7 +76,6 @@ scripts:
             </div>
           </div>
         </div>
-        {% campaign_include 'checkout-progress.html' %}
         <div class="section-checkout">
           <div class="container cc-medium">
             <div class="checkout-page-layout">
