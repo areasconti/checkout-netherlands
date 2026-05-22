@@ -49,7 +49,6 @@ bundles:
     total_tone_class: "os-dark"
 scripts:
   - js/promo-banner.js
-  - js/promo-timer.js
   - js/checkout.js
   - js/checkout-demeter.js
 ---
@@ -83,7 +82,6 @@ scripts:
                 <div class="checkout-layout__left checkout-layout__left--narrow">
                     <div class="checkout-layout__content">
                       <div class="checkout-layout__content-inner">
-                        <promo-timer{% if promo_sale %} force-sale="{{ promo_sale }}"{% endif %}></promo-timer>
                         <div class="checkout-form">
                           <form data-next-checkout="form" id="combo_form" method="post">
                             <div class="form-content">
