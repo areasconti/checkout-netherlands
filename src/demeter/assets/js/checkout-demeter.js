@@ -1,5 +1,5 @@
 window.addEventListener('next:initialized', function() {
-  initFomo();
+  // initFomo(); — disabilitato
 
   // Image-only exit intent — replace with your own image URL
   initExitIntentImage('https://placehold.co/600x400', async () => {
