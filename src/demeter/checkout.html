@@ -35,18 +35,24 @@ bundles:
   - id: "bundle-1x"
     quantity: 1
     shipping_method: "standard"
-    selected: true
     title_prefix: "1x "
-    badge_text: "BESTE DEAL"
+    badge_text: "Starter Pack"
   - id: "bundle-2x"
     quantity: 2
     shipping_method: "standard"
+    selected: true
     title_prefix: "2x "
+    badge_text: "Meest Gekozen ⭐"
+    savings_text: "Bespaar vandaag"
+    show_per_unit: true
   - id: "bundle-3x"
     quantity: 3
     shipping_method: "free"
     title_prefix: "3x "
     total_tone_class: "os-dark"
+    badge_text: "Beste Waarde"
+    savings_text: "Bespaar vandaag"
+    show_per_unit: true
 scripts:
   - js/promo-banner.js
   - js/checkout.js
@@ -66,6 +72,123 @@ scripts:
   .submit-button:hover {
     background-color: var(--brand--color--primary-dark) !important;
     border-color: var(--brand--color--primary-dark) !important;
+  }
+
+  /* ─── Bundle section ──────────────────────────────────────────────────── */
+
+  /* Subtitle under section title */
+  .cc-bundle-subtitle {
+    margin: -0.35rem 0 0.9rem;
+    font-size: 0.8125rem;
+    color: #888;
+    font-weight: 400;
+  }
+
+  /* Reduced card padding ~15% (1rem → 0.85rem) */
+  .os-option .os-card__wrapper {
+    padding: 0.85rem !important;
+  }
+
+  /* ── Selected card: stronger border + blue tint background ──────────── */
+  .os-option .os-card.next-selected {
+    background-color: #f0f5ff !important;
+    box-shadow: 0 0 0 2.5px var(--brand--color--primary) !important;
+  }
+
+  /* ── Radio button — 25% bigger, clear selected state ────────────────── */
+  .os-option .radio-style-1 {
+    flex-shrink: 0;
+    width: 1.35rem;
+    height: 1.35rem;
+    min-width: 1.35rem;
+    border-radius: 50%;
+    border: 2px solid #ccc;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: border-color 0.12s;
+    background: #fff;
+  }
+  .os-option .os-card.next-selected .radio-style-1 {
+    border-color: var(--brand--color--primary);
+  }
+  .os-option .radio-inner {
+    width: 0.65rem;
+    height: 0.65rem;
+    border-radius: 50%;
+    background-color: transparent;
+    transition: background-color 0.12s;
+  }
+  .os-option .os-card.next-selected .radio-inner {
+    background-color: var(--brand--color--primary);
+  }
+
+  /* ── Bundle title ────────────────────────────────────────────────────── */
+  .cc-bundle-title {
+    font-size: 0.9rem;
+    font-weight: 700;
+    line-height: 1.2;
+    color: var(--brand--color--foreground, #1a1a1a);
+  }
+
+  /* ── Inline badge pill (inside card, not floating) ───────────────────── */
+  .cc-bundle-label {
+    display: inline-block;
+    margin-top: 0.3rem;
+    padding: 0.15rem 0.6rem;
+    border-radius: 20px;
+    font-size: 0.68rem;
+    font-weight: 700;
+    line-height: 1.5;
+    background-color: #e8f0ff;
+    color: var(--brand--color--primary);
+    transition: background-color 0.12s, color 0.12s;
+  }
+  .os-option .os-card.next-selected .cc-bundle-label {
+    background-color: var(--brand--color--primary);
+    color: #fff;
+  }
+
+  /* ── Savings line ────────────────────────────────────────────────────── */
+  .cc-bundle-savings {
+    margin-top: 0.25rem;
+    font-size: 0.68rem;
+    font-weight: 600;
+    color: #2a9d5c;
+  }
+
+  /* ── Pricing column ──────────────────────────────────────────────────── */
+  .cc-bundle-pricing {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 0.2rem;
+    text-align: right;
+  }
+  .cc-bundle-unit {
+    font-size: 1.05rem;
+    font-weight: 800;
+    line-height: 1;
+    color: var(--brand--color--foreground, #1a1a1a);
+    white-space: nowrap;
+  }
+  .cc-bundle-per-stuk {
+    font-size: 0.68rem;
+    font-weight: 500;
+    color: #888;
+    margin-left: 1px;
+  }
+  .cc-bundle-total {
+    font-size: 0.72rem;
+    color: #999;
+    white-space: nowrap;
+    display: flex;
+    align-items: center;
+    gap: 0.25rem;
+  }
+  .cc-bundle-original {
+    text-decoration: line-through;
+    color: #bbb;
   }
 </style>
 <div class="page-wrapper">
@@ -97,7 +220,8 @@ scripts:
                             <div class="form-content">
                               <div class="form-sections">
                                 <div class="form-section form-section--first">
-                                  <h2 class="form-section__title">Kies Uw Pakket</h2>
+                                  <h2 class="form-section__title">Selecteer uw pakket</h2>
+                                  <p class="cc-bundle-subtitle">Hoe meer u koopt, hoe groter uw korting</p>
                                   {% campaign_include 'editorial-tier-selector.html' packages=packages shipping_methods=shipping_methods bundles=bundles %}
                                   <!-- Canonical Demeter checkout pattern: manual inline bundle cards.
                                    This keeps data-next-display="package.*" bindings reliable for image/name in initial DOM. -->
