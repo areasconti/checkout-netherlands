@@ -115,16 +115,8 @@ class PromoBanner extends HTMLElement {
   }
 
   startCountdown() {
-    const DURATION = 19 * 60; // 19 minuten in seconden
-    const KEY = 'gk_cart_reserve_start';
-
-    let startTime = sessionStorage.getItem(KEY);
-    if (!startTime) {
-      startTime = Date.now();
-      sessionStorage.setItem(KEY, String(startTime));
-    } else {
-      startTime = parseInt(startTime, 10);
-    }
+    const DURATION = 19 * 60; // 19 minuten — herstart bij elke paginalaad
+    const startTime = Date.now();
 
     const update = () => {
       const elapsed = Math.floor((Date.now() - startTime) / 1000);
@@ -137,7 +129,13 @@ class PromoBanner extends HTMLElement {
         el.textContent = `${String(m).padStart(2, '0')}:${String(s).padStart(2, '0')}`;
       }
 
-      if (remaining <= 0) clearInterval(this.timerInterval);
+      if (remaining <= 0) {
+        clearInterval(this.timerInterval);
+        // Verberg de gehele bannerbalk bij verlopen
+        const wrapper = this.parentElement;
+        if (wrapper) wrapper.style.display = 'none';
+        else this.style.display = 'none';
+      }
     };
 
     update();

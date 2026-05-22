@@ -74,177 +74,145 @@ scripts:
     border-color: var(--brand--color--primary-dark) !important;
   }
 
-  /* ─── Bundle section ──────────────────────────────────────────────────── */
+  /* ─── Bundle section — minimaal, payment-processor stijl ───────────────── */
 
-  /* Subtitle under section title */
   .cc-bundle-subtitle {
     margin: -0.35rem 0 0.9rem;
-    font-size: 0.8125rem;
+    font-size: 0.8rem;
     color: #888;
     font-weight: 400;
   }
 
-  /* Reduced card padding ~15% (1rem → 0.85rem) */
-  .os-option .os-card__wrapper {
-    padding: 0.85rem !important;
+  /* Standaard kaart: lichte rand, geen schaduwen */
+  .os-option .os-card {
+    box-shadow: 0 0 0 1px #e4e4e7 !important;
   }
 
-  /* ── Selected card: stronger border + blue tint background ──────────── */
+  /* Geselecteerde kaart: subtiele donkere rand + nauwelijks-zichtbare tint */
   .os-option .os-card.next-selected {
-    background-color: #f0f5ff !important;
-    box-shadow: 0 0 0 2.5px var(--brand--color--primary) !important;
+    background-color: #f7f7f9 !important;
+    box-shadow: 0 0 0 1.5px #4a4a55 !important;
   }
 
-  /* ── Radio button — 25% bigger, clear selected state ────────────────── */
+  /* Kaartpadding */
+  .os-option .os-card__wrapper {
+    padding: 0.75rem !important;
+  }
+
+  /* Kaartgap */
+  .os-option .os-cards__vertical {
+    row-gap: 0.45rem;
+  }
+
+  /* Radio */
   .os-option .radio-style-1 {
     flex-shrink: 0;
-    width: 1.35rem;
-    height: 1.35rem;
-    min-width: 1.35rem;
+    width: 1.3rem;
+    height: 1.3rem;
+    min-width: 1.3rem;
     border-radius: 50%;
-    border: 2px solid #ccc;
+    border: 1.5px solid #c8c8ce;
     display: flex;
     align-items: center;
     justify-content: center;
-    transition: border-color 0.12s;
+    transition: border-color 0.1s;
     background: #fff;
   }
   .os-option .os-card.next-selected .radio-style-1 {
-    border-color: var(--brand--color--primary);
+    border-color: #4a4a55;
   }
   .os-option .radio-inner {
-    width: 0.65rem;
-    height: 0.65rem;
+    width: 0.6rem;
+    height: 0.6rem;
     border-radius: 50%;
     background-color: transparent;
-    transition: background-color 0.12s;
+    transition: background-color 0.1s;
   }
   .os-option .os-card.next-selected .radio-inner {
-    background-color: var(--brand--color--primary);
+    background-color: #4a4a55;
   }
 
-  /* ── Bundle title ────────────────────────────────────────────────────── */
+  /* Titel */
   .cc-bundle-title {
-    font-size: 0.9rem;
-    font-weight: 700;
+    font-size: 0.875rem;
+    font-weight: 600;
     line-height: 1.2;
-    color: var(--brand--color--foreground, #1a1a1a);
+    color: #1a1a1a;
   }
 
-  /* ── Inline badge pill (inside card, not floating) ───────────────────── */
+  /* Badge: gedempte kleur, bijna-vierkante afronding, kleine tekst */
   .cc-bundle-label {
     display: inline-block;
-    margin-top: 0.3rem;
-    padding: 0.15rem 0.6rem;
-    border-radius: 20px;
-    font-size: 0.68rem;
-    font-weight: 700;
-    line-height: 1.5;
-    background-color: #e8f0ff;
-    color: var(--brand--color--primary);
-    transition: background-color 0.12s, color 0.12s;
-  }
-  .os-option .os-card.next-selected .cc-bundle-label {
-    background-color: var(--brand--color--primary);
-    color: #fff;
-  }
-
-  /* ── Savings line ────────────────────────────────────────────────────── */
-  .cc-bundle-savings {
-    margin-top: 0.25rem;
-    font-size: 0.68rem;
+    margin-top: 0.28rem;
+    padding: 0.1rem 0.4rem;
+    border-radius: 3px;
+    font-size: 0.6rem;
     font-weight: 600;
-    color: #2a9d5c;
+    letter-spacing: 0.03em;
+    text-transform: uppercase;
+    line-height: 1.6;
+    background: #ededf0;
+    color: #5a5a6e;
+  }
+  /* Blijft gedempt op geselecteerde kaart — geen felblauwe opvulling */
+  .os-option .os-card.next-selected .cc-bundle-label {
+    background: #ededf0;
+    color: #5a5a6e;
   }
 
-  /* ── Pricing column ──────────────────────────────────────────────────── */
+  /* Verberg bespaarlabel */
+  .cc-bundle-savings { display: none; }
+
+  /* Prijskolom */
   .cc-bundle-pricing {
     display: flex;
     flex-direction: column;
     align-items: flex-end;
-    gap: 0.2rem;
+    gap: 0.18rem;
     text-align: right;
   }
   .cc-bundle-unit {
-    font-size: 1.05rem;
-    font-weight: 800;
+    font-size: 0.9375rem;
+    font-weight: 700;
     line-height: 1;
-    color: var(--brand--color--foreground, #1a1a1a);
+    color: #1a1a1a;
     white-space: nowrap;
   }
   .cc-bundle-per-stuk {
-    font-size: 0.68rem;
-    font-weight: 500;
-    color: #888;
-    margin-left: 1px;
+    font-size: 0.75rem;
+    font-weight: 400;
+    color: #666;
+    margin-left: 2px;
   }
   .cc-bundle-total {
-    font-size: 0.72rem;
-    color: #999;
+    font-size: 0.7rem;
+    color: #aaa;
     display: flex;
     align-items: center;
-    flex-wrap: wrap;           /* fix #2: geen overflow op smalle schermen */
-    gap: 0.2rem 0.25rem;
+    flex-wrap: wrap;
+    gap: 0.2rem;
   }
   .cc-bundle-original {
     text-decoration: line-through;
-    color: #bbb;
+    color: #ccc;
   }
 
-  /* ─── Responsive: mobiel ≤ 480px ───────────────────────────────────────── */
+  /* ── Mobiel ≤ 480px ──────────────────────────────────────────────────── */
   @media (max-width: 480px) {
-
-    /* Fix #1 — verberg productafbeelding in bundlekaarten.
-       Geeft elk kaart ~80px extra breedte terug; title + prijs
-       passen comfortabel op een 320px scherm. */
-    .os-option .os-card__image-slot {
-      display: none;
-    }
-
-    /* Fix #2 — compactere kaartgap op mobiel */
-    .os-option .os-cards__vertical {
-      row-gap: 0.5rem;
-    }
-
-    /* Fix #5 — iets kleinere eenheidsprijs zonder afbeelding */
-    .cc-bundle-unit {
-      font-size: 0.95rem;
-    }
-
-    /* Fix #4 — verwijder overtollige onderpadding (4rem → 1.5rem) */
-    .section-checkout {
-      padding-bottom: 1.5rem !important;
-    }
-
-    /* Fix #3a — stapel trustbadges verticaal zodat ze ruimte hebben */
-    .trust-badges {
-      flex-direction: column;
-      align-items: center;
-      gap: 0.6rem;
-    }
-
-    /* Fix #3b — trustbadge tekst en icoon iets groter (was 8px / 14px) */
-    .trust-badge--text {
-      font-size: 0.7rem !important;
-    }
-    .trust-badge--icon {
-      width: 18px !important;
-      height: auto !important;
-    }
+    .os-option .os-card__image-slot { display: none; }
+    .os-option .os-cards__vertical { row-gap: 0.4rem; }
+    .cc-bundle-unit { font-size: 0.875rem; }
+    .section-checkout { padding-bottom: 1.5rem !important; }
+    .trust-badges { flex-direction: column; align-items: center; gap: 0.6rem; }
+    .trust-badge--text { font-size: 0.7rem !important; }
+    .trust-badge--icon { width: 18px !important; height: auto !important; }
   }
 
-  /* Extra compressie op zeer kleine schermen (≤ 360px) */
+  /* ── Zeer klein scherm ≤ 360px ───────────────────────────────────────── */
   @media (max-width: 360px) {
-    .os-option .os-card__wrapper {
-      padding: 0.7rem !important;
-    }
-    .cc-bundle-title {
-      font-size: 0.82rem;
-    }
-    .cc-bundle-label {
-      font-size: 0.62rem;
-      padding: 0.1rem 0.45rem;
-    }
+    .os-option .os-card__wrapper { padding: 0.65rem !important; }
+    .cc-bundle-title { font-size: 0.82rem; }
+    .cc-bundle-label { font-size: 0.57rem; padding: 0.08rem 0.35rem; }
   }
 </style>
 <div class="page-wrapper">

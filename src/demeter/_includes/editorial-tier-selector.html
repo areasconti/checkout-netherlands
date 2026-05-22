@@ -66,12 +66,7 @@
             <div class="radio-inner"></div>
           </div>
 
-          <!-- Product image -->
-          <div class="os-card__image-slot">
-            <img data-next-display="package.image" alt="" class="image">
-          </div>
-
-          <!-- Title + inline badge + savings -->
+          <!-- Title + badge -->
           <div class="os-card__main-slot">
             <div class="cc-bundle-title">
               {{ b.title_prefix }}<span data-next-display="package.name">Package Title</span>
@@ -79,16 +74,13 @@
             {%- if b.badge_text %}
             <div class="cc-bundle-label">{{ b.badge_text }}</div>
             {%- endif %}
-            {%- if b.savings_text %}
-            <div class="cc-bundle-savings" data-next-bundle-display="hasDiscount">{{ b.savings_text }}</div>
-            {%- endif %}
           </div>
 
-          <!-- Pricing: unit price (large) + total (small below for multi-qty) -->
+          <!-- Pricing: unit price (primary) + total (secondary) -->
           <div class="os-card__secondary-slot">
             <div class="cc-bundle-pricing">
               <div class="cc-bundle-unit">
-                <span data-next-bundle-display="unitPrice">—</span>{% if b.show_per_unit %}<span class="cc-bundle-per-stuk">/st.</span>{% endif %}
+                <span data-next-bundle-display="unitPrice">—</span>{% if b.show_per_unit %}<span class="cc-bundle-per-stuk"> per stuk</span>{% endif %}
               </div>
               {%- if b.show_per_unit %}
               <div class="cc-bundle-total">
@@ -120,7 +112,6 @@
       <div class="os-card__wrapper">
         <div class="os-card__content os--align-middle" data-next-package-id="{{ _pkg }}">
           <div class="radio-style-1"><div class="radio-inner"></div></div>
-          <div class="os-card__image-slot"><img data-next-display="package.image" alt="" class="image"></div>
           <div class="os-card__main-slot">
             <div class="cc-bundle-title">1x <span data-next-display="package.name">Package Title</span></div>
             <div class="cc-bundle-label">Starter Pack</div>
@@ -145,15 +136,13 @@
       <div class="os-card__wrapper">
         <div class="os-card__content os--align-middle" data-next-package-id="{{ _pkg }}">
           <div data-selected="true" class="radio-style-1"><div class="radio-inner"></div></div>
-          <div class="os-card__image-slot"><img data-next-display="package.image" alt="" class="image"></div>
           <div class="os-card__main-slot">
             <div class="cc-bundle-title">2x <span data-next-display="package.name">Package Title</span></div>
             <div class="cc-bundle-label">Meest Gekozen ⭐</div>
-            <div class="cc-bundle-savings" data-next-bundle-display="hasDiscount">Bespaar vandaag</div>
           </div>
           <div class="os-card__secondary-slot">
             <div class="cc-bundle-pricing">
-              <div class="cc-bundle-unit"><span data-next-bundle-display="unitPrice">—</span><span class="cc-bundle-per-stuk">/st.</span></div>
+              <div class="cc-bundle-unit"><span data-next-bundle-display="unitPrice">—</span><span class="cc-bundle-per-stuk"> per stuk</span></div>
               <div class="cc-bundle-total">
                 Totaal: <span data-next-bundle-display="price">—</span>
                 <span class="cc-bundle-original" data-next-bundle-display="hasDiscount"><span data-next-bundle-display="originalPrice">—</span></span>
@@ -174,15 +163,13 @@
       <div class="os-card__wrapper">
         <div class="os-card__content os--align-middle" data-next-package-id="{{ _pkg }}">
           <div class="radio-style-1"><div class="radio-inner"></div></div>
-          <div class="os-card__image-slot"><img data-next-display="package.image" alt="" class="image"></div>
           <div class="os-card__main-slot">
             <div class="cc-bundle-title">3x <span data-next-display="package.name">Package Title</span></div>
             <div class="cc-bundle-label">Beste Waarde</div>
-            <div class="cc-bundle-savings" data-next-bundle-display="hasDiscount">Bespaar vandaag</div>
           </div>
           <div class="os-card__secondary-slot">
             <div class="cc-bundle-pricing">
-              <div class="cc-bundle-unit"><span data-next-bundle-display="unitPrice">—</span><span class="cc-bundle-per-stuk">/st.</span></div>
+              <div class="cc-bundle-unit"><span data-next-bundle-display="unitPrice">—</span><span class="cc-bundle-per-stuk"> per stuk</span></div>
               <div class="cc-bundle-total">
                 Totaal: <span data-next-bundle-display="price">—</span>
                 <span class="cc-bundle-original" data-next-bundle-display="hasDiscount"><span data-next-bundle-display="originalPrice">—</span></span>
