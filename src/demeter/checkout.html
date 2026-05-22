@@ -4,7 +4,7 @@ page_type: checkout
 next_url: upsell-bundle-stepper.html
 promo_sale: "default"
 cart_summary_variant: "03"
-order_bump_variant: "check01+switch01"
+order_bump_variant: "none"
 price_display_variant: "compare-unit-total"
 order_bump:
   check01:
@@ -250,7 +250,7 @@ scripts:
                                     <div class="form-section__subtitle">Alle transacties zijn veilig en versleuteld.<br></div>
 
                                   </div>
-                                  {% campaign_include 'payment-methods.html' show_paypal=true show_klarna=true show_apple_pay=true show_google_pay=true %}
+                                  {% campaign_include 'payment-methods.html' show_paypal=true show_klarna=false show_apple_pay=true show_google_pay=true %}
                                 </div>
                                 <div class="submit-section">
                                   <div class="submit-section__disclaimer">Door op de knop hieronder te klikken, gaat u akkoord met onze Gebruiksvoorwaarden en het Privacybeleid.</div>
