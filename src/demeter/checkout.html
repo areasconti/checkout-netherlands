@@ -181,14 +181,70 @@ scripts:
   .cc-bundle-total {
     font-size: 0.72rem;
     color: #999;
-    white-space: nowrap;
     display: flex;
     align-items: center;
-    gap: 0.25rem;
+    flex-wrap: wrap;           /* fix #2: geen overflow op smalle schermen */
+    gap: 0.2rem 0.25rem;
   }
   .cc-bundle-original {
     text-decoration: line-through;
     color: #bbb;
+  }
+
+  /* ─── Responsive: mobiel ≤ 480px ───────────────────────────────────────── */
+  @media (max-width: 480px) {
+
+    /* Fix #1 — verberg productafbeelding in bundlekaarten.
+       Geeft elk kaart ~80px extra breedte terug; title + prijs
+       passen comfortabel op een 320px scherm. */
+    .os-option .os-card__image-slot {
+      display: none;
+    }
+
+    /* Fix #2 — compactere kaartgap op mobiel */
+    .os-option .os-cards__vertical {
+      row-gap: 0.5rem;
+    }
+
+    /* Fix #5 — iets kleinere eenheidsprijs zonder afbeelding */
+    .cc-bundle-unit {
+      font-size: 0.95rem;
+    }
+
+    /* Fix #4 — verwijder overtollige onderpadding (4rem → 1.5rem) */
+    .section-checkout {
+      padding-bottom: 1.5rem !important;
+    }
+
+    /* Fix #3a — stapel trustbadges verticaal zodat ze ruimte hebben */
+    .trust-badges {
+      flex-direction: column;
+      align-items: center;
+      gap: 0.6rem;
+    }
+
+    /* Fix #3b — trustbadge tekst en icoon iets groter (was 8px / 14px) */
+    .trust-badge--text {
+      font-size: 0.7rem !important;
+    }
+    .trust-badge--icon {
+      width: 18px !important;
+      height: auto !important;
+    }
+  }
+
+  /* Extra compressie op zeer kleine schermen (≤ 360px) */
+  @media (max-width: 360px) {
+    .os-option .os-card__wrapper {
+      padding: 0.7rem !important;
+    }
+    .cc-bundle-title {
+      font-size: 0.82rem;
+    }
+    .cc-bundle-label {
+      font-size: 0.62rem;
+      padding: 0.1rem 0.45rem;
+    }
   }
 </style>
 <div class="page-wrapper">
