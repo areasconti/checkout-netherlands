@@ -73,38 +73,14 @@
           <div{% if b.selected %} data-selected="true"{% endif %} class="radio-style-1">
             <div class="radio-inner"></div>
           </div>
-          <div class="os-card__image-slot hide-tablet"><img data-next-display="package.image" alt="" class="image"></div>
+          <div class="os-card__image-slot"><img data-next-display="package.image" alt="" class="image"></div>
           <div class="os-card__main-slot">
-            <div class="os-card__title-section">
-              <div class="os-card__title-wrapper">
-                <div class="os-card__title">{{ b.title_prefix }}<span data-next-display="package.name">Package Title</span></div>
-                <div data-next-bundle-display="hasDiscount" class="os-card__title-badge pb--bestseller">
-                  <div>SAVE <span data-next-bundle-display="discountPercentage">-</span></div>
-                </div>
-              </div>
-              <div class="os-card__subtitle-wrapper">
-                {%- if b.subtitle_text %}
-                <div class="os-card__subtitle-text">{{ b.subtitle_text }}{% if b.shipping_label %} {{ b.shipping_label }}{% endif %}</div>
-                {%- else %}
-                <div data-next-bundle-display="hasDiscount" class="os-card__subtitle-text">Save <span data-next-bundle-display="discountAmount">-</span>{% if b.shipping_label %} {{ b.shipping_label }}{% endif %}</div>
-                {%- endif %}
-              </div>
-            </div>
+            <div class="os-card__title">{{ b.title_prefix }}<span data-next-display="package.name">Package Title</span></div>
           </div>
-              {% assign card_price_variant = b.price_display_variant | default: selector_price_variant -%}
-              <div class="os-card__secondary-slot">
-	            <div class="os-card__pricing">
-	              {% unless card_price_variant == 'total-only' %}
-	              <div class="os-card__price-container">
-	                <div data-next-bundle-display="hasDiscount" class="os-card__price os--compare os-style"><span data-next-bundle-display="originalUnitPrice">-</span></div>
-	                <div class="os-card__price os--current"><span data-next-bundle-display="unitPrice">-</span>/ea</div>
-	              </div>
-	              {% endunless %}
-	              <div class="os-card__total-container">
-	                <div class="os-card__total-label">Total:</div>
-                <div data-next-bundle-display="hasDiscount" class="os-card__total-compare"><span data-next-bundle-display="originalPrice">-</span></div>
-                <div class="os-card__total-current{% if b.total_tone_class %} {{ b.total_tone_class }}{% endif %}"><span data-next-bundle-display="price">-</span></div>
-              </div>
+          <div class="os-card__secondary-slot">
+            <div class="os-card__pricing">
+              <div class="os-card__price os--current"><span data-next-bundle-display="price">-</span></div>
+              <div data-next-bundle-display="hasDiscount" class="os-card__price os--compare os-style os--small"><span data-next-bundle-display="originalPrice">-</span></div>
             </div>
           </div>
         </div>
@@ -128,34 +104,15 @@
       <div class="os-card__header-slot"></div>
       <div class="os-card__wrapper">
         <div class="os-card__content os--align-middle" data-next-package-id="{{ _pkg }}">
-          <div data-selected="true" class="radio-style-1">
-            <div class="radio-inner"></div>
-          </div>
-          <div class="os-card__image-slot hide-tablet"><img data-next-display="package.image" alt="" class="image"></div>
+          <div data-selected="true" class="radio-style-1"><div class="radio-inner"></div></div>
+          <div class="os-card__image-slot"><img data-next-display="package.image" alt="" class="image"></div>
           <div class="os-card__main-slot">
-            <div class="os-card__title-section">
-              <div class="os-card__title-wrapper">
-                <div class="os-card__title">1x <span data-next-display="package.name">Package Title</span></div>
-                <div data-next-bundle-display="hasDiscount" class="os-card__title-badge pb--bestseller">
-                  <div>SAVE <span data-next-bundle-display="discountPercentage">-</span></div>
-                </div>
-              </div>
-              <div class="os-card__subtitle-wrapper">
-                <div data-next-bundle-display="hasDiscount" class="os-card__subtitle-text">Save <span data-next-bundle-display="discountAmount">-</span></div>
-              </div>
-            </div>
+            <div class="os-card__title">1x <span data-next-display="package.name">Package Title</span></div>
           </div>
           <div class="os-card__secondary-slot">
             <div class="os-card__pricing">
-              <div class="os-card__price-container">
-                <div data-next-bundle-display="hasDiscount" class="os-card__price os--compare os-style"><span data-next-bundle-display="originalUnitPrice">-</span></div>
-                <div class="os-card__price os--current"><span data-next-bundle-display="unitPrice">-</span>/ea</div>
-              </div>
-              <div class="os-card__total-container">
-                <div class="os-card__total-label">Total:</div>
-                <div data-next-bundle-display="hasDiscount" class="os-card__total-compare"><span data-next-bundle-display="originalPrice">-</span></div>
-                <div class="os-card__total-current"><span data-next-bundle-display="price">-</span></div>
-              </div>
+              <div class="os-card__price os--current"><span data-next-bundle-display="price">-</span></div>
+              <div data-next-bundle-display="hasDiscount" class="os-card__price os--compare os-style os--small"><span data-next-bundle-display="originalPrice">-</span></div>
             </div>
           </div>
         </div>
@@ -164,7 +121,7 @@
       <div class="os-card__footer-slot"></div>
       <div class="os-card__label-slot">
         <div class="os-card__label os-card__label--top-right">
-          <div class="os-card__label-text">BEST DEAL</div>
+          <div class="os-card__label-text">BESTE DEAL</div>
         </div>
       </div>
     </div>
@@ -172,34 +129,15 @@
       <div class="os-card__header-slot"></div>
       <div class="os-card__wrapper">
         <div class="os-card__content os--align-middle" data-next-package-id="{{ _pkg }}">
-          <div class="radio-style-1">
-            <div class="radio-inner"></div>
-          </div>
-          <div class="os-card__image-slot hide-tablet"><img data-next-display="package.image" alt="" class="image"></div>
+          <div class="radio-style-1"><div class="radio-inner"></div></div>
+          <div class="os-card__image-slot"><img data-next-display="package.image" alt="" class="image"></div>
           <div class="os-card__main-slot">
-            <div class="os-card__title-section">
-              <div class="os-card__title-wrapper">
-                <div class="os-card__title">2x <span data-next-display="package.name">Package Title</span></div>
-                <div data-next-bundle-display="hasDiscount" class="os-card__title-badge pb--bestseller">
-                  <div>SAVE <span data-next-bundle-display="discountPercentage">-</span></div>
-                </div>
-              </div>
-              <div class="os-card__subtitle-wrapper">
-                <div data-next-bundle-display="hasDiscount" class="os-card__subtitle-text">Save <span data-next-bundle-display="discountAmount">-</span></div>
-              </div>
-            </div>
+            <div class="os-card__title">2x <span data-next-display="package.name">Package Title</span></div>
           </div>
           <div class="os-card__secondary-slot">
             <div class="os-card__pricing">
-              <div class="os-card__price-container">
-                <div data-next-bundle-display="hasDiscount" class="os-card__price os--compare os-style"><span data-next-bundle-display="originalUnitPrice">-</span></div>
-                <div class="os-card__price os--current"><span data-next-bundle-display="unitPrice">-</span>/ea</div>
-              </div>
-              <div class="os-card__total-container">
-                <div class="os-card__total-label">Total:</div>
-                <div data-next-bundle-display="hasDiscount" class="os-card__total-compare"><span data-next-bundle-display="originalPrice">-</span></div>
-                <div class="os-card__total-current"><span data-next-bundle-display="price">-</span></div>
-              </div>
+              <div class="os-card__price os--current"><span data-next-bundle-display="price">-</span></div>
+              <div data-next-bundle-display="hasDiscount" class="os-card__price os--compare os-style os--small"><span data-next-bundle-display="originalPrice">-</span></div>
             </div>
           </div>
         </div>
@@ -212,34 +150,15 @@
       <div class="os-card__header-slot"></div>
       <div class="os-card__wrapper">
         <div class="os-card__content os--align-middle" data-next-package-id="{{ _pkg }}">
-          <div class="radio-style-1">
-            <div class="radio-inner"></div>
-          </div>
-          <div class="os-card__image-slot hide-tablet"><img data-next-display="package.image" alt="" class="image"></div>
+          <div class="radio-style-1"><div class="radio-inner"></div></div>
+          <div class="os-card__image-slot"><img data-next-display="package.image" alt="" class="image"></div>
           <div class="os-card__main-slot">
-            <div class="os-card__title-section">
-              <div class="os-card__title-wrapper">
-                <div class="os-card__title">3x <span data-next-display="package.name">Package Title</span></div>
-                <div data-next-bundle-display="hasDiscount" class="os-card__title-badge pb--bestseller">
-                  <div>SAVE <span data-next-bundle-display="discountPercentage">-</span></div>
-                </div>
-              </div>
-              <div class="os-card__subtitle-wrapper">
-                <div data-next-bundle-display="hasDiscount" class="os-card__subtitle-text">Save <span data-next-bundle-display="discountAmount">-</span><span data-next-show="shipping.isFree"> + Free Shipping</span></div>
-              </div>
-            </div>
+            <div class="os-card__title">3x <span data-next-display="package.name">Package Title</span></div>
           </div>
           <div class="os-card__secondary-slot">
             <div class="os-card__pricing">
-              <div class="os-card__price-container">
-                <div data-next-bundle-display="hasDiscount" class="os-card__price os--compare os-style"><span data-next-bundle-display="originalUnitPrice">-</span></div>
-                <div class="os-card__price os--current"><span data-next-bundle-display="unitPrice">-</span>/ea</div>
-              </div>
-              <div class="os-card__total-container">
-                <div class="os-card__total-label">Total:</div>
-                <div data-next-bundle-display="hasDiscount" class="os-card__total-compare"><span data-next-bundle-display="originalPrice">-</span></div>
-                <div class="os-card__total-current os-dark"><span data-next-bundle-display="price">-</span></div>
-              </div>
+              <div class="os-card__price os--current os-dark"><span data-next-bundle-display="price">-</span></div>
+              <div data-next-bundle-display="hasDiscount" class="os-card__price os--compare os-style os--small"><span data-next-bundle-display="originalPrice">-</span></div>
             </div>
           </div>
         </div>

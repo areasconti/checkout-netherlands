@@ -159,11 +159,11 @@ class PromoTimer extends HTMLElement {
             </svg>
             ${saleConfig.promoCode}
           </p>
-          <p>PROMO APPLIED</p>
+          <p>PROMO TOEGEPAST</p>
         </div>
         <div class="timer-message">
           <p class="timer-message__text">
-            Promo code expires in: <span id="timer-countdown">08:59</span>. Stay on this page
+            Promotiecode verloopt over: <span id="timer-countdown">08:59</span>. Blijf op deze pagina
           </p>
         </div>
       </div>
